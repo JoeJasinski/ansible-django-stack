@@ -1,0 +1,5 @@
+sudo docker build -t ansible/django .
+
+sudo docker run -v `pwd`:/srv/ --rm -it ansible/django 
+
+ansible-playbook -vvvv  --inventory-file=ansible/inventory.ini ansible/site.yml -c local
