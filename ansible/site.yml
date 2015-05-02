@@ -1,12 +1,6 @@
 ---
 - name: Base states
   hosts: all
-  tasks:
-   - name: Install Nginx
-     apt: pkg=nginx state=installed update_cache=true
-   - name: Start the nginx service
-     service: name=nginx state=started enabled=yes
-   - name: Copy the nginx configuration file
-     template: src=nginx.conf.j2 dest={{nginx_conf_dir}}/nginx.conf
-     notify:
-     - restart nginx
+  roles:
+    - role: sites
+    - role: nginx

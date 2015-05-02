@@ -4,6 +4,7 @@ MAINTAINER Joe Jasinski
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y ansible python-apt
 
-ADD . /srv/
+ADD . /srv/ansible/
 
 CMD ["bash"]
+EXPOSE 80 443

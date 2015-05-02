@@ -1,0 +1,81 @@
+---
+- name: Install Nginx
+  apt:
+    pkg=nginx
+    state=installed
+    update_cache=true
+
+- name: Creates SSL directory
+  file: 
+    path={{ sites_dir }}site/etc/ssl/
+    state=directory
+    owner=www-data
+    group=www-data
+    mode=0775
+
+- name: Creates Log directory
+  file: 
+    path={{ sites_dir }}site/log/
+    state=directory
+    owner=www-data
+    group=www-data
+    mode=0775
+
+- name: create self-signed SSL cert
+  command: openssl req -new -nodes -x509 -subj "/C=US/ST=Illinois/L=Chicago/O=IT/CN=example.com" -newkey rsa:2048 -days 65535 -keyout {{ sites_dir }}site/etc/ssl/server.key -out {{ sites_dir }}site/etc/ssl/server.crt -extensions v3_ca creates={{ sites_dir }}site/etc/ssl/server.crt
+
+- name: Start the nginx service
+  service:
+    name=nginx
+    state=started 
+    enabled=yes
+
+- name: Creates htdocs directory
+  file: 
+    path={{ sites_dir }}htdocs/
+    state=directory
+    owner=www-data 
+    group=www-data 
+    mode=0775
+
+- name: Creates directory
+  file: 
+    path={{ sites_dir }}site/etc/nginx/
+    state=directory
+    owner=www-data
+    group=www-data
+    mode=0775
+
+- name: Copy the nginx configuration file
+  template: 
+    src=site.conf.j2
+    dest={{ sites_dir }}site/etc/nginx/site.conf
+
+- name: Copy the nginx location file
+  template: 
+    src=locations.conf.j2
+    dest={{ sites_dir }}site/etc/nginx/locations.conf
+
+- name: Copy the nginx django file
+  template: 
+    src=django.conf.j2
+    dest={{ sites_dir }}site/etc/nginx/django.conf
+
+- name: Remove old default
+  file:
+    path={{nginx_conf_dir}}/sites-available/default
+    state=absent
+
+- name: Create symlink to example.com
+  file:
+    src={{ sites_dir }}site/etc/nginx/site.conf
+    dest={{nginx_conf_dir}}/sites-available/default
+    state=link
+
+- name: Create symlink to example.com
+  file: 
+    src={{nginx_conf_dir}}/sites-available/default
+    dest={{nginx_conf_dir}}/sites-enabled/default 
+    state=link
+  notify:
+   - restart nginx
