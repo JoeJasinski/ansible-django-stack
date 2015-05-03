@@ -1,12 +1,12 @@
 location /static/ {
-    alias {{ sites_dir }}htdocs/static/;
+    alias {{ htdocs_dir }}static/;
     access_log off;
     expires       3d;
     add_header Cache-Control public; 
 }
 
 location /media/ {
-    alias {{ sites_dir }}htdocs/media/;
+    alias {{ htdocs_dir }}media/;
     access_log off;
     expires       3d;
     add_header Cache-Control public; 

@@ -1,0 +1,9 @@
+---
+
+- name: Creates Proj directory
+  file: 
+    path={{ site_dir }}proj/
+    state=directory
+    owner=www-data
+    group=www-data 
+    mode=0775

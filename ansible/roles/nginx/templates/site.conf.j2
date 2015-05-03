@@ -1,5 +1,5 @@
 upstream app_server {
-    server unix:{{ sites_dir }}site/run/django.socket;
+    server unix:{{ site_dir }}run/django.socket;
 }
 
 server {
@@ -8,10 +8,11 @@ server {
 	# Turn on directory listing for static files
 	#autoindex on;
 
-	access_log  {{ sites_dir }}site/log/nginx_jazstudios_access.log;
+	access_log  {{ site_log_dir }}nginx_access.log;
+	error_log  {{ site_log_dir }}nginx_error.log;
 
-	include {{ sites_dir }}site/etc/nginx/locations.conf;
-	include {{ sites_dir }}site/etc/nginx/django.conf;
+	include {{ site_nginx_dir }}locations.conf;
+	include {{ site_nginx_dir }}django.conf;
 }
 
 server {
@@ -21,16 +22,17 @@ server {
 	#autoindex on;
 
 	ssl   on;
-	ssl_certificate {{ sites_dir }}site/etc/ssl/server.crt;
-	ssl_certificate_key {{ sites_dir }}site/etc/ssl/server.key;
+	ssl_certificate {{ site_dir }}etc/ssl/server.crt;
+	ssl_certificate_key {{ site_dir }}etc/ssl/server.key;
 	ssl_session_timeout 5m;
 	ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
 	ssl_ciphers 'ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA:AES256-SHA:AES:CAMELLIA:DES-CBC3-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!aECDH:!EDH-DSS-DES-CBC3-SHA:!EDH-RSA-DES-CBC3-SHA:!KRB5-DES-CBC3-SHA';
 	ssl_prefer_server_ciphers on;
 	ssl_session_cache shared:SSL:50m;
 
-	access_log  {{ sites_dir }}site/log/nginx_jazstudios_access.log;
+	access_log  {{ site_log_dir }}nginx_access.log;
+	error_log  {{ site_log_dir }}nginx_error.log;
 
-	include {{ sites_dir }}site/etc/nginx/locations.conf;
-	include {{ sites_dir }}site/etc/nginx/django.conf;
+	include {{ site_nginx_dir }}locations.conf;
+	include {{ site_nginx_dir }}django.conf;
 }

@@ -1,6 +1,11 @@
 ---
 - name: Base states
   hosts: all
+  vars:
+    - update_apt_cache: yes
+  vars_files:
+    - env_vars/base.yml
   roles:
+    - role: base
     - role: sites
     - role: nginx

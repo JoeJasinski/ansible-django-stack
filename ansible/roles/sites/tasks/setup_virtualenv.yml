@@ -1,0 +1,6 @@
+---
+
+- name: Create the virtualenv
+  command: virtualenv {{ virtualenv_dir }} --no-site-packages
+           creates={{ virtualenv_dir }}/bin/activate
+

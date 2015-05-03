@@ -1,0 +1,5 @@
+
+site_log_file: "{{ site_log_dir }}/gunicorn_supervisor.log"
+requirements_file: "{{ project_dir }}/requirements.txt"
+
+

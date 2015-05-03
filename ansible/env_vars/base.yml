@@ -1,0 +1,8 @@
+---
+sites_dir: "/srv/"
+site_dir: "{{ sites_dir }}site/"
+htdocs_dir: "{{ site_dir }}htdocs/"
+site_log_dir: "{{ site_dir }}log/"
+site_nginx_dir: "{{ site_dir }}etc/nginx/"
+project_dir: "{{ site_dir }}proj/"
+virtualenv_dir: "{{ site_dir }}venv/"

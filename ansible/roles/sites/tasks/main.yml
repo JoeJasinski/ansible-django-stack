@@ -1,3 +1,14 @@
 ---
 - name: Creates directory
-  file: path={{ sites_dir }}site/ state=directory owner=www-data group=www-data mode=0775
+  file: 
+    path={{ site_dir }}
+    state=directory
+    owner=www-data
+    group=www-data
+    mode=0775
+
+- include: setup_virtualenv.yml
+  tags: virtualenv
+
+- include: setup_project.yml
+  tags: project
