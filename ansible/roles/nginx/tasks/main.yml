@@ -10,7 +10,7 @@
     path={{ site_dir }}etc/ssl/
     state=directory
     owner=www-data
-    group=www-data
+    group=worker
     mode=0775
 
 - name: Create Log directory
@@ -18,7 +18,7 @@
     path={{ site_dir }}log/
     state=directory
     owner=www-data
-    group=www-data
+    group=worker
     mode=0775
 
 - name: Create self-signed SSL cert
@@ -35,7 +35,7 @@
     path={{ sites_dir }}htdocs/
     state=directory
     owner=www-data 
-    group=www-data 
+    group=worker 
     mode=0775
 
 - name: Create directory
@@ -43,7 +43,7 @@
     path={{ site_nginx_dir }}
     state=directory
     owner=www-data
-    group=www-data
+    group=worker
     mode=0775
 
 - name: Copy the nginx configuration file
@@ -57,6 +57,7 @@
     dest={{ site_nginx_dir }}locations.conf
   notify:
    - restart nginx
+   - reread supervisord
 
 - name: Copy the nginx django file
   template: 
@@ -64,6 +65,7 @@
     dest={{ site_nginx_dir }}django.conf
   notify:
    - restart nginx
+   - reread supervisord
 
 - name: Remove old default
   file:
@@ -71,6 +73,7 @@
     state=absent
   notify:
    - restart nginx
+   - reread supervisord
 
 - name: Create symlink to example.com
   file:
@@ -79,6 +82,7 @@
     state=link
   notify:
    - restart nginx
+   - reread supervisord
 
 - name: Create symlink to example.com
   file: 
@@ -87,6 +91,7 @@
     state=link
   notify:
    - restart nginx
+   - reread supervisord
 
 - name: ensure nginx starts on a fresh reboot
   service:

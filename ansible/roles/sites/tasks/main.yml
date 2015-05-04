@@ -4,8 +4,9 @@
     path={{ site_dir }}
     state=directory
     owner=www-data
-    group=www-data
-    mode=0775
+    group=worker
+    mode=2775
+    recurse=yes
 
 - include: setup_virtualenv.yml
   tags: virtualenv

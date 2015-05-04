@@ -5,5 +5,5 @@
     path={{ site_dir }}proj/
     state=directory
     owner=www-data
-    group=www-data 
+    group=worker
     mode=0775
