@@ -1,3 +1,6 @@
+WORK IN PROGRESS
+
+
 sudo docker build -t ansible/django .
 
 sudo docker run -p 80 -p 443 \
