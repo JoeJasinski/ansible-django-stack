@@ -8,5 +8,6 @@
   roles:
     - role: base
     - role: sites
-    - role: nginx
     - role: supervisor
+    - role: nginx
+

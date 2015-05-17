@@ -5,26 +5,43 @@
 
 - group: name=worker state=present
 
-- name: Ensure bash, OpenSSl, and libssl are the latest versions
+- name: Install need system libraries and tools
   apt: name={{ item }} update_cache={{ update_apt_cache }} state=latest
   with_items:
     - bash
+    - build-essential
     - openssl
     - libssl-dev
     - libssl-doc
+    - libxml2-dev
+    - libjpeg8
+    - libjpeg8-dev
+    - libjpeg-turbo8-dev
+    - libfreetype6
+    - libfreetype6-dev
+    - zlib1g-dev
   tags: packages
 
 - name: Install base packages
   apt: name={{ item }} update_cache={{ update_apt_cache }} force=yes state=installed
   with_items:
-    - build-essential
     - ntp
+    - curl
+    - psmisc
     - htop
     - git
-    - libpq-dev
+    - git-core
+    - supervisor
+  tags: packages
+
+- name: Install Python System-level packages
+  apt: name={{ item }} update_cache={{ update_apt_cache }} force=yes state=installed
+  with_items:
     - python-dev
     - python-pip
     - python-pycurl
     - python-virtualenv
-    - supervisor
+    - python-setuptools
   tags: packages
+
+
