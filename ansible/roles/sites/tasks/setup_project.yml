@@ -1,8 +1,8 @@
 ---
 
 - name: Creates Proj directory
-  file: 
-    path={{ site_dir }}proj/
+  file:
+    path={{ project_dir }}
     state=directory
     owner=www-data
     group=worker
