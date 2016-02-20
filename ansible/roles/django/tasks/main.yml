@@ -1,0 +1,11 @@
+---
+
+- user: name={{ site_user }} shell=/bin/bash append=yes
+
+- name: Copy the supervisor config file for Django
+  template:
+    src=supervisor-django.j2
+    dest=/etc/supervisor/conf.d/django.conf
+
+- name: reload supervisor
+  service: name=supervisor state=restarted

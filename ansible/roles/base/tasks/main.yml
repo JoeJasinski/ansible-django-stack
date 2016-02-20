@@ -11,6 +11,7 @@
     - bash
     - build-essential
     - openssl
+    - rng-tools
     - libssl-dev
     - libssl-doc
     - libxml2-dev
@@ -43,5 +44,3 @@
     - python-virtualenv
     - python-setuptools
   tags: packages
-
-

@@ -6,5 +6,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y ansible python-apt
 
 ADD . /srv/ansible/
 
+RUN ansible-playbook -vvvv --inventory-file=/srv/ansible/ansible/inventory.ini \
+   /srv/ansible/ansible/site.yml -c local
+
 CMD ["bash"]
 EXPOSE 80 443

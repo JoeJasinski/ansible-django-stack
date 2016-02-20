@@ -10,4 +10,4 @@
     - role: sites
     - role: supervisor
     - role: nginx
-
+    - role: django

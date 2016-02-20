@@ -1,4 +1,6 @@
 ---
+site_name: "mysite"
+site_user: "myuser"
 sites_dir: "/srv/"
 site_dir: "{{ sites_dir }}site/"
 htdocs_dir: "{{ site_dir }}htdocs/"

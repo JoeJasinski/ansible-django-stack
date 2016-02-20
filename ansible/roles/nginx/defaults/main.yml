@@ -1,1 +1,1 @@
-nginx_conf_dir: "/etc/nginx"
+nginx_conf_dir: "/etc/nginx/"

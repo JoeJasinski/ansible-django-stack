@@ -1,3 +1,9 @@
+error_page 502 @502;
+location @502 {
+  root   {{ htdocs_dir }};
+  try_files /50x.html =502;
+}
+
 location / {
     try_files $uri @proxy_to_app;
 }
@@ -15,4 +21,3 @@ location @proxy_to_app {
     proxy_read_timeout 10;
     proxy_pass http://app_server;
 }
-
