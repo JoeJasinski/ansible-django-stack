@@ -2,7 +2,7 @@
 
 - name: Creates Proj directory
   file:
-    path={{ project_dir }}
+    path={{ sites_project_dir }}
     state=directory
     owner=www-data
     group=worker

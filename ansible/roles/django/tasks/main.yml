@@ -1,11 +1,21 @@
 ---
 
-- user: name={{ site_user }} shell=/bin/bash append=yes
+- user: name={{ django_site_user }} groups=worker shell=/bin/bash append=yes
+  tags:
+    - django
+
+- pip: name=uwsgi virtualenv={{ django_virtualenv_dir }}
+  tags:
+    - django
 
 - name: Copy the supervisor config file for Django
   template:
     src=supervisor-django.j2
     dest=/etc/supervisor/conf.d/django.conf
+  tags:
+    - django
 
 - name: reload supervisor
   service: name=supervisor state=restarted
+  tags:
+    - django

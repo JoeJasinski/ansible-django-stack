@@ -1,6 +1,7 @@
 ---
 site_name: "mysite"
 site_user: "myuser"
+python_version: "python3.4" # "python2.7" or "python3.4"
 sites_dir: "/srv/"
 site_dir: "{{ sites_dir }}site/"
 htdocs_dir: "{{ site_dir }}htdocs/"

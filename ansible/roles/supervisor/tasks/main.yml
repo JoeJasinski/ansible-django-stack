@@ -4,7 +4,11 @@
   apt: name={{ item }} update_cache={{ update_apt_cache }} state=latest
   with_items:
     - supervisor
-  tags: packages
+  tags:
+    - packages
+    - supervisor
 
 - name: reload supervisor
   service: name=supervisor state=started
+  tags:
+    - supervisor

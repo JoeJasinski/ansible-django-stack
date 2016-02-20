@@ -1,5 +1,7 @@
 
-site_log_file: "{{ site_log_dir }}/gunicorn_supervisor.log"
-requirements_file: "{{ project_dir }}/requirements.txt"
-
-
+sites_python_version: "{{ python_version }}"
+sites_site_dir: "{{ site_dir }}"
+sites_project_dir: "{{ project_dir }}"
+sites_virtualenv_dir: "{{ virtualenv_dir }}"
+sites_site_log_file: "{{ site_log_dir }}/django_supervisor.log"
+sites_requirements_file: "{{ project_dir }}/requirements.txt"

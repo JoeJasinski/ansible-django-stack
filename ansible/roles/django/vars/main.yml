@@ -1,4 +1,7 @@
 ---
 
-virtualenv_bin_dir: "{{ virtualenv_dir }}bin/"
-django_proj_dir: "{{ project_dir }}/"
+django_virtualenv_dir: "{{ virtualenv_dir }}"
+django_virtualenv_bin_dir: "{{ django_virtualenv_dir }}bin/"
+django_proj_dir: "{{ project_dir }}"
+django_site_name: "{{ site_name }}"
+django_site_user: "{{ site_user }}"
