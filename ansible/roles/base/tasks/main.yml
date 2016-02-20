@@ -4,6 +4,8 @@
   tags: swap
 
 - group: name=worker state=present
+  tags:
+    - packages
 
 - name: Install need system libraries and tools
   apt: name={{ item }} update_cache={{ update_apt_cache }} state=latest
@@ -21,26 +23,29 @@
     - libfreetype6
     - libfreetype6-dev
     - zlib1g-dev
-  tags: packages
+  tags:
+    - packages
 
 - name: Install base packages
   apt: name={{ item }} update_cache={{ update_apt_cache }} force=yes state=installed
   with_items:
-    - ntp
     - curl
     - psmisc
     - htop
     - git
     - git-core
     - supervisor
-  tags: packages
+  tags:
+    - packages
 
 - name: Install Python System-level packages
   apt: name={{ item }} update_cache={{ update_apt_cache }} force=yes state=installed
   with_items:
     - python-dev
+    - python3-dev
     - python-pip
     - python-pycurl
     - python-virtualenv
     - python-setuptools
-  tags: packages
+  tags:
+    - packages
