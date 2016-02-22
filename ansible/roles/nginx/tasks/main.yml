@@ -135,6 +135,6 @@
     - nginx
 
 - name: reload supervisor
-  service: name=supervisor state=restarted
+  service: name=supervisor state=started
   tags:
     - nginx

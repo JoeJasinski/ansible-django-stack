@@ -8,6 +8,13 @@
   tags:
     - django
 
+- name: Copy the uwsig config file
+  template:
+    src=uwsgi.ini.j2
+    dest={{ django_proj_dir }}django.conf
+  tags:
+    - django
+
 - name: Copy the supervisor config file for Django
   template:
     src=supervisor-django.j2

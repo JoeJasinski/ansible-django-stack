@@ -1,9 +1,9 @@
 WORK IN PROGRESS
 
-
 sudo docker build -t ansible/django .
 
 sudo docker run -p 80 -p 443 \
   -v `pwd`:/srv/ansible/ \
   -v `pwd`/log/:/srv/site/log/ \
-  --rm -it ansible/django
+  -e DEBUG='True' \
+  --rm -it ansible/django /srv/ansible/run.sh
