@@ -7,10 +7,10 @@
     - env_vars/base.yml
   roles:
     - role: base
-    - role: users
-    - role: unattended
-    - role: ntp
-    - role: sites
-    - role: supervisor
-    - role: nginx
-    - role: django
+    - { role: users, tags: ['users'] }
+    - { role: unattended, tags: ['unattended'] }
+    - { role: ntp, tags: ['ntp'] }
+    - { role: sites, tags: ['sites'] }
+    - { role: supervisor, tags: ['supervisor'] }
+    - { role: nginx, tags: ['nginx'] }
+    - { role: django, tags: ['django'] }
