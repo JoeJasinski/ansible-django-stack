@@ -9,3 +9,15 @@ site_log_dir: "{{ site_dir }}log/"
 site_nginx_dir: "{{ site_dir }}etc/nginx/"
 project_dir: "{{ site_dir }}proj/"
 virtualenv_dir: "{{ site_dir }}venv/"
+
+# define list of users here
+users:
+  - username: jjasinski
+    name: Joe Jasinski
+    groups:
+      - worker
+    uid: 1010
+    password: '!'
+    ssh_key:
+      - "ssh-rsa AAAAA.... foo@machine"
+    shell: /bin/bash
