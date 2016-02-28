@@ -19,6 +19,8 @@
   template:
     src=supervisor-django.j2
     dest=/etc/supervisor/conf.d/django.conf
+    owner=root
+    group=root
   notify: reread supervisord
   tags:
     - django

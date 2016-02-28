@@ -2,7 +2,7 @@
 
 - name: Per-user group creation
   group: name="{{item.username}}" state="present"
-  with_items: users
+  with_items: "{{users}}"
   tags:
     - users
 
@@ -16,6 +16,6 @@
         comment="{{item.name}}"
         uid="{{item.uid|default(omit)}}"
         createhome="{{'yes' if users_create_homedirs else 'no'}}"
-  with_items: users
+  with_items: "{{users}}"
   tags:
     - users

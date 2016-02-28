@@ -11,6 +11,8 @@
     - { role: unattended, tags: ['unattended'] }
     - { role: ntp, tags: ['ntp'] }
     - { role: sites, tags: ['sites'] }
+    - { role: postgres, tags: ['postgres'] }
+    - { role: postgis, tags: ['postgis'] }
     - { role: supervisor, tags: ['supervisor'] }
     - { role: nginx, tags: ['nginx'] }
     - { role: django, tags: ['django'] }

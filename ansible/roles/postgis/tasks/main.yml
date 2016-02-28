@@ -1,0 +1,14 @@
+---
+
+- name: Install Postgis
+  apt: name={{ item }} update_cache={{ update_apt_cache }} state=latest
+  with_items:
+    - postgis
+    - postgresql-9.3-postgis-2.1
+    - postgresql-9.3-postgis-scripts
+
+- name: Create postgis extension
+  become_user: postgres
+  postgresql_ext:
+    name=postgis
+    db={{ postgres_db_name }}
