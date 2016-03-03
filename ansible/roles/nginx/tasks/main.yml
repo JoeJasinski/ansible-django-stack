@@ -1,4 +1,5 @@
 ---
 - include: base.yml
+  when: install_nginx|default(True)
   tags:
     - nginx

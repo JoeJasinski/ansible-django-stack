@@ -1,5 +1,5 @@
 ---
 
 dependencies:
- - { role: sites, tags: ['sites'], when: install_sites|default(True) }
- - { role: supervisor, tags: ['supervisor'] }
+ - role: sites
+ - role: supervisor

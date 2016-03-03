@@ -1,0 +1,17 @@
+---
+- name: Creates directory
+  file:
+    path={{ sites_site_dir }}
+    state=directory
+    owner=www-data
+    group=worker
+    mode=2775
+    recurse=yes
+
+- include: setup_virtualenv.yml
+  tags:
+    - virtualenv
+
+- include: setup_project.yml
+  tags:
+    - project

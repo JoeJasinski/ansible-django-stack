@@ -2,7 +2,4 @@
 
 dependencies:
  - role: base
- - role: users
- - role: unattended
- - role: ntp
- - { role: supervisor, tags: ['supervisor'] }
+ - role: supervisor

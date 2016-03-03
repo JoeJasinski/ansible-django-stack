@@ -1,14 +1,5 @@
 ---
-
-- include: debian-base.yml
-  when: ansible_os_family == 'Debian'
-  tags:
-    - postgis
-
-- name: Create postgis extension
-  become_user: postgres
-  postgresql_ext:
-    name=postgis
-    db={{ postgres_db_name }}
+- include: base.yml
+  when: install_postgis|default(True)
   tags:
     - postgis
