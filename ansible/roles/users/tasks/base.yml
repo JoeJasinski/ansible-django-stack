@@ -1,5 +1,9 @@
 ---
 
+- group: name=worker state=present
+  tags:
+    - packages
+
 - name: Per-user group creation
   group: name="{{item.username}}" state="present"
   with_items: "{{users}}"

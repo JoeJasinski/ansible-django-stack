@@ -3,10 +3,6 @@
   when: create_swap_file
   tags: swap
 
-- group: name=worker state=present
-  tags:
-    - packages
-
 - name: Install need system libraries and tools
   apt: name={{ item }} update_cache={{ update_apt_cache }} state=latest
   with_items:
