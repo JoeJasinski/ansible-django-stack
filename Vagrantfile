@@ -7,7 +7,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provision :ansible do |ansible|
     ansible.playbook = "ansible/site.yml"
-    ansible.verbose = "vvv"
+    ansible.verbose = "vvvv"
+    ansible.extra_vars = {}
     ansible.sudo = true
+    ansible.limit = "all"
   end
 end

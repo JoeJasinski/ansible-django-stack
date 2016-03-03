@@ -1,0 +1,8 @@
+---
+
+dependencies:
+ - role: base
+ - { role: users, tags: ['users'] }
+ - { role: unattended, tags: ['unattended'], when: install_unattended_updates|default(True) }
+ - { role: ntp, tags: ['ntp'], when: install_ntp|default(True) }
+ - { role: supervisor, tags: ['supervisor'] }

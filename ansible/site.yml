@@ -6,13 +6,33 @@
   vars_files:
     - env_vars/base.yml
   roles:
-    - role: base
-    - { role: users, tags: ['users'] }
-    - { role: unattended, tags: ['unattended'] }
-    - { role: ntp, tags: ['ntp'] }
-    - { role: sites, tags: ['sites'] }
-    - { role: postgres, tags: ['postgres'] }
-    - { role: postgis, tags: ['postgis'] }
-    - { role: supervisor, tags: ['supervisor'] }
-    - { role: nginx, tags: ['nginx'] }
-    - { role: django, tags: ['django'] }
+    - role: nginx
+      tags: nginx
+    - role: postgres
+      tags: postgres
+      when: install_postgres|default(True)
+    - role: postgis
+      tags: postgis
+      when: install_postgis|default(True)
+    - role: django
+      tags: django
+
+
+
+#- name: Base states
+#  hosts: all
+  # vars:
+  #   - update_apt_cache: yes
+  # vars_files:
+  #   - env_vars/base.yml
+  # roles:
+  #   - role: base
+  #   - { role: users, tags: ['users'] }
+  #   - { role: unattended, tags: ['unattended'], when: install_unattended_updates|default(True) }
+  #   - { role: ntp, tags: ['ntp'], when: install_ntp|default(True) }
+  #   - { role: sites, tags: ['sites'] }
+  #   - { role: postgres, tags: ['postgres'], install_postgres|default(True) }
+  #   - { role: postgis, tags: ['postgis'], when: install_postgis|default(True) }
+  #   - { role: supervisor, tags: ['supervisor'] }
+  #   - { role: nginx, tags: ['nginx'] }
+  #   - { role: django, tags: ['django'] }

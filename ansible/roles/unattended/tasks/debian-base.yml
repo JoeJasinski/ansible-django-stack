@@ -3,13 +3,18 @@
   apt: pkg=unattended-upgrades state=present
   tags:
     - packages
+    - unattended
 
 - name: Create APT auto-upgrades configuration
   template: >
     src=auto-upgrades.j2 dest=/etc/apt/apt.conf.d/20auto-upgrades
     owner=root group=root mode=0644
+  tags:
+    - unattended
 
 - name: create unattended-upgrades configuration
   template: >
     src=unattended-upgrades.j2 dest=/etc/apt/apt.conf.d/50unattended-upgrades
     owner=root group=root mode=0644
+  tags:
+    - unattended

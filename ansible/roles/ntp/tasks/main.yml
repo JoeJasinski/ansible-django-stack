@@ -4,6 +4,9 @@
   apt: name=ntp state=installed
   tags:
     - packages
+    - ntp
 
 - name: Start NTPD
   service: name=ntp state=running enabled=yes
+  tags:
+    - ntp
