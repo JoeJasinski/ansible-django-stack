@@ -1,0 +1,16 @@
+---
+
+- name: Add Nginx Repository
+  apt_repository: repo='ppa:nginx/stable' state=present
+  tags:
+    - packages
+    - debian-base
+
+- name: Install Latest Nginx
+  apt:
+    pkg=nginx
+    state=latest
+    update_cache={{ update_apt_cache }}
+  tags:
+    - packages
+    - debian-base

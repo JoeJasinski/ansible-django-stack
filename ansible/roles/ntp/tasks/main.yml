@@ -1,12 +1,5 @@
 ---
-
-- name: Install NTP Deamon
-  apt: name=ntp state=installed
-  tags:
-    - packages
-    - ntp
-
-- name: Start NTPD
-  service: name=ntp state=running enabled=yes
+- include: base.yml
+  when: install_ntp|default(True)
   tags:
     - ntp

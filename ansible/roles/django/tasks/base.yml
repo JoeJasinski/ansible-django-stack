@@ -1,0 +1,20 @@
+---
+
+- user: name={{ django_site_user }} groups=worker shell=/bin/bash append=yes
+
+- pip: name=uwsgi virtualenv={{ django_virtualenv_dir }}
+
+- name: Copy the uwsig config file
+  template:
+    src=uwsgi.ini.j2
+    dest={{ django_proj_dir }}django.conf
+
+- name: Copy the supervisor config file for Django
+  template:
+    src=supervisor-django.j2
+    dest=/etc/supervisor/conf.d/django.conf
+    owner=root
+    group=root
+  notify: reread supervisord
+  tags:
+    - supervisor

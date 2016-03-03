@@ -1,14 +1,4 @@
 ---
-
-- name: Install supervisor
-  apt: name={{ item }} update_cache={{ update_apt_cache }} state=latest
-  with_items:
-    - supervisor
-  tags:
-    - packages
-    - supervisor
-
-- name: reload supervisor
-  service: name=supervisor state=started
+- include: base.yml
   tags:
     - supervisor

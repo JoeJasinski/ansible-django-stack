@@ -1,5 +1,5 @@
 ---
-- include: debian-base.yml
-  when: ansible_os_family == 'Debian'
+- include: base.yml
+  when: install_unattended_updates|default(True) 
   tags:
     - unattended

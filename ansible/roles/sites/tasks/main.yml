@@ -7,11 +7,15 @@
     group=worker
     mode=2775
     recurse=yes
+  tags:
+    - sites
 
 - include: setup_virtualenv.yml
   tags:
     - virtualenv
+    - sites
 
 - include: setup_project.yml
   tags:
     - project
+    - sites

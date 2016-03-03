@@ -1,0 +1,6 @@
+---
+- include: base-debian.yml
+  when: ansible_os_family == 'Debian'
+
+- name: Start NTPD
+  service: name=ntp state=running enabled=yes

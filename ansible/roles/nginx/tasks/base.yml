@@ -1,0 +1,110 @@
+---
+- name: Add Nginx Repository
+  apt_repository: repo='ppa:nginx/stable' state=present
+  tags:
+    - packages
+
+- name: Install Latest Nginx
+  apt:
+    pkg=nginx
+    state=latest
+    update_cache={{ update_apt_cache }}
+  tags:
+    - packages
+
+- name: Create SSL directory
+  file:
+    path={{ nginx_ssl_dir }}
+    state=directory
+    owner=www-data
+    group=worker
+    mode=0775
+
+- name: Create Log directory
+  file:
+    path={{ site_log_dir }}
+    state=directory
+    owner=www-data
+    group=worker
+    mode=0775
+
+- name: Make some random entropy
+  command: rngd -r /dev/urandom
+
+- name: Create self-signed SSL cert
+  command: openssl req -new -nodes -x509 -subj "/C=US/ST=Illinois/L=Chicago/O=IT/CN=example.com" -newkey rsa:2048 -days 65535 -keyout {{ sites_dir }}site/etc/ssl/server.key -out {{ sites_dir }}site/etc/ssl/server.crt -extensions v3_ca creates={{ sites_dir }}site/etc/ssl/server.crt
+
+- name: Generate Diffie-Hellman
+  command: |
+    openssl dhparam -out {{ nginx_ssl_dir }}dhparam.pem 2048
+
+- name: Create htdocs directory
+  file:
+    path={{ htdocs_dir }}
+    state=directory
+    owner=www-data
+    group=worker
+    mode=0775
+
+- name: Create directory
+  file:
+    path={{ site_nginx_dir }}
+    state=directory
+    owner=www-data
+    group=worker
+    mode=0775
+
+- name: Copy the nginx base configuration file
+  template:
+    src=nginx.conf.j2
+    dest=/etc/nginx/nginx.conf
+    owner=root
+    group=root
+
+- name: Copy the nginx site configuration file
+  template:
+    src=site.conf.j2
+    dest={{ site_nginx_dir }}site.conf
+
+- name: Copy the nginx location file
+  template:
+    src=locations.conf.j2
+    dest={{ site_nginx_dir }}locations.conf
+
+- name: Copy the nginx django file
+  template:
+    src=django.conf.j2
+    dest={{ site_nginx_dir }}django.conf
+
+- name: Remove old default configuration
+  file:
+    path={{ nginx_conf_dir }}sites-available/default
+    state=absent
+
+- name: Copy in the new site configuration
+  file:
+    src={{ site_nginx_dir }}site.conf
+    dest={{ nginx_conf_dir }}sites-available/default
+    state=link
+
+- name: Create symlink to enable the site configuration
+  file:
+    src={{ nginx_conf_dir }}sites-available/default
+    dest={{ nginx_conf_dir }}sites-enabled/default
+    state=link
+
+- name: Copy the supervisor config file for nginx
+  template:
+    src=supervisor-nginx.conf.j2
+    dest=/etc/supervisor/conf.d/nginx.conf
+    owner=root
+    group=root
+
+- name: ensure nginx is stopped on a fresh reboot (supervisord will run)
+  service:
+    name=nginx
+    state=stopped
+    enabled=no
+
+- name: reload supervisor
+  service: name=supervisor state=started
