@@ -27,6 +27,7 @@
     - htop
     - git
     - git-core
+    - mercurial
 
 - name: Install Python System-level packages
   apt: name={{ item }} update_cache={{ update_apt_cache }} force=yes state=installed
