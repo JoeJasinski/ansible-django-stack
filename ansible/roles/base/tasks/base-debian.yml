@@ -28,6 +28,8 @@
     - git
     - git-core
     - mercurial
+    - psmisc # pstree
+    - lsof
 
 - name: Install Python System-level packages
   apt: name={{ item }} update_cache={{ update_apt_cache }} force=yes state=installed

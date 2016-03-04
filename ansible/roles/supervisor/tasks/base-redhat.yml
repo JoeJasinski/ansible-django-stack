@@ -1,0 +1,6 @@
+---
+
+- name: Install supervisor
+  yum: name={{ item }} state=latest
+  with_items:
+    - supervisor

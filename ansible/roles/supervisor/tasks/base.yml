@@ -1,6 +1,15 @@
 ---
 - include: base-debian.yml
   when: ansible_os_family == 'Debian'
+  tags:
+    - packages
+    - debian-base
+
+- include: base-redhat.yml
+  when: ansible_os_family == 'RedHat'
+  tags:
+   - packages
+   - redhat-base
 
 - name: reload supervisor
   service: name=supervisor state=started

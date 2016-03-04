@@ -3,6 +3,14 @@
 - name: Install development packages
   action: yum name='@development' state=latest
 
+
+- name: Install the RHEL EPEL repos for extra packages
+  yum: name={{ item }} state=latest
+  with_items:
+    - scl-utils
+    - centos-release-scl-rh
+    - epel-release
+
 - name: Install need system libraries and tools
   yum: name={{ item }} state=latest
   with_items:
@@ -28,12 +36,14 @@
     - htop
     - git
     - mercurial
+    - psmisc #pstree
+    - lsof
 
 - name: IInstall Python System-level packages
   yum: name={{ item }} state=latest
   with_items:
     - python27
-    - python27-devel
+    - python27-python-devel
     - python-pip
     - python33
     - python-virtualenv

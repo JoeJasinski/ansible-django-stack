@@ -1,6 +1,12 @@
 ---
 - include: base-debian.yml
   when: ansible_os_family == 'Debian'
+  tags:
+   - packages
+   - debian-base
 
-- name: Start NTPD
-  service: name=ntp state=running enabled=yes
+- include: base-redhat.yml
+  when: ansible_os_family == 'RedHat'
+  tags:
+   - packages
+   - redhat-base

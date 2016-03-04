@@ -1,0 +1,9 @@
+---
+- name: Install base packages
+  yum: name={{ item }} state=latest
+  with_items:
+    - ntp
+    - ntpdate
+
+- name: Start NTPD
+  service: name=ntpd state=running enabled=yes

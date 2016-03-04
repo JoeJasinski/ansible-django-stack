@@ -2,6 +2,6 @@
 
 - name: Install NTP Deamon
   apt: name=ntp state=installed
-  tags:
-    - packages
-    - debian-base
+
+- name: Start NTPD
+  service: name=ntp state=running enabled=yes
