@@ -1,0 +1,4 @@
+redis_port: 6379
+redis_bind: "127.0.0.1"
+redis_loglevel: "notice"
+redis_timeout: 0
