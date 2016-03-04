@@ -1,48 +1,16 @@
 ---
 - include: create_swap_file.yml
-  when: create_swap_file
+  when: base_create_swap_file
   tags: swap
 
-- name: Install need system libraries and tools
-  apt: name={{ item }} update_cache={{ update_apt_cache }} state=latest
-  with_items:
-    - bash
-    - build-essential
-    - openssl
-    - rng-tools
-    - libssl-dev
-    - libssl-doc
-    - libxml2-dev
-    - libjpeg8
-    - libjpeg8-dev
-    - libjpeg-turbo8-dev
-    - libfreetype6
-    - libfreetype6-dev
-    - zlib1g-dev
-    - libpq-dev
+- include: base-debian.yml
+  when: ansible_os_family == 'Debian'
   tags:
-    - packages
+   - packages
+   - debian-base
 
-- name: Install base packages
-  apt: name={{ item }} update_cache={{ update_apt_cache }} force=yes state=installed
-  with_items:
-    - curl
-    - psmisc
-    - htop
-    - git
-    - git-core
-    - supervisor
+- include: base-redhat.yml
+  when: ansible_os_family == 'RedHat'
   tags:
-    - packages
-
-- name: Install Python System-level packages
-  apt: name={{ item }} update_cache={{ update_apt_cache }} force=yes state=installed
-  with_items:
-    - python-dev
-    - python3-dev
-    - python-pip
-    - python-pycurl
-    - python-virtualenv
-    - python-setuptools
-  tags:
-    - packages
+   - packages
+   - redhat-base

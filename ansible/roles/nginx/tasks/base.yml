@@ -1,16 +1,7 @@
 ---
-- name: Add Nginx Repository
-  apt_repository: repo='ppa:nginx/stable' state=present
-  tags:
-    - packages
 
-- name: Install Latest Nginx
-  apt:
-    pkg=nginx
-    state=latest
-    update_cache={{ update_apt_cache }}
-  tags:
-    - packages
+- include: base-debian.yml
+  when: ansible_os_family == 'Debian'
 
 - name: Create SSL directory
   file:
