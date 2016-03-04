@@ -27,6 +27,7 @@
     - curl
     - htop
     - git
+    - mercurial
 
 - name: IInstall Python System-level packages
   yum: name={{ item }} state=latest
