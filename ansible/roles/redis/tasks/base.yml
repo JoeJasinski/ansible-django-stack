@@ -1,0 +1,9 @@
+---
+
+- include: base-debian.yml
+  when: ansible_os_family == 'Debian'
+
+- name: ensure redis is running
+  service:
+    name: redis-server
+    state: started

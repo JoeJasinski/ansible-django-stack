@@ -1,9 +1,48 @@
 WORK IN PROGRESS
 
-sudo docker build -t ansible/django .
 
-sudo docker run -p 80 -p 443 \
-  -v `pwd`:/srv/ansible/ \
-  -v `pwd`/log/:/srv/site/log/ \
-  -e DEBUG='True' \
-  --rm -it ansible/django /srv/ansible/run.sh
+## Run in Vagrant
+
+    vagrant up
+    vagrant provision
+
+## Run in Docker
+
+    sudo docker build -t ansible/django .
+
+    sudo docker run -p 80 -p 443 \
+      -v `pwd`:/srv/ansible/ \
+      -v `pwd`/log/:/srv/site/log/ \
+      -e DEBUG='True' \
+      --rm -it ansible/django /srv/ansible/run.sh
+
+
+## Role dependencies
+
+- django
+    - supervisor
+    - sites
+      - base
+        - users
+        - unattended
+        - ntp
+
+- postgis
+    - postgres
+      - base
+        - users
+        - unattended
+        - ntp
+
+- redis
+    - base
+      - users
+        - unattended
+        - ntp
+
+- nginx
+    - supervisor
+    - base
+      - users
+      - unattended
+      - ntp
