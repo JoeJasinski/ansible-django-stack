@@ -12,4 +12,4 @@
    - redhat-base
 
 - name: reload supervisor
-  service: name=supervisor state=started
+  service: name=supervisor state=started enabled=yes

@@ -1,6 +1,12 @@
 ---
 - include: base-debian.yml
   when: ansible_os_family == 'Debian'
+  tags:
+    - packages
+    - debian-base
+
+- name: ensure postgres is enabled at boot
+  service: name=postgresql enabled=yes
 
 - name: Create database User
   become_user: postgres
