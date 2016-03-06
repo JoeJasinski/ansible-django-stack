@@ -12,6 +12,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ansible.verbose = "vvvv"
     ansible.extra_vars = {
     #    "user_to_add" => "testb"
+         "install_nginx" => true,
+         "install_ntp" => true,
+         "install_unattended_updates" => true,
+         "install_postgis" => true,
+         "install_postgres" => true,
+         "install_mysql" => true,
     }
     ansible.sudo = true
     ansible.limit = "all"
