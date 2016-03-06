@@ -9,5 +9,6 @@
     - role: nginx
     - role: postgres
     - role: postgis
+    - role: mysql
     - role: redis
     - role: django

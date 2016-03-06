@@ -1,0 +1,10 @@
+---
+
+- include: base-debian.yml
+  when: ansible_os_family == 'Debian'
+  tags:
+   - packages
+
+- name: Ensure MySQL is started and enabled on boot.
+  service: "name=mysql state=started enabled={{ mysql_enabled_on_startup }}"
+  register: mysql_service_configuration

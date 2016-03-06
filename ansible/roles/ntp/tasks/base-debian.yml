@@ -4,4 +4,4 @@
   apt: name=ntp state=installed
 
 - name: Start NTPD
-  service: name=ntp state=running enabled=yes
+  service: name=ntp state=running enabled={{ntp_enabled_on_startup}}

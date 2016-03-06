@@ -1,0 +1,3 @@
+---
+
+postgres_enabled_on_startup: "yes"

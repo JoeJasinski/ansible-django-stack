@@ -6,7 +6,7 @@
     - debian-base
 
 - name: ensure postgres is enabled at boot
-  service: name=postgresql enabled=yes
+  service: name=postgresql enabled={{postgres_enabled_on_startup}}
 
 - name: Create database User
   become_user: postgres

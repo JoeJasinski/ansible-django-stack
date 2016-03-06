@@ -1,8 +1,7 @@
 ---
 
-- name: Install Postgresql
+- name: Install MySQL
   apt: name={{ item }} update_cache={{ update_apt_cache }} state=latest
   with_items:
-    - postgresql
-    - postgresql-contrib
-    - python-psycopg2
+    - mysql-common
+    - mysql-server

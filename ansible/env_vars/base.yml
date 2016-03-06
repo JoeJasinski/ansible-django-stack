@@ -13,11 +13,12 @@ site_nginx_dir: "{{ site_dir }}etc/nginx/"
 project_dir: "{{ site_dir }}proj/"
 virtualenv_dir: "{{ site_dir }}venv/"
 
-install_nginx: True
-install_ntp: True
-install_unattended_updates: True
-install_postgis: True
-install_postgres: True
+install_nginx: False
+install_ntp: False
+install_unattended_updates: False
+install_postgis: False
+install_postgres: False
+install_mysql: True
 
 # define list of users here
 users:
