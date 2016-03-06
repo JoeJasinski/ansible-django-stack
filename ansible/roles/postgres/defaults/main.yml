@@ -1,3 +1,6 @@
 ---
 
 postgres_enabled_on_startup: "yes"
+postgres_db_user: "{{ db_user }}"
+postgres_db_password: "{{ db_password }}"
+postgres_db_name: "{{ db_name }}"

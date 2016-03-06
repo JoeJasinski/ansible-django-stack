@@ -1,3 +1,6 @@
 ---
 
 mysql_enabled_on_startup: "yes"
+mysql_db_user: "{{db_user}}"
+mysql_db_password: "{{db_password}}"
+mysql_db_name: "{{db_name}}"
