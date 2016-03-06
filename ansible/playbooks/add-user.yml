@@ -1,0 +1,32 @@
+---
+
+# ansible-playbook -i 'localhost,' -c local --extra-vars "user_to_add=testa" add-user.yml
+
+- hosts: all
+  #user: root
+  become: yes
+  vars:
+    password: "!"
+    user: "{{user_to_add|mandatory}}"
+  tasks:
+    - name: Add user
+      user: name="{{user_to_add}}"
+            state=present
+            password="{{password}}"
+            shell=/bin/bash
+            comment="Test User"
+
+    - name: Find existing UNIX groups
+      shell: /usr/bin/getent group | awk -F":" '{print $1}'
+      register: etc_groups
+
+    - name: debug groups
+      debug: var=etc_groups
+
+    - name: Add secondary Groups to user
+      user: name="{{user_to_add}}" groups=sudo append=yes
+      when: '"{{item}}" in etc_groups.stdout_lines'
+      with_items:
+          - sudo
+          - wheel
+          - worker

@@ -8,8 +8,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provision :ansible do |ansible|
     ansible.playbook = "ansible/site.yml"
+    #ansible.playbook = "ansible/playbooks/add-user.yml"
     ansible.verbose = "vvvv"
-    ansible.extra_vars = {}
+    ansible.extra_vars = {
+    #    "user_to_add" => "testb"
+    }
     ansible.sudo = true
     ansible.limit = "all"
   end
