@@ -27,3 +27,10 @@
     path={{ sites_site_dir }}
     owner={{ site_user }}
     group={{ shared_group }}
+
+- name: Change ownership
+  file:
+    path={{ sites_site_dir }}
+    owner={{ site_user }}
+    group={{ shared_group }}
+    recurse="yes"
