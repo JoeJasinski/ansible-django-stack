@@ -6,7 +6,6 @@
     owner={{ site_user }}
     group={{ shared_group }}
     mode=2775
-    recurse=yes
 
 - include: setup_virtualenv.yml
   tags:
