@@ -3,8 +3,8 @@
   file:
     path={{ sites_site_dir }}
     state=directory
-    owner={{site_user}}
-    group={{shared_group}}
+    owner={{ site_user }}
+    group={{ shared_group }}
     mode=2775
     recurse=yes
 
@@ -26,5 +26,5 @@
 
 - file:
     path={{ sites_site_dir }}
-    owner={{site_user}}
-    group={{shared_group}}
+    owner={{ site_user }}
+    group={{ shared_group }}

@@ -1,21 +1,28 @@
 ---
 
-- group: name="{{shared_group}}" state=present
+- group: name="{{ shared_group }}" state=present
   tags:
     - packages
 
+- name: Create new site user
+  user:
+    name={{ django_site_user }}
+    groups={{ shared_group }}
+    shell=/bin/bash
+    append=yes
+
 - name: Per-user group creation
-  group: name="{{item.username}}" state="present"
-  with_items: "{{users}}"
+  group: name="{{ item.username }}" state="present"
+  with_items: "{{ users }}"
 
 - name: User creation
-  user: name="{{item.username}}"
-        group="{{item.username}}"
-        groups="{{item.groups | join(',')}}"
+  user: name="{{ item.username }}"
+        group="{{ item.username }}"
+        groups="{{ item.groups | join(',') }}"
         append=yes
         shell={{item.shell if item.shell is defined else users_default_shell}}
-        password="{{item.password if item.password is defined else '!'}}"
-        comment="{{item.name}}"
-        uid="{{item.uid|default(omit)}}"
-        createhome="{{'yes' if users_create_homedirs else 'no'}}"
-  with_items: "{{users}}"
+        password="{{ item.password if item.password is defined else '!' }}"
+        comment="{{ item.name }}"
+        uid="{{ item.uid|default(omit) }}"
+        createhome="{{'yes' if users_create_homedirs else 'no' }}"
+  with_items: "{{ users }}"

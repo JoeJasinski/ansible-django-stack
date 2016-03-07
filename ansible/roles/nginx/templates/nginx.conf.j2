@@ -1,10 +1,10 @@
 user www-data;
 daemon off;
-worker_processes 4;
+worker_processes {{nginx_worker_processes}};
 pid /run/nginx.pid;
 
 events {
-	worker_connections 1024;
+	worker_connections {{nginx_worker_connections}};
 	# multi_accept on;
 }
 

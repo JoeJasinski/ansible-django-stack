@@ -8,15 +8,15 @@
     path={{ nginx_ssl_dir }}
     state=directory
     owner=www-data
-    group={{shared_group}}
+    group={{ shared_group }}
     mode=0775
 
 - name: Create Log directory
   file:
     path={{ site_log_dir }}
     state=directory
-    owner={{site_name}}
-    group={{shared_group}}
+    owner={{ site_name }}
+    group={{ shared_group }}
     mode=0775
 
 - name: Make some random entropy
@@ -34,7 +34,7 @@
     path={{ htdocs_dir }}
     state=directory
     owner={{ site_name }}
-    group={{shared_group}}
+    group={{ shared_group }}
     mode=0775
 
 - name: Create directory
@@ -42,7 +42,7 @@
     path={{ site_nginx_dir }}
     state=directory
     owner={{ site_name }}
-    group={{shared_group}}
+    group={{ shared_group }}
     mode=0775
 
 - name: Copy the nginx base configuration file
