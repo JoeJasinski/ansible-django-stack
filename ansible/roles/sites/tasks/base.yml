@@ -3,8 +3,8 @@
   file:
     path={{ sites_site_dir }}
     state=directory
-    owner=www-data
-    group=worker
+    owner={{site_user}}
+    group={{shared_group}}
     mode=2775
     recurse=yes
 
@@ -15,3 +15,16 @@
 - include: setup_project.yml
   tags:
     - project
+
+- name: Copy the venv script
+  template:
+    src=venv.j2
+    dest=/usr/local/bin/venv
+    owner=root
+    group=root
+    mode="u=rwx,g=rwx,o=rx"
+
+- file:
+    path={{ sites_site_dir }}
+    owner={{site_user}}
+    group={{shared_group}}

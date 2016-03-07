@@ -1,6 +1,6 @@
 ---
 
-- group: name=worker state=present
+- group: name="{{shared_group}}" state=present
   tags:
     - packages
 

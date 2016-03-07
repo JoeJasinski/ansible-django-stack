@@ -1,17 +1,18 @@
 ---
-site_name: "myappname"
-site_user: "{{ site_name }}"
-db_user: "{{ site_name }}"
+site_name: "appname"
+site_user: "{{site_name}}"
+shared_group: "worker"
+db_user: "{{site_name}}"
 db_password: "change_me"
-db_name: "{{ site_name }}"
+db_name: "{{site_name}}"
 python_version: "python3.4" # "python2.7" or "python3.4"
 sites_dir: "/srv/"
-site_dir: "{{ sites_dir }}site/"
-htdocs_dir: "{{ site_dir }}htdocs/"
-site_log_dir: "{{ site_dir }}log/"
-site_nginx_dir: "{{ site_dir }}etc/nginx/"
-project_dir: "{{ site_dir }}proj/"
-virtualenv_dir: "{{ site_dir }}venv/"
+site_dir: "{{sites_dir}}site/"
+htdocs_dir: "{{site_dir}}htdocs/"
+site_log_dir: "{{site_dir}}log/"
+site_nginx_dir: "{{site_dir}}etc/nginx/"
+project_dir: "{{site_dir}}proj/"
+virtualenv_dir: "{{site_dir}}venv/"
 
 install_nginx: True
 install_ntp: True
@@ -26,7 +27,7 @@ users:
   - username: jjasinski
     name: Joe Jasinski
     groups:
-      - worker
+      - "{{shared_group}}"
     uid: 1010
     password: '!'
     ssh_key:

@@ -4,3 +4,5 @@ nginx_http_port: 80
 nginx_https_port: 443
 nginx_ssl_dir: "{{ site_dir }}etc/ssl/"
 nginx_conf_dir: "/etc/nginx/"
+nginx_error_log: "/var/log/nginx/error.log"
+nginx_access_log: "/var/log/nginx/access.log"

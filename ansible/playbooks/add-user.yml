@@ -8,6 +8,7 @@
   vars:
     password: "!"
     user: "{{user_to_add|mandatory}}"
+    shared_group: "worker"
   tasks:
     - name: Add user
       user: name="{{user_to_add}}"
@@ -29,4 +30,4 @@
       with_items:
           - sudo
           - wheel
-          - worker
+          - {{shared_group}}

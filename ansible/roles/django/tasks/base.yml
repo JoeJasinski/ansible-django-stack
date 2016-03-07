@@ -1,13 +1,21 @@
 ---
 
-- user: name={{ django_site_user }} groups=worker shell=/bin/bash append=yes
+- name: Create new site user
+  user:
+    name={{django_site_user}}
+    groups={{shared_group}}
+    shell=/bin/bash
+    append=yes
 
-- pip: name=uwsgi virtualenv={{ django_virtualenv_dir }}
+- name: Install uwsgi into virtualenv
+  pip:
+    name=uwsgi
+    virtualenv={{django_virtualenv_dir}}
 
 - name: Copy the uwsig config file
   template:
     src=uwsgi.ini.j2
-    dest={{ django_proj_dir }}django.conf
+    dest={{django_proj_dir}}django.conf
 
 - name: Copy the supervisor config file for Django
   template:
