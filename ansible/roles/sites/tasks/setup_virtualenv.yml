@@ -3,3 +3,11 @@
 - name: Create the virtualenv
   command: virtualenv {{ sites_virtualenv_dir }} --no-site-packages -p {{ sites_python_version }}
            creates={{ sites_virtualenv_dir }}/bin/activate
+
+- name: Change ownership
+  file:
+    path={{ sites_virtualenv_dir }}
+    owner={{ site_user }}
+    group={{ shared_group }}
+    state=directory
+    recurse="yes"
