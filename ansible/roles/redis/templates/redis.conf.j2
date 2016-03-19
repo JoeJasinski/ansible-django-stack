@@ -38,7 +38,7 @@ daemonize yes
 
 # When running daemonized, Redis writes a pid file in /var/run/redis.pid by
 # default. You can specify a custom pid file location here.
-pidfile /var/run/redis/redis-server.pid
+pidfile {{redis_pidfile}}
 
 # Accept connections on the specified port, default is 6379.
 # If port 0 is specified Redis will not listen on a TCP socket.
@@ -106,7 +106,7 @@ logfile /var/log/redis/redis-server.log
 # Set the number of databases. The default database is DB 0, you can select
 # a different one on a per-connection basis using SELECT <dbid> where
 # dbid is a number between 0 and 'databases'-1
-databases 16
+databases {{redis_databases}}
 
 ################################ SNAPSHOTTING  ################################
 #

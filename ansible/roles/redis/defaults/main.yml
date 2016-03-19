@@ -3,3 +3,5 @@ redis_bind: "127.0.0.1"
 redis_loglevel: "notice"
 redis_timeout: 0
 redis_enabled_on_startup: "yes" # "yes" | "no"
+redis_pidfile: /var/run/redis/redis-server.pid
+redis_databases: 16
