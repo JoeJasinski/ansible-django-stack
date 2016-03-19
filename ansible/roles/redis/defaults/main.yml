@@ -5,3 +5,4 @@ redis_timeout: 0
 redis_enabled_on_startup: "yes" # "yes" | "no"
 redis_pidfile: /var/run/redis/redis-server.pid
 redis_databases: 16
+redis_logfile: /var/log/redis/redis-server.log
