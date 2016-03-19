@@ -7,9 +7,3 @@
     - env_vars/base.yml
   roles:
     - role: nginx
-    - role: postgres
-    - role: postgis
-    - role: mysql
-    - role: redis
-    - role: django
-    - role: nrpe

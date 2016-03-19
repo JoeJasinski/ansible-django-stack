@@ -6,7 +6,7 @@
 
 - name: Create new site user
   user:
-    name={{ django_site_user }}
+    name={{ site_user }}
     groups={{ shared_group }}
     shell=/bin/bash
     append=yes

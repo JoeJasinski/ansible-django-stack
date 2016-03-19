@@ -22,6 +22,7 @@ install_postgis: True
 install_postgres: True
 install_mysql: True
 install_redis: True
+install_nrpe: True
 
 # define list of users here
 users:

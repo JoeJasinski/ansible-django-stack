@@ -4,3 +4,17 @@ postgres_enabled_on_startup: "yes"
 postgres_db_user: "{{ db_user }}"
 postgres_db_password: "{{ db_password }}"
 postgres_db_name: "{{ db_name }}"
+postgres_service: "postgresql"
+postgres_version: "9.3"
+postgres_data_directory: '/var/lib/postgresql/{{postgres_version}}/main'
+postgres_hba_file: '/etc/postgresql/{{postgres_version}}/main/pg_hba.conf'
+postgres_ident_file: '/etc/postgresql/{{postgres_version}}/main/pg_ident.conf'
+postgres_external_pid_file: /var/run/postgresql/{{postgres_version}}-main.pid
+postgres_port: 5432
+postgres_max_connections: 100
+postgres_shared_buffers: "128MB"
+postgres_listen_addresses: 'localhost'
+postgres_work_mem: 1MB
+postgres_maintenance_work_mem: 16MB
+postgres_wal_buffers: -1
+postgres_effective_cache_size: 128MB

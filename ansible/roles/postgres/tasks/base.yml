@@ -5,6 +5,14 @@
     - packages
     - debian-base
 
+# Create our config
+- name: Create postgresql.conf from template
+  template: >
+    src="postgresql.conf.j2"
+    dest="/etc/postgresql/9.3/main/postgresql.conf"
+    owner=postgres group=postgres mode=0644
+  notify: restart postgresql
+
 - name: ensure postgres is enabled at boot
   service: name=postgresql enabled={{postgres_enabled_on_startup}}
 
