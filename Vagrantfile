@@ -7,7 +7,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network "forwarded_port", guest: 80, host: 8080
 
   config.vm.provision :ansible do |ansible|
-    ansible.playbook = "ansible/site.yml"
+    ansible.playbook = "ansible/playbook-all.yml"
     #ansible.playbook = "ansible/playbooks/add-user.yml"
     ansible.verbose = "vvvv"
     ansible.extra_vars = {

@@ -46,3 +46,10 @@ WORK IN PROGRESS
       - users
       - unattended
       - ntp
+
+
+## Misc
+
+ansible-playbook ansible/playbook-all.yml --list-tasks
+
+ansible-playbook --check ansible/playbook-all.yml

@@ -23,11 +23,10 @@
   command: rngd -r /dev/urandom
 
 - name: Create self-signed SSL cert
-  command: openssl req -new -nodes -x509 -subj "/C=US/ST=Illinois/L=Chicago/O=IT/CN=example.com" -newkey rsa:2048 -days 65535 -keyout {{ sites_dir }}site/etc/ssl/server.key -out {{ sites_dir }}site/etc/ssl/server.crt -extensions v3_ca creates={{ sites_dir }}site/etc/ssl/server.crt
+  command: openssl req -new -nodes -x509 -subj "{{nginx_ssl_subj}}" -newkey rsa:2048 -days 65535 -keyout {{ nginx_ssl_dir }}server.key -out {{ nginx_ssl_dir }}server.crt -extensions v3_ca creates={{ nginx_ssl_dir }}server.crt
 
 - name: Generate Diffie-Hellman
-  command: |
-    openssl dhparam -out {{ nginx_ssl_dir }}dhparam.pem 2048
+  command: openssl dhparam -out {{ nginx_ssl_dir }}dhparam.pem {{nginx_ssl_dhparam_length}} creates={{ nginx_ssl_dir }}dhparam.pem
 
 - name: Create htdocs directory
   file:

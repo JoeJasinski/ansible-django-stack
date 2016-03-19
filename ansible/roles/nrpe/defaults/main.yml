@@ -7,3 +7,4 @@ nagios_nrpe_server_user: nagios
 nagios_nrpe_server_group: nagios
 nagios_nrpe_server_port: 5666
 nagios_nrpe_allowed_hosts: 127.0.0.1
+nagios_nrpe_debug: 0
