@@ -1,6 +1,6 @@
 [program:django]
 
-command={{ django_virtualenv_bin_dir }}uwsgi --ini {{ django_proj_dir }}{{ django_site_name }}/uwsgi.ini
+command={{ django_virtualenv_bin_dir }}uwsgi --ini {{ django_uwsgi_filename }}
 
 environment=
     PATH="$PATH:/usr/bin/:{{ django_virtualenv_bin_dir }}",

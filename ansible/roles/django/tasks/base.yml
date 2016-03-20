@@ -8,7 +8,7 @@
 - name: Copy the uwsig config file
   template:
     src=uwsgi.ini.j2
-    dest={{ django_proj_dir }}django.conf
+    dest={{ django_uwsgi_filename }}
     owner={{ site_user }}
     group={{ shared_group }}
 

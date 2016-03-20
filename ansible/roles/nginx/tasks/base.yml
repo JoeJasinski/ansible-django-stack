@@ -61,7 +61,7 @@
     src=locations.conf.j2
     dest={{ site_nginx_dir }}locations.conf
 
-- name: Copy the nginx django file
+- name: Copy the nginx reverse proxyt to django file
   template:
     src=django.conf.j2
     dest={{ site_nginx_dir }}django.conf
@@ -71,7 +71,7 @@
     path={{ nginx_conf_dir }}sites-available/default
     state=absent
 
-- name: Copy in the new site configuration
+- name: Symlink in the new site configuration to sites-available
   file:
     src={{ site_nginx_dir }}site.conf
     dest={{ nginx_conf_dir }}sites-available/default
