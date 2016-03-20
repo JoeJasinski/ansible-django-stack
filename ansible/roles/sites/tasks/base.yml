@@ -1,4 +1,8 @@
 ---
+
+- set_fact:
+    sites_virtualenv_dir_version="{{virtualenvs_dir}}{{site_name}}-{{ lookup('pipe', 'date +%Y%m%d-%H%M%S') }}"
+
 - name: Creates directory
   file:
     path={{ sites_site_dir }}
@@ -18,7 +22,7 @@
 - name: Copy the venv script
   template:
     src=venv.j2
-    dest=/usr/local/bin/venv
+    dest=/etc/profile.d/venv
     owner=root
     group=root
     mode="u=rwx,g=rwx,o=rx"

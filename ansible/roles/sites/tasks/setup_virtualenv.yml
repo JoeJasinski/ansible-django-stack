@@ -1,13 +1,22 @@
 ---
 
 - name: Create the virtualenv
-  command: virtualenv {{ sites_virtualenv_dir }} --no-site-packages -p {{ sites_python_version }}
-           creates={{ sites_virtualenv_dir }}/bin/activate
+  command: virtualenv {{ sites_virtualenv_dir_version }} --no-site-packages -p {{ sites_python_version }}
+           creates={{ sites_virtualenv_dir_version }}/bin/activate
 
 - name: Change ownership
   file:
-    path={{ sites_virtualenv_dir }}
+    path={{ sites_virtualenv_dir_version }}
     owner={{ site_user }}
     group={{ shared_group }}
     state=directory
     recurse="yes"
+
+- name: Create symlink to virtualenv version
+  file:
+    src={{ sites_virtualenv_dir_version }}
+    dest={{ virtualenv_dir_link }}
+    owner={{ site_user }}
+    group={{ shared_group }}
+    state=link
+    force=yes

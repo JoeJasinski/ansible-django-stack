@@ -12,8 +12,11 @@ htdocs_dir: "{{site_dir}}htdocs/"
 site_log_dir: "{{site_dir}}log/"
 site_nginx_dir: "{{site_dir}}etc/nginx/"
 project_dir: "{{site_dir}}proj/"
-virtualenv_dir: "{{site_dir}}envs/{{site_name}}-{{ lookup('pipe', 'date +%Y%m%d-%H%M%S') }}/"
-virtualenv_dir_current: "{{site_dir}}envs/{{site_name}}"
+virtualenvs_dir: "{{site_dir}}envs/"
+virtualenv_dir_link: "{{virtualenvs_dir}}{{site_name}}"
+virtualenv_dir: "{{virtualenv_dir_link}}/"
+
+timezone: "America/Chicago"
 
 install_nginx: True
 install_ntp: True

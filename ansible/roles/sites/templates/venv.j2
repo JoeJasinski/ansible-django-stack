@@ -1,4 +1,4 @@
-
-cd {{sites_site_dir}}
-
-. {{sites_virtualenv_dir}}bin/activate
+function venv {
+    source {{sites_virtualenv_dir}}bin/activate
+    cd {{sites_site_dir}}
+}
