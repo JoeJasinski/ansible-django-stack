@@ -4,3 +4,4 @@ dependencies:
  - role: users
  - role: unattended
  - role: ntp
+ - role: timezone
