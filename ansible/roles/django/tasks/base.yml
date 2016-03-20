@@ -9,6 +9,8 @@
   template:
     src=uwsgi.ini.j2
     dest={{ django_proj_dir }}django.conf
+    owner={{ site_user }}
+    group={{ shared_group }}
 
 - name: Copy the supervisor config file for Django
   template:

@@ -1,8 +1,12 @@
 ---
 
+- stat: path={{ virtualenv_dir_link }}
+  register: virtualenv_dir_exists
+
 - name: Create the virtualenv
   command: virtualenv {{ sites_virtualenv_dir_version }} --no-site-packages -p {{ sites_python_version }}
            creates={{ sites_virtualenv_dir_version }}/bin/activate
+  when: virtualenv_dir_exists.stat.islnk is not defined
 
 - name: Change ownership
   file:
@@ -11,6 +15,7 @@
     group={{ shared_group }}
     state=directory
     recurse="yes"
+  when: virtualenv_dir_exists.stat.islnk is not defined
 
 - name: Create symlink to virtualenv version
   file:
@@ -20,3 +25,4 @@
     group={{ shared_group }}
     state=link
     force=yes
+  when: virtualenv_dir_exists.stat.islnk is not defined
