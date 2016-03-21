@@ -1,0 +1,6 @@
+---
+- include: base-debian.yml
+  when: ansible_os_family == 'Debian'
+  tags:
+   - packages
+   - debian-base

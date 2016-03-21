@@ -1,0 +1,12 @@
+---
+
+- name: Install Postfix Deamon
+  apt: name=postfix state=installed
+
+- name: Install Postfix Deamon
+  apt: name={{ item }} update_cache={{ update_apt_cache }} state=latest
+  with_items:
+    - postfix
+
+- name: Start Postfix
+  service: name=postfix state=running enabled={{postfix_enabled_on_startup}}
