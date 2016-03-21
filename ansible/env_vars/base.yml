@@ -24,6 +24,7 @@ install_ntp: True
 install_unattended_updates: True
 install_postgis: True
 install_postgres: True
+install_postfix: True
 install_mysql: True
 install_redis: True
 install_nrpe: True
