@@ -3,4 +3,4 @@
 - include: base.yml
   when: install_timezone|default(True)
   tags:
-    - mysql
+    - timezone
