@@ -1,7 +1,11 @@
+---
+
 - name: Create swap file
   command: dd if=/dev/zero of={{ swap_file_path }} bs=1024 count={{ swap_file_size_kb }}k
            creates="{{ swap_file_path }}"
   tags: swap.file.create
+
+- debug: msg="Creating Swap File {{ swap_file_path }}"
 
 - name: Change swap file permissions
   file: path="{{ swap_file_path }}"
@@ -16,7 +20,7 @@
   tags: swap.file.mkswap
 
 - name: Make swap file
-  command: "sudo mkswap {{ swap_file_path }}"
+  command: "mkswap {{ swap_file_path }}"
   when: swapfile.stdout.find('swap file') == -1
   tags: swap.file.mkswap
 

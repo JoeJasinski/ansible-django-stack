@@ -2,11 +2,11 @@
 project = {{django_uwsgi_site_name}}
 base_dir = /www/%(project)
 
-socket = %(base_dir)/var/run/django.socket
+socket = %(base_dir)/run/django.socket
 chdir = {{django_proj_dir}}
 ;http-socket = localhost:9000
 processes = {{django_uwsgi_processes}}
-pidfile = %(base_dir)/var/run/django.pid
+pidfile = %(base_dir)/run/django.pid
 env = DJANGO_SETTINGS_MODULE={{django_site_name}}.settings
 master = true
 harakiri = {{django_uwsgi_harakiri}}
@@ -16,5 +16,5 @@ chmod-socket = 666
 module = {{django_site_name}}.wsgi:application
 home = {{django_virtualenv_dir}}
 uid = {{django_site_user}}
-logto = %(base_dir)/var/log/django-uwsgi.log
+logto = %(base_dir)/log/django-uwsgi.log
 logdate

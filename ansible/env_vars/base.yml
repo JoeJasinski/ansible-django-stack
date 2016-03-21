@@ -27,6 +27,9 @@ install_postgres: True
 install_mysql: True
 install_redis: True
 install_nrpe: True
+install_timezone: True
+
+base_create_swap_file: True
 
 # define list of users here
 users:
