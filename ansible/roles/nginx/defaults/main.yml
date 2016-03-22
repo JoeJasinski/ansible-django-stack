@@ -1,5 +1,6 @@
 ---
 
+nginx_install_facts: True
 nginx_http_port: 80
 nginx_https_port: 443
 nginx_ssl_dir: "{{ site_dir }}etc/ssl/"

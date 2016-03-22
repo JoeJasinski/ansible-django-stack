@@ -9,4 +9,7 @@
     - postfix
 
 - name: Start Postfix
-  service: name=postfix state=running enabled={{postfix_enabled_on_startup}}
+  service:
+    name={{postfix_server_service}}
+    state=running
+    enabled={{postfix_enabled_on_startup}}

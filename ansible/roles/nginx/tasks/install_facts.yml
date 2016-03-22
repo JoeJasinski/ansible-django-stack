@@ -1,0 +1,14 @@
+- name: ensure custom facts directory exists
+  file: >
+    path=/etc/ansible/facts.d
+    recurse=yes
+    state=directory
+
+- name: install custom fact module for Nginx version
+  template: >
+    src=nginx_version.sh.j2
+    dest=/etc/ansible/facts.d/nginx_version.fact
+    mode=0755
+
+- name: reload ansible_local
+  setup: filter=ansible_local
