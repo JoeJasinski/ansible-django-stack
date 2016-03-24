@@ -1,4 +1,8 @@
 ---
+
+- include: install_facts.yml
+  when: postgres_install_facts
+
 - include: base-debian.yml
   when: ansible_os_family == 'Debian'
   tags:
