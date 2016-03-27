@@ -1,5 +1,6 @@
 ---
-- include: base.yml
+- name: enable/disable postfix
+  include: base.yml
   when: install_postfix|default(True)
   tags:
     - postfix

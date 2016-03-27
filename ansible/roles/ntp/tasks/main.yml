@@ -1,5 +1,6 @@
 ---
-- include: base.yml
+- name: enable/disable ntp
+  include: base.yml
   when: install_ntp|default(True)
   tags:
     - ntp

@@ -1,15 +1,18 @@
 ---
-- include: create_swap_file.yml
+- name: enable/disable swap file include
+  include: create_swap_file.yml
   when: base_create_swap_file
   tags: swap
 
-- include: base-debian.yml
+- name: include debian packages
+  include: base-debian.yml
   when: ansible_os_family == 'Debian'
   tags:
    - packages
    - debian-base
 
-- include: base-redhat.yml
+- name: redhat packages
+  include: base-redhat.yml
   when: ansible_os_family == 'RedHat'
   tags:
    - packages

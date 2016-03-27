@@ -1,5 +1,6 @@
 ---
-- include: base.yml
+- name: enable/disable postgis
+  include: base.yml
   when: install_postgis|default(True)
   tags:
     - postgis

@@ -1,5 +1,6 @@
 ---
-- include: base.yml
+- name: enable/disable redis
+  include: base.yml
   when: install_redis|default(True)
   tags:
     - redis

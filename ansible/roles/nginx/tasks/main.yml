@@ -1,5 +1,6 @@
 ---
-- include: base.yml
+- name: enable/disable nginx
+  include: base.yml
   when: install_nginx|default(True)
   tags:
     - nginx

@@ -1,5 +1,6 @@
 ---
-- include: base.yml
+- name: enable/disable nrpe
+  include: base.yml
   when: install_nrpe|default(True)
   tags:
     - nrpe
