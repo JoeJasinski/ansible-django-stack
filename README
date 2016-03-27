@@ -3,8 +3,13 @@ WORK IN PROGRESS
 
 ## Run in Vagrant
 
-    vagrant up
-    vagrant provision
+    vagrant up trusty
+    vagrant provision trusty
+
+    # or
+
+    vagrant up xenial
+    vagrant provision xenial
 
 ## Run in Docker
 
