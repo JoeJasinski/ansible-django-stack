@@ -1,5 +1,14 @@
 ---
 
+- debug: msg="Vars path {{ ansible_distribution }}-{{ ansible_distribution_release }}.yml"
+
+- include_vars: "{{ item }}"
+  with_first_found:
+   - "{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml"
+   - "{{ ansible_distribution }}.yml"
+   - "{{ ansible_os_family }}.yml"
+   - "default.yml"
+
 - include: base-debian.yml
   when: ansible_os_family == 'Debian'
 

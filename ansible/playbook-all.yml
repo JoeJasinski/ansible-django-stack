@@ -5,6 +5,8 @@
     - update_apt_cache: yes
   vars_files:
     - env_vars/base.yml
+  pre_tasks:
+    - raw: sudo apt-get install python2.7
   roles:
     - role: nginx
     - role: postfix
