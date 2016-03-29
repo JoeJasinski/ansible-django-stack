@@ -25,32 +25,50 @@ WORK IN PROGRESS
 ## Role dependencies
 
 - django
-    - supervisor
-    - sites
-      - base
-        - users
-        - unattended
-        - ntp
+  - supervisor
+  - sites
+    - base
+      - ntp
+      - timezone
+      - unattended
+      - users
 
 - postgis
-    - postgres
-      - base
-        - users
-        - unattended
-        - ntp
+  - postgres
+    - base
+      - ntp
+      - timezone
+      - unattended
+      - users
+
+- mysql
+  - base
+    - ntp
+    - timezone
+    - unattended
+    - users
+
+- nrpe
+  - base
+    - ntp
+    - timezone
+    - unattended
+    - users
 
 - redis
     - base
+      - ntp
+      - timezone
+      - unattended
       - users
-        - unattended
-        - ntp
 
 - nginx
     - supervisor
     - base
-      - users
-      - unattended
       - ntp
+      - timezone
+      - unattended
+      - users
 
 
 ## Misc

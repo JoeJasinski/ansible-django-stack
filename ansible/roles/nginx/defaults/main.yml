@@ -3,6 +3,13 @@
 nginx_install_facts: True
 nginx_http_port: 80
 nginx_https_port: 443
+
+nginx_site_nginx_dir: "{{ site_nginx_dir }}"
+nginx_site_htdocs_dir: "{{ htdocs_dir }}"
+nginx_site_htdocs_media_dir: "{{ htdocs_media_dir }}"
+nginx_site_htdocs_static_dir: "{{ htdocs_static_dir }}"
+nginx_site_log_dir: "{{ site_log_dir }}"
+
 nginx_ssl_dir: "{{ site_dir }}etc/ssl/"
 nginx_conf_dir: "/etc/nginx/"
 nginx_error_log: "/var/log/nginx/error.log"
