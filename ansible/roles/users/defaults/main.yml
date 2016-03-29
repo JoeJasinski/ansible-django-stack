@@ -1,9 +1,9 @@
 ---
 # The default shell for a user if none is specified
-users_default_shell: /bin/bash
+users__default_shell: /bin/bash
 # Create home dirs for new users? Set this to false if you manage home
 # directories in some other way.
-users_create_homedirs: true
+users__create_homedirs: true
 
 # Lists of users to create and delete
 users: []

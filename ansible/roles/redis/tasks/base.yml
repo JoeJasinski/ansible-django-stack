@@ -14,4 +14,4 @@
   service:
     name: redis-server
     state: started
-    enabled: "{{redis_enabled_on_startup}}"
+    enabled: "{{redis__enabled_on_startup}}"

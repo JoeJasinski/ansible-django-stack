@@ -1,7 +1,7 @@
 ---
 
 - include: install_facts.yml
-  when: postgres_install_facts
+  when: postgres__install_facts
 
 - include: base-debian.yml
   when: ansible_os_family == 'Debian'
@@ -22,24 +22,24 @@
 - name: Create postgresql.conf from template
   template: >
     src="postgresql.conf.j2"
-    dest="/etc/postgresql/{{postgres_version}}/main/postgresql.conf"
+    dest="/etc/postgresql/{{postgres__version}}/main/postgresql.conf"
     owner=postgres group=postgres mode=0644
   notify: restart postgresql
 
 - name: ensure postgres is enabled at boot
-  service: name=postgresql enabled={{postgres_enabled_on_startup}}
+  service: name=postgresql enabled={{postgres__enabled_on_startup}}
 
 - name: Create database User
   become_user: postgres
   postgresql_user:
-    name={{ postgres_db_user }}
-    password={{ postgres_db_password }}
+    name={{ postgres__db_user }}
+    password={{ postgres__db_password }}
 
 - name: Create database
   become_user: postgres
   postgresql_db:
-    name={{ postgres_db_name }}
-    owner={{ postgres_db_user }}
+    name={{ postgres__db_name }}
+    owner={{ postgres__db_user }}
     encoding='UTF-8'
     lc_collate='en_US.UTF-8'
     lc_ctype='en_US.UTF-8'
@@ -48,5 +48,5 @@
 - name: ensure user does not have unnecessary privilege
   become_user: postgres
   postgresql_user:
-    name={{postgres_db_user}}
+    name={{postgres__db_user}}
     role_attr_flags=NOSUPERUSER,NOCREATEDB

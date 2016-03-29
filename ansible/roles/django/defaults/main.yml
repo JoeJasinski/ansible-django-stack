@@ -1,14 +1,14 @@
 ---
 
-django_virtualenv_dir: "{{virtualenv_dir}}"
-django_virtualenv_bin_dir: "{{django_virtualenv_dir}}bin/"
-django_site_etc_dir: "{{site_etc_dir}}"
-django_uwsgi_filename: "{{django_site_etc_dir}}uwsgi.ini"
-django_proj_dir: "{{project_dir}}"
-django_site_name: "{{site_name}}"
-django_app_dir: "{{project_dir}}{{site_name}}/"
-django_site_user: "{{site_user}}"
-django_uwsgi_site_name: "{{site_name}}"
-django_uwsgi_processes: 3
-django_uwsgi_max_requests: 5000
-django_uwsgi_harakiri: 30
+django__virtualenv_dir: "{{virtualenv_dir}}"
+django__virtualenv_bin_dir: "{{django__virtualenv_dir}}bin/"
+django__site_etc_dir: "{{site_etc_dir}}"
+django__uwsgi_filename: "{{django__site_etc_dir}}uwsgi.ini"
+django__proj_dir: "{{project_dir}}"
+django__site_name: "{{site_name}}"
+django__app_dir: "{{project_dir}}{{site_name}}/"
+django__site_user: "{{site_user}}"
+django__uwsgi_site_name: "{{site_name}}"
+django__uwsgi_processes: 3
+django__uwsgi_max_requests: 5000
+django__uwsgi_harakiri: 30

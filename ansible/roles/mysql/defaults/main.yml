@@ -1,12 +1,12 @@
 ---
 
-mysql_enabled_on_startup: "yes"
-mysql_db_user: "{{db_user}}"
-mysql_db_password: "{{db_password}}"
-mysql_db_name: "{{db_name}}"
-mysql_port: 3306
-mysql_bind_address: "127.0.0.1"
-mysql_my_cnf_path: "/etc/mysql/"
-mysql_socket_dir: "/var/run/mysqld/mysqld.sock"
-mysql_log_dir: "/var/log/mysql/error.log"
-mysql_data_dir: "/var/lib/mysql"
+mysql__enabled_on_startup: "yes"
+mysql__db_user: "{{db_user}}"
+mysql__db_password: "{{db_password}}"
+mysql__db_name: "{{db_name}}"
+mysql__port: 3306
+mysql__bind_address: "127.0.0.1"
+mysql__my_cnf_path: "/etc/mysql/"
+mysql__socket_dir: "/var/run/mysqld/mysqld.sock"
+mysql__log_dir: "/var/log/mysql/error.log"
+mysql__data_dir: "/var/lib/mysql"

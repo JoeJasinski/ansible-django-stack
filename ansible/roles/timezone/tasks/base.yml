@@ -1,7 +1,7 @@
 ---
 
 - name: Set timezone variables
-  copy: content='{{timezone_timezone}}'
+  copy: content='{{timezone__timezone}}'
         dest=/etc/timezone
         owner=root
         group=root

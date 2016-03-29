@@ -1,7 +1,7 @@
 ---
 - name: enable/disable swap file include
   include: create_swap_file.yml
-  when: base_create_swap_file
+  when: base__create_swap_file
   tags: swap
 
 - name: include debian packages

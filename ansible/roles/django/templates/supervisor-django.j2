@@ -1,11 +1,11 @@
 [program:django]
 
-command={{ django_virtualenv_bin_dir }}uwsgi --ini {{ django_uwsgi_filename }}
+command={{ django__virtualenv_bin_dir }}uwsgi --ini {{ django__uwsgi_filename }}
 
 environment=
-    PATH="$PATH:/usr/bin/:{{ django_virtualenv_bin_dir }}",
-    PYTHONPATH="$PYTHONPATH:{{ django_proj_dir }}{{ django_site_name }}/",
+    PATH="$PATH:/usr/bin/:{{ django__virtualenv_bin_dir }}",
+    PYTHONPATH="$PYTHONPATH:{{ django__proj_dir }}{{ django__site_name }}/",
 
 autostart=true
 autorestart=unexpected
-user={{ django_site_user }}
+user={{ django__site_user }}

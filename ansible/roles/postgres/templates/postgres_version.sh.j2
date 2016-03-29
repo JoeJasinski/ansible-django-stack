@@ -4,6 +4,6 @@ PG_CONFIG=`which pg_config`
 VERSION=`$PG_CONFIG --version | awk '{print $2}'`
 cat <<EOF
 {
-    "postgres_version" : "$VERSION"
+    "postgres__version" : "$VERSION"
 }
 EOF

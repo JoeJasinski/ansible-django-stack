@@ -4,13 +4,13 @@
   register: virtualenv_dir_exists
 
 - name: Create the virtualenv
-  command: virtualenv {{ sites_virtualenv_dir_version }} --no-site-packages -p {{ sites_python_version }}
-           creates={{ sites_virtualenv_dir_version }}/bin/activate
+  command: virtualenv {{ sites__virtualenv_dir_version }} --no-site-packages -p {{ sites__python_version }}
+           creates={{ sites__virtualenv_dir_version }}/bin/activate
   when: virtualenv_dir_exists.stat.islnk is not defined
 
 - name: Change ownership
   file:
-    path={{ sites_virtualenv_dir_version }}
+    path={{ sites__virtualenv_dir_version }}
     owner={{ site_user }}
     group={{ shared_group }}
     state=directory
@@ -19,7 +19,7 @@
 
 - name: Create symlink to virtualenv version
   file:
-    src={{ sites_virtualenv_dir_version }}
+    src={{ sites__virtualenv_dir_version }}
     dest={{ virtualenv_dir_link }}
     owner={{ site_user }}
     group={{ shared_group }}

@@ -3,12 +3,12 @@
 - name: Install uwsgi into virtualenv
   pip:
     name=uwsgi
-    virtualenv={{ django_virtualenv_dir }}
+    virtualenv={{ django__virtualenv_dir }}
 
 - name: Copy the uwsig config file
   template:
     src=uwsgi.ini.j2
-    dest={{ django_uwsgi_filename }}
+    dest={{ django__uwsgi_filename }}
     owner={{ site_user }}
     group={{ shared_group }}
 

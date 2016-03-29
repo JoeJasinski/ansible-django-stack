@@ -33,7 +33,7 @@ install_redis: True
 install_nrpe: True
 install_timezone: True
 
-base_create_swap_file: True
+base__create_swap_file: True
 
 # define list of users here
 users:

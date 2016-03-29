@@ -4,8 +4,8 @@
   apt: name={{ item }} update_cache={{ update_apt_cache }} state=latest
   with_items:
     - postgis
-    - postgresql-{{postgres_version}}-postgis-{{postgis_version}}
-    - postgresql-{{postgres_version}}-postgis-scripts
+    - postgresql-{{postgres__version}}-postgis-{{postgis__version}}
+    - postgresql-{{postgres__version}}-postgis-scripts
   tags:
     - packages
     - debian-base

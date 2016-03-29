@@ -3,7 +3,7 @@ upstream app_server {
 }
 
 server {
-	listen   {{ nginx_http_port }};
+	listen   {{ nginx__http_port }};
 
 	# Turn on directory listing for static files
 	#autoindex on;
@@ -13,18 +13,18 @@ server {
 }
 
 server {
-	listen   {{ nginx_https_port }};
+	listen   {{ nginx__https_port }};
 
 	# Turn on directory listing for static files
 	#autoindex on;
 
 	ssl   on;
-	ssl_certificate {{ nginx_ssl_dir }}server.crt;
-	ssl_certificate_key {{ nginx_ssl_dir }}server.key;
-    ssl_dhparam {{ nginx_ssl_dir }}dhparam.pem;
+	ssl_certificate {{ nginx__ssl_dir }}server.crt;
+	ssl_certificate_key {{ nginx__ssl_dir }}server.key;
+    ssl_dhparam {{ nginx__ssl_dir }}dhparam.pem;
 	ssl_session_timeout 5m;
-	ssl_protocols {{ nginx_ssl_protocols }};
-	ssl_ciphers '{{ nginx_ssl_ciphers }}';
+	ssl_protocols {{ nginx__ssl_protocols }};
+	ssl_ciphers '{{ nginx__ssl_ciphers }}';
 	ssl_prefer_server_ciphers on;
 	ssl_session_cache shared:SSL:50m;
 

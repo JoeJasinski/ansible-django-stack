@@ -1,11 +1,11 @@
 ---
 
 - set_fact:
-    sites_virtualenv_dir_version="{{virtualenvs_dir}}{{site_name}}-{{ lookup('pipe', 'date +%Y%m%d-%H%M%S') }}"
+    sites__virtualenv_dir_version="{{virtualenvs_dir}}{{site_name}}-{{ lookup('pipe', 'date +%Y%m%d-%H%M%S') }}"
 
 - name: Creates sites directory
   file:
-    path={{ sites_site_dir }}
+    path={{ sites__site_dir }}
     state=directory
     owner={{ site_user }}
     group={{ shared_group }}
@@ -13,7 +13,7 @@
 
 - name: Creates log directory
   file:
-    path={{ sites_site_log_dir }}
+    path={{ sites__site_log_dir }}
     state=directory
     owner={{ site_user }}
     group={{ shared_group }}
@@ -21,12 +21,11 @@
 
 - name: Creates run directory
   file:
-    path={{ sites_site_run_dir }}
+    path={{ sites__site_run_dir }}
     state=directory
     owner={{ site_user }}
     group={{ shared_group }}
     mode=2775
-
 
 - include: setup_virtualenv.yml
   tags:
@@ -46,7 +45,7 @@
 
 - name: Fix ownership
   file:
-    path={{ sites_site_dir }}
+    path={{ sites__site_dir }}
     owner={{ site_user }}
     group={{ shared_group }}
     recurse="yes"

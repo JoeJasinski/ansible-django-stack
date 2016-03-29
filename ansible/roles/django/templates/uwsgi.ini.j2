@@ -1,20 +1,20 @@
 [uwsgi]
-project = {{django_uwsgi_site_name}}
+project = {{django__uwsgi_site_name}}
 base_dir = /www/%(project)
 
 socket = %(base_dir)/run/django.socket
-chdir = {{django_proj_dir}}
+chdir = {{django__proj_dir}}
 ;http-socket = localhost:9000
-processes = {{django_uwsgi_processes}}
+processes = {{django__uwsgi_processes}}
 pidfile = %(base_dir)/run/django.pid
-env = DJANGO_SETTINGS_MODULE={{django_site_name}}.settings
+env = DJANGO_SETTINGS_MODULE={{django__site_name}}.settings
 master = true
-harakiri = {{django_uwsgi_harakiri}}
+harakiri = {{django__uwsgi_harakiri}}
 vacuum = true
-max-requests = {{django_uwsgi_max_requests}}
+max-requests = {{django__uwsgi_max_requests}}
 chmod-socket = 666
-module = {{django_site_name}}.wsgi:application
-home = {{django_virtualenv_dir}}
-uid = {{django_site_user}}
+module = {{django__site_name}}.wsgi:application
+home = {{django__virtualenv_dir}}
+uid = {{django__site_user}}
 logto = %(base_dir)/log/django-uwsgi.log
 logdate

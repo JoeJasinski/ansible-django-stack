@@ -1,8 +1,8 @@
-redis_port: 6379
-redis_bind: "127.0.0.1"
-redis_loglevel: "notice"
-redis_timeout: 0
-redis_enabled_on_startup: "yes" # "yes" | "no"
-redis_pidfile: /var/run/redis/redis-server.pid
-redis_databases: 16
-redis_logfile: /var/log/redis/redis-server.log
+redis__port: 6379
+redis__bind: "127.0.0.1"
+redis__loglevel: "notice"
+redis__timeout: 0
+redis__enabled_on_startup: "yes" # "yes" | "no"
+redis__pidfile: /var/run/redis/redis-server.pid
+redis__databases: 16
+redis__logfile: /var/log/redis/redis-server.log

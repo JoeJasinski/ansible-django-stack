@@ -6,4 +6,4 @@
     - ntpdate
 
 - name: Start NTPD
-  service: name=ntpd state=running enabled={{ntp_enabled_on_startup}}
+  service: name=ntpd state=running enabled={{ntp__enabled_on_startup}}

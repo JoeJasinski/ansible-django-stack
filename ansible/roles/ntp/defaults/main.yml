@@ -1,3 +1,3 @@
 ---
 
-ntp_enabled_on_startup: "yes"
+ntp__enabled_on_startup: "yes"

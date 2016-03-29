@@ -1,14 +1,14 @@
 ---
 
 - include: install_facts.yml
-  when: nginx_install_facts
+  when: nginx__install_facts
 
 - include: base-debian.yml
   when: ansible_os_family == 'Debian'
 
 - name: Create SSL directory
   file:
-    path={{ nginx_ssl_dir }}
+    path={{ nginx__ssl_dir }}
     state=directory
     owner=www-data
     group={{ shared_group }}
@@ -16,7 +16,7 @@
 
 - name: Create Log directory
   file:
-    path={{ nginx_site_log_dir }}
+    path={{ nginx__site_log_dir }}
     state=directory
     owner={{ site_name }}
     group={{ shared_group }}
@@ -26,14 +26,14 @@
   command: rngd -r /dev/urandom
 
 - name: Create self-signed SSL cert
-  command: openssl req -new -nodes -x509 -subj "{{nginx_ssl_subj}}" -newkey rsa:2048 -days 65535 -keyout {{ nginx_ssl_dir }}server.key -out {{ nginx_ssl_dir }}server.crt -extensions v3_ca creates={{ nginx_ssl_dir }}server.crt
+  command: openssl req -new -nodes -x509 -subj "{{nginx__ssl_subj}}" -newkey rsa:2048 -days 65535 -keyout {{ nginx__ssl_dir }}server.key -out {{ nginx__ssl_dir }}server.crt -extensions v3_ca creates={{ nginx__ssl_dir }}server.crt
 
 - name: Generate Diffie-Hellman
-  command: openssl dhparam -out {{ nginx_ssl_dir }}dhparam.pem {{nginx_ssl_dhparam_length}} creates={{ nginx_ssl_dir }}dhparam.pem
+  command: openssl dhparam -out {{ nginx__ssl_dir }}dhparam.pem {{nginx__ssl_dhparam_length}} creates={{ nginx__ssl_dir }}dhparam.pem
 
 - name: Create htdocs directory
   file:
-    path={{ nginx_site_htdocs_dir }}
+    path={{ nginx__site_htdocs_dir }}
     state=directory
     owner={{ site_name }}
     group={{ shared_group }}
@@ -41,7 +41,7 @@
 
 - name: Creates htdocs media directory
   file:
-    path={{ nginx_site_htdocs_media_dir }}
+    path={{ nginx__site_htdocs_media_dir }}
     state=directory
     owner={{ site_user }}
     group={{ shared_group }}
@@ -49,7 +49,7 @@
 
 - name: Creates htdocs static directory
   file:
-    path={{ nginx_site_htdocs_static_dir }}
+    path={{ nginx__site_htdocs_static_dir }}
     state=directory
     owner={{ site_user }}
     group={{ shared_group }}
@@ -57,7 +57,7 @@
 
 - name: Create directory
   file:
-    path={{ nginx_site_nginx_dir }}
+    path={{ nginx__site_nginx_dir }}
     state=directory
     owner={{ site_name }}
     group={{ shared_group }}
@@ -73,33 +73,33 @@
 - name: Copy the nginx site configuration file
   template:
     src=site.conf.j2
-    dest={{ nginx_site_nginx_dir }}site.conf
+    dest={{ nginx__site_nginx_dir }}site.conf
 
 - name: Copy the nginx location file
   template:
     src=locations.conf.j2
-    dest={{ nginx_site_nginx_dir }}locations.conf
+    dest={{ nginx__site_nginx_dir }}locations.conf
 
 - name: Copy the nginx reverse proxyt to django file
   template:
     src=django.conf.j2
-    dest={{ nginx_site_nginx_dir }}django.conf
+    dest={{ nginx__site_nginx_dir }}django.conf
 
 - name: Remove old default configuration
   file:
-    path={{ nginx_conf_dir }}sites-available/default
+    path={{ nginx__conf_dir }}sites-available/default
     state=absent
 
 - name: Symlink in the new site configuration to sites-available
   file:
-    src={{ nginx_site_nginx_dir }}site.conf
-    dest={{ nginx_conf_dir }}sites-available/default
+    src={{ nginx__site_nginx_dir }}site.conf
+    dest={{ nginx__conf_dir }}sites-available/default
     state=link
 
 - name: Create symlink to enable the site configuration
   file:
-    src={{ nginx_conf_dir }}sites-available/default
-    dest={{ nginx_conf_dir }}sites-enabled/default
+    src={{ nginx__conf_dir }}sites-available/default
+    dest={{ nginx__conf_dir }}sites-enabled/default
     state=link
 
 - name: Copy the supervisor config file for nginx

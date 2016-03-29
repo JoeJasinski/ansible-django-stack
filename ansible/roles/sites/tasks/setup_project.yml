@@ -2,7 +2,7 @@
 
 - name: Creates Proj directory
   file:
-    path={{sites_project_dir}}
+    path={{sites__project_dir}}
     state=directory
     owner={{site_name}}
     group={{shared_group}}

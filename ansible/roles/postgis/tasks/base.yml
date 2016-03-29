@@ -16,4 +16,4 @@
   become_user: postgres
   postgresql_ext:
     name=postgis
-    db={{ postgres_db_name }}
+    db={{ postgres__db_name }}

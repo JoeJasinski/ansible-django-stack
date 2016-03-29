@@ -9,22 +9,22 @@
 - name: Copy the my.cnf config file
   template:
     src=my.cnf.j2
-    dest={{ mysql_my_cnf_path }}my.cnf
+    dest={{ mysql__my_cnf_path }}my.cnf
 
 - name: Ensure MySQL is started and enabled on boot.
-  service: name=mysql state=started enabled={{ mysql_enabled_on_startup }}
+  service: name=mysql state=started enabled={{ mysql__enabled_on_startup }}
   register: mysql_service_configuration
 
 - name: Install the Python MySQLB module
   pip: name=MySQL-python
 
 - name: Create MySQL App database
-  mysql_db: name={{mysql_db_name}} state=present
+  mysql_db: name={{mysql__db_name}} state=present
 
 - name: Create MySQL App user
   mysql_user:
-    name={{mysql_db_user}}
+    name={{mysql__db_user}}
     host=localhost
-    password={{mysql_db_password}}
+    password={{mysql__db_password}}
     priv=*.*:ALL
     state=present

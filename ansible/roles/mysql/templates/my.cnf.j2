@@ -17,15 +17,15 @@
 # especially if they contain "#" chars...
 # Remember to edit /etc/mysql/debian.cnf when changing the socket location.
 [client]
-port		= {{mysql_port}}
-socket		= {{mysql_socket_dir}}
+port		= {{mysql__port}}
+socket		= {{mysql__socket_dir}}
 
 # Here is entries for some specific programs
 # The following values assume you have at least 32M ram
 
 # This was formally known as [safe_mysqld]. Both versions are currently parsed.
 [mysqld_safe]
-socket		= {{mysql_socket_dir}}
+socket		= {{mysql__socket_dir}}
 nice		= 0
 
 [mysqld]
@@ -34,17 +34,17 @@ nice		= 0
 #
 user		= mysql
 pid-file	= /var/run/mysqld/mysqld.pid
-socket		= {{mysql_socket_dir}}
-port		= {{mysql_port}}
+socket		= {{mysql__socket_dir}}
+port		= {{mysql__port}}
 basedir		= /usr
-datadir		= {{mysql_data_dir}}
+datadir		= {{mysql__data_dir}}
 tmpdir		= /tmp
 lc-messages-dir	= /usr/share/mysql
 skip-external-locking
 #
 # Instead of skip-networking the default is now to listen only on
 # localhost which is more compatible and is not less secure.
-bind-address		= {{mysql_bind_address}}
+bind-address		= {{mysql__bind_address}}
 #
 # * Fine Tuning
 #
@@ -74,7 +74,7 @@ query_cache_size        = 16M
 #
 # Error log - should be very few entries.
 #
-log_error = {{mysql_log_dir}}
+log_error = {{mysql__log_dir}}
 #
 # Here you can see queries with especially long duration
 #log_slow_queries	= /var/log/mysql/mysql-slow.log

@@ -23,7 +23,7 @@ log_facility=daemon
 # number.  The file is only written if the NRPE daemon is started by the root
 # user and is running in standalone mode.
 
-pid_file={{nagios_nrpe_server_pid}}
+pid_file={{nagios_nrpe__server_pid}}
 
 
 
@@ -32,7 +32,7 @@ pid_file={{nagios_nrpe_server_pid}}
 # NOTE: This must be a non-priviledged port (i.e. > 1024).
 # NOTE: This option is ignored if NRPE is running under either inetd or xinetd
 
-server_port={{nagios_nrpe_server_port}}
+server_port={{nagios_nrpe__server_port}}
 
 
 
@@ -51,7 +51,7 @@ server_port={{nagios_nrpe_server_port}}
 #
 # NOTE: This option is ignored if NRPE is running under either inetd or xinetd
 
-nrpe_user={{nagios_nrpe_server_user}}
+nrpe_user={{nagios_nrpe__server_user}}
 
 
 
@@ -61,7 +61,7 @@ nrpe_user={{nagios_nrpe_server_user}}
 #
 # NOTE: This option is ignored if NRPE is running under either inetd or xinetd
 
-nrpe_group={{nagios_nrpe_server_group}}
+nrpe_group={{nagios_nrpe__server_group}}
 
 
 
@@ -78,7 +78,7 @@ nrpe_group={{nagios_nrpe_server_group}}
 #
 # NOTE: This option is ignored if NRPE is running under either inetd or xinetd
 
-allowed_hosts={{nagios_nrpe_allowed_hosts}}
+allowed_hosts={{nagios_nrpe__allowed_hosts}}
 
 
 
@@ -142,7 +142,7 @@ allow_bash_command_substitution=0
 # syslog facility.
 # Values: 0=debugging off, 1=debugging on
 
-debug={{nagios_nrpe_debug}}
+debug={{nagios_nrpe__debug}}
 
 
 
