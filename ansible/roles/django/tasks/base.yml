@@ -3,10 +3,25 @@
 - name: Include git checkout
   include: git.yml
 
+
+- name: Creates sites etc directory
+  file:
+    path={{ django__site_etc_dir }}
+    state=directory
+    owner={{ site_user }}
+    group={{ shared_group }}
+    mode=2775
+
 - name: Install uwsgi into virtualenv
   pip:
     name=uwsgi
     virtualenv={{ django__virtualenv_dir }}
+
+- file:
+    path={{ virtualenvs_dir }}
+    state=directory
+    recurse=yes
+    mode=g+w
 
 - name: Copy the uwsig config file
   template:
@@ -14,6 +29,7 @@
     dest={{ django__uwsgi_filename }}
     owner={{ site_user }}
     group={{ shared_group }}
+    mode=0664
 
 - name: Copy the supervisor config file for Django
   template:
