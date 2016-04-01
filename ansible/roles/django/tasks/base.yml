@@ -1,5 +1,8 @@
 ---
 
+- name: Include git checkout
+  include: git.yml
+
 - name: Install uwsgi into virtualenv
   pip:
     name=uwsgi

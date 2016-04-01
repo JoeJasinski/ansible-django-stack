@@ -45,7 +45,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
              "install_postgres" => true,
              "install_mysql" => true,
              "site_name" => "jazstudios",
-             "python_version" => "python3.4",
+             "python_version" => "python2.7",
         }
         ansible.sudo = true
         ansible.limit = "all"

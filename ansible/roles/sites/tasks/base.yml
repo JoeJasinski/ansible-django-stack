@@ -11,6 +11,14 @@
     group={{ shared_group }}
     mode=2775
 
+- name: Creates sites bin directory
+  file:
+    path={{ sites__bin_dir }}
+    state=directory
+    owner={{ site_user }}
+    group={{ shared_group }}
+    mode=2775
+
 - name: Creates log directory
   file:
     path={{ sites__site_log_dir }}
@@ -38,7 +46,7 @@
 - name: Copy the venv script
   template:
     src=venv.j2
-    dest=/etc/profile.d/venv
+    dest={{sites_dir}}bin/venv
     owner=root
     group=root
     mode="u=rwx,g=rwx,o=rx"

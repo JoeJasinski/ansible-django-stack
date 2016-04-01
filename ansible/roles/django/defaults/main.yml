@@ -1,5 +1,9 @@
 ---
 
+django__git_repo: "{{ git_repo }}"
+django__git_branch: "{{ git_branch }}"
+django__remote_name: "origin"
+django__settings: "{{ site_name }}.settings"
 django__virtualenv_dir: "{{virtualenv_dir}}"
 django__virtualenv_bin_dir: "{{django__virtualenv_dir}}bin/"
 django__site_etc_dir: "{{site_etc_dir}}"
@@ -7,6 +11,7 @@ django__uwsgi_filename: "{{django__site_etc_dir}}uwsgi.ini"
 django__proj_dir: "{{project_dir}}"
 django__site_name: "{{site_name}}"
 django__app_dir: "{{project_dir}}{{site_name}}/"
+django__requirements: "{{ django__app_dir }}/requirements.txt"
 django__site_user: "{{site_user}}"
 django__uwsgi_site_name: "{{site_name}}"
 django__uwsgi_processes: 3

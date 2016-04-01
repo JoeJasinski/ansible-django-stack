@@ -6,4 +6,4 @@
     state=directory
     owner={{site_name}}
     group={{shared_group}}
-    mode=0775
+    mode=2775
