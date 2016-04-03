@@ -1,6 +1,6 @@
 [uwsgi]
 project = {{django__uwsgi_site_name}}
-base_dir = /www/%(project)
+base_dir = {{ django__site_dir }}
 
 socket = %(base_dir)/run/django.socket
 chdir = {{django__proj_dir}}

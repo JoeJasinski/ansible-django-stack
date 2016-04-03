@@ -8,6 +8,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define 'xenial', autostart: false do |box|
       box.vm.box = "ubuntu/xenial64"
       box.vm.network "forwarded_port", guest: 80, host: 8080
+      box.vm.network "forwarded_port", guest: 443, host: 4443
       box.vm.provision :ansible do |ansible|
         ansible.playbook = "ansible/playbook-all.yml"
         #ansible.playbook = "ansible/playbooks/add-user.yml"
@@ -34,6 +35,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define 'trusty', autostart: false do |box|
       box.vm.box = "ubuntu/trusty64"
       box.vm.network "forwarded_port", guest: 80, host: 8081
+      box.vm.network "forwarded_port", guest: 443, host: 4444
       box.vm.provision :ansible do |ansible|
         ansible.playbook = "ansible/playbook-all.yml"
         ansible.verbose = "vvvv"

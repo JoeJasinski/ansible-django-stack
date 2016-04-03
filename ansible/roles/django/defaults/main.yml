@@ -3,6 +3,7 @@
 django__git_repo: "{{ git_repo }}"
 django__git_branch: "{{ git_branch }}"
 django__remote_name: "origin"
+django__site_dir: "{{ site_dir }}"
 django__settings: "{{ site_name }}.settings"
 django__virtualenv_dir: "{{virtualenv_dir}}"
 django__virtualenv_bin_dir: "{{django__virtualenv_dir}}bin/"

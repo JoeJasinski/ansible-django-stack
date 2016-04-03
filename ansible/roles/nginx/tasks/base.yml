@@ -108,12 +108,4 @@
     dest=/etc/supervisor/conf.d/nginx.conf
     owner=root
     group=root
-
-- name: ensure nginx is stopped on a fresh reboot (supervisord will run)
-  service:
-    name=nginx
-    state=stopped
-    enabled=no
-
-- name: reload supervisor
-  service: name=supervisor state=started
+  notify: restart nginx
