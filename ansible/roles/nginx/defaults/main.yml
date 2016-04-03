@@ -1,5 +1,7 @@
 ---
 
+nginx__ubuntu_nginx_apt_ppa: "nginx/development"
+
 nginx__install_facts: True
 nginx__http_port: 80
 nginx__https_port: 443

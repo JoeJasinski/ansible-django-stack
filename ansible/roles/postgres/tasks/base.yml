@@ -9,14 +9,14 @@
     - packages
     - debian-base
 
-- debug: msg="Vars path {{ ansible_distribution }}-{{ ansible_distribution_release }}.yml"
+- debug: msg="Vars path os-{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml"
 
 - include_vars: "{{ item }}"
   with_first_found:
-   - "{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml"
-   - "{{ ansible_distribution }}.yml"
-   - "{{ ansible_os_family }}.yml"
-   - "default.yml"
+   - "os-{{ ansible_distribution|lower }}-{{ ansible_distribution_release }}.yml"
+   - "os-{{ ansible_distribution|lower }}.yml"
+   - "os-{{ ansible_os_family }}.yml"
+   - "os-default.yml"
 
 # Create our config
 - name: Create postgresql.conf from template

@@ -3,8 +3,15 @@
 - include: install_facts.yml
   when: nginx__install_facts
 
-- include: base-debian.yml
-  when: ansible_os_family == 'Debian'
+- include: "{{ item }}"
+  with_first_found:
+   - "os-{{ ansible_distribution|lower }}-{{ ansible_distribution_release }}.yml"
+   - "os-{{ ansible_distribution|lower }}.yml"
+   - "os-{{ ansible_os_family }}.yml"
+   - "os-default.yml"
+
+- name: "disable Start Nginx on boot"
+  service: name=nginx enabled=false
 
 - name: Create SSL directory
   file:
@@ -12,7 +19,7 @@
     state=directory
     owner=www-data
     group={{ shared_group }}
-    mode=0775
+    mode=2775
 
 - name: Create Log directory
   file:
@@ -20,7 +27,7 @@
     state=directory
     owner={{ site_name }}
     group={{ shared_group }}
-    mode=0775
+    mode=2775
 
 - name: Make some random entropy
   command: rngd -r /dev/urandom
@@ -74,16 +81,19 @@
   template:
     src=site.conf.j2
     dest={{ nginx__site_nginx_dir }}site.conf
+    mode=0664
 
 - name: Copy the nginx location file
   template:
     src=locations.conf.j2
     dest={{ nginx__site_nginx_dir }}locations.conf
+    mode=0664
 
 - name: Copy the nginx reverse proxyt to django file
   template:
     src=django.conf.j2
     dest={{ nginx__site_nginx_dir }}django.conf
+    mode=0664
 
 - name: Remove old default configuration
   file:

@@ -1,7 +1,7 @@
 ---
 
 - name: Add Nginx Repository
-  apt_repository: repo='ppa:nginx/stable' state=present
+  apt_repository: repo='ppa:{{nginx__ubuntu_nginx_apt_ppa}}' state=present
   tags:
     - packages
     - debian-base
