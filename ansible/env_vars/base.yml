@@ -5,7 +5,7 @@ shared_group: "worker"
 db_user: "{{site_name}}"
 db_password: "change_me"
 db_name: "{{site_name}}"
-python_version: "python3.4" # "python2.7" or "python3.4" or "python3.5"
+python_version: "python3.5" # "python2.7" or "python3.4" or "python3.5"
 git_repo: "https://github.com/chicagopython/chipy.org.git"
 git_branch: "master"
 
