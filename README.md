@@ -22,9 +22,9 @@ Define the following inventory, changing connection parameters as needed.
     [localhost]
     127.0.0.1 ansible_ssh_port=22 ansible_ssh_user=ubuntu ansible_become=true ansible_ssh_private_key_file=/path/to/private_key
 
-Run the playbook
+Run the playbook in this directory
 
-    ansible-playbook -vvvv -i ansible/inventory.ini ansible/playbook-all.yml
+    ansible-playbook -vvvv -i ansible/inventory.ini ansible/playbooks/playbook-all.yml
 
 ### Run in Vagrant
 

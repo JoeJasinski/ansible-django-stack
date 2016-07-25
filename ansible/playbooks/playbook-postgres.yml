@@ -4,6 +4,6 @@
   vars:
     - update_apt_cache: yes
   vars_files:
-    - env_vars/base.yml
+    - ../env_vars/base.yml
   roles:
-    - role: mysql
+    - role: postgres
