@@ -89,10 +89,16 @@
     dest={{ nginx__site_nginx_dir }}locations.conf
     mode=0664
 
-- name: Copy the nginx reverse proxyt to django file
+- name: Copy the nginx reverse proxy to django file
   template:
     src=django.conf.j2
     dest={{ nginx__site_nginx_dir }}django.conf
+    mode=0664
+
+- name: Copy the SSL config file
+  template:
+    src=ssl.conf.j2
+    dest={{ nginx__site_nginx_dir }}ssl.conf
     mode=0664
 
 - name: Remove old default configuration

@@ -46,7 +46,7 @@
 - name: Copy the venv script
   template:
     src=venv.j2
-    dest={{sites_dir}}bin/venv
+    dest={{sites__sites_bin_dir}}venv
     owner=root
     group=root
     mode="u=rwx,g=rwx,o=rx"
@@ -57,3 +57,6 @@
     owner={{ site_user }}
     group={{ shared_group }}
     recurse="yes"
+
+- name: add venv to default bashrc
+  lineinfile: dest=/etc/bash.bashrc line="source {{sites__sites_bin_dir}}venv"

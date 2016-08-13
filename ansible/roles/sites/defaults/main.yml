@@ -1,4 +1,4 @@
-
+sites__sites_bin_dir: "{{ sites_bin_dir }}"
 sites__python_version: "{{ python_version }}"
 sites__site_dir: "{{ site_dir }}"
 sites__bin_dir: "{{ sites_bin_dir }}"

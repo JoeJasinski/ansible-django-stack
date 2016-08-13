@@ -9,9 +9,10 @@ python_version: "python3.5" # "python2.7" or "python3.4" or "python3.5"
 git_repo: "https://github.com/chicagopython/chipy.org.git"
 git_branch: "master"
 
-sites_dir: "/srv/"
-sites_bin_dir: "{{sites_dir}}bin/"
-site_dir: "{{sites_dir}}site/"
+top_dir: "/srv/"
+sites_dir: "{{top_dir}}sites/"
+sites_bin_dir: "{{top_dir}}bin/"
+site_dir: "{{sites_dir}}{{site_name}}/"
 htdocs_dir: "{{site_dir}}htdocs/"
 htdocs_media_dir: "{{htdocs_dir}}media/"
 htdocs_static_dir: "{{htdocs_dir}}static/"
@@ -25,6 +26,7 @@ virtualenv_dir_link: "{{virtualenvs_dir}}{{site_name}}"
 virtualenv_dir: "{{virtualenv_dir_link}}/"
 
 timezone: "America/Chicago"
+application_runner: "uwsgi" # "uwsgi" or "gunicorn"
 
 install_nginx: True
 install_ntp: True
