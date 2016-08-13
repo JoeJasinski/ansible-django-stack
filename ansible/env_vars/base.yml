@@ -1,15 +1,35 @@
 ---
+
+# The name of the app. Should be a slug.
 site_name: "appname"
+
+# The user that will own all of the project files.
 site_user: "{{site_name}}"
+
+# The group that will be assigned to all of the project files.
 shared_group: "worker"
+
+# The database user the the app will use
 db_user: "{{site_name}}"
+
+# The database password that the app will use
 db_password: "change_me"
+
+# The database name that the app will use.
 db_name: "{{site_name}}"
+
+# The python binary to use.
 python_version: "python3.5" # "python2.7" or "python3.4" or "python3.5"
+
+# The git repo to checkout.
 git_repo: "https://github.com/chicagopython/chipy.org.git"
+
+# The branch to checkout
 git_branch: "master"
 
+# The top directory under which all project files should reside
 top_dir: "/srv/"
+
 sites_dir: "{{top_dir}}sites/"
 sites_bin_dir: "{{top_dir}}bin/"
 site_dir: "{{sites_dir}}{{site_name}}/"
