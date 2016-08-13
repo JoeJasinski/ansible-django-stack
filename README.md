@@ -29,13 +29,18 @@ Define the following inventory, changing connection parameters as needed.
     [localhost]
     127.0.0.1 ansible_ssh_port=22 ansible_ssh_user=ubuntu ansible_become=true ansible_ssh_private_key_file=/path/to/private_key
 
+Note: if running on Ubuntu 16.04, you need to execute the following first.
+
+    ansible-playbook -vvvv -i ansible/inventory.ini ansible/playbooks/playbook-install-python2.yml
+
 Run the playbook in this directory
 
     ansible-playbook -vvvv -i ansible/inventory.ini ansible/playbooks/playbook-all.yml
 
+
 ## Run Customization
 
-This project defines many of the configurable variables inside of the ansible/env_vars/base.yml file. You can override those variables when provisioning by passing in a new value via the --extra-vars (-e) option as exemplified below.
+This project defines many of the configurable variables inside of the ansible/group_vars/all.yml file. You can override those variables when provisioning by passing in a new value via the --extra-vars (-e) option as exemplified below.
 
 IMPORTANT - you will want to customize the following at minimum:
   - site_name

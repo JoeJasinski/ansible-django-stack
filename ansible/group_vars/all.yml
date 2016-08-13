@@ -1,7 +1,7 @@
 ---
 
 # The name of the app. Should be a slug.
-site_name: "appname"
+site_name: "joe"
 
 # The user that will own all of the project files.
 site_user: "{{site_name}}"
@@ -19,7 +19,7 @@ db_password: "change_me"
 db_name: "{{site_name}}"
 
 # The python binary to use.
-python_version: "python3.5" # "python2.7" or "python3.4" or "python3.5"
+python_version: "python2.7" # "python2.7" or "python3.4" or "python3.5"
 
 # The git repo to checkout.
 git_repo: "https://github.com/chicagopython/chipy.org.git"

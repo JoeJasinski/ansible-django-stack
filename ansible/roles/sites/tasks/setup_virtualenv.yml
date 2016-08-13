@@ -3,6 +3,8 @@
 - stat: path={{ virtualenv_dir_link }}
   register: virtualenv_dir_exists
 
+- debug: msg="Creating Virtualenv {{ sites__virtualenv_dir_version }} using python {{ sites__python_version }}"
+
 - name: Create the virtualenv
   command: virtualenv {{ sites__virtualenv_dir_version }} --no-site-packages -p {{ sites__python_version }}
            creates={{ sites__virtualenv_dir_version }}/bin/activate
