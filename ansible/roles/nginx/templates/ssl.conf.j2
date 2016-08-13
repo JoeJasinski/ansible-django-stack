@@ -1,0 +1,8 @@
+ssl_certificate {{ nginx__ssl_dir }}server.crt;
+ssl_certificate_key {{ nginx__ssl_dir }}server.key;
+ssl_dhparam {{ nginx__ssl_dir }}dhparam.pem;
+ssl_session_timeout 5m;
+ssl_protocols {{ nginx__ssl_protocols }};
+ssl_ciphers '{{ nginx__ssl_ciphers }}';
+ssl_prefer_server_ciphers on;
+ssl_session_cache shared:SSL:50m;

@@ -5,5 +5,5 @@
     path={{sites__project_dir}}
     state=directory
     owner={{site_name}}
-    group={{shared_group}}
+    group={{sites__shared_group}}
     mode=2775

@@ -14,6 +14,7 @@ django__site_name: "{{site_name}}"
 django__app_dir: "{{project_dir}}{{site_name}}/"
 django__requirements: "{{ django__app_dir }}/requirements.txt"
 django__site_user: "{{site_user}}"
+django__shared_group: "{{shared_group}}"
 django__uwsgi_site_name: "{{site_name}}"
 django__uwsgi_processes: 3
 django__uwsgi_max_requests: 5000

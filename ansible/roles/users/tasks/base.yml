@@ -1,13 +1,13 @@
 ---
 
-- group: name="{{ shared_group }}" state=present
+- group: name="{{ users__shared_group }}" state=present
   tags:
     - packages
 
 - name: Create new site user
   user:
-    name={{ site_user }}
-    groups={{ shared_group }}
+    name={{ users__site_user }}
+    groups={{ users__shared_group }}
     shell=/bin/bash
     append=yes
 

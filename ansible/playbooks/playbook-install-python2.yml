@@ -1,0 +1,9 @@
+---
+
+- name: Install Python 2.7 for systems without it
+  hosts: all
+  gather_facts: False
+  
+  tasks:
+  - name: install python2
+    raw: test -e /usr/bin/python || (apt -y update && apt install -y python-simplejson)

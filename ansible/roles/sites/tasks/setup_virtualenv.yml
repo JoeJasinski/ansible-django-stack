@@ -3,6 +3,8 @@
 - stat: path={{ virtualenv_dir_link }}
   register: virtualenv_dir_exists
 
+- debug: msg="Creating Virtualenv {{ sites__virtualenv_dir_version }} using python {{ sites__python_version }}"
+
 - name: Create the virtualenv
   command: virtualenv {{ sites__virtualenv_dir_version }} --no-site-packages -p {{ sites__python_version }}
            creates={{ sites__virtualenv_dir_version }}/bin/activate
@@ -11,8 +13,8 @@
 - name: Change ownership
   file:
     path={{ sites__virtualenv_dir_version }}
-    owner={{ site_user }}
-    group={{ shared_group }}
+    owner={{ sites__site_user }}
+    group={{ sites__shared_group }}
     state=directory
     recurse="yes"
   when: virtualenv_dir_exists.stat.islnk is not defined
@@ -21,8 +23,8 @@
   file:
     src={{ sites__virtualenv_dir_version }}
     dest={{ virtualenv_dir_link }}
-    owner={{ site_user }}
-    group={{ shared_group }}
+    owner={{ sites__site_user }}
+    group={{ sites__shared_group }}
     state=link
     force=yes
   when: virtualenv_dir_exists.stat.islnk is not defined

@@ -3,7 +3,5 @@
   hosts: all
   vars:
     - update_apt_cache: yes
-  vars_files:
-    - env_vars/base.yml
   roles:
-    - role: nrpe
+    - role: django
