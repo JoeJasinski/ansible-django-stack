@@ -23,3 +23,7 @@ nginx__ssl_ciphers: "ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:E
 nginx__ssl_subj: "/C=US/ST=Illinois/L=Chicago/O=IT/CN=example.com"
 nginx__ssl_dhparam_length: 2048
 nginx__application_runner: "{{ application_runner }}"
+
+nginx__site_name: "{{ site_name }}"
+nginx__site_user: "{{ site_user }}"
+nginx__shared_group: "{{ shared_group }}"

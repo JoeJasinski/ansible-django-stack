@@ -18,15 +18,15 @@
     path={{ nginx__ssl_dir }}
     state=directory
     owner=www-data
-    group={{ shared_group }}
+    group={{ nginx__shared_group }}
     mode=2775
 
 - name: Create Log directory
   file:
     path={{ nginx__site_log_dir }}
     state=directory
-    owner={{ site_name }}
-    group={{ shared_group }}
+    owner={{ nginx__site_user }}
+    group={{ nginx__shared_group }}
     mode=2775
 
 - name: Make some random entropy
@@ -42,32 +42,32 @@
   file:
     path={{ nginx__site_htdocs_dir }}
     state=directory
-    owner={{ site_name }}
-    group={{ shared_group }}
+    owner={{ nginx__site_user }}
+    group={{ nginx__shared_group }}
     mode=2775
 
 - name: Creates htdocs media directory
   file:
     path={{ nginx__site_htdocs_media_dir }}
     state=directory
-    owner={{ site_user }}
-    group={{ shared_group }}
+    owner={{ nginx__site_user }}
+    group={{ nginx__shared_group }}
     mode=2775
 
 - name: Creates htdocs static directory
   file:
     path={{ nginx__site_htdocs_static_dir }}
     state=directory
-    owner={{ site_user }}
-    group={{ shared_group }}
+    owner={{ nginx__site_user }}
+    group={{ nginx__shared_group }}
     mode=2775
 
 - name: Create directory
   file:
     path={{ nginx__site_nginx_dir }}
     state=directory
-    owner={{ site_name }}
-    group={{ shared_group }}
+    owner={{ nginx__site_user }}
+    group={{ nginx__shared_group }}
     mode=2775
 
 - name: Copy the nginx base configuration file

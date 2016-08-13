@@ -3,12 +3,12 @@
 - include: base-debian.yml
   when: ansible_os_family == 'Debian'
 
-- name: Copy the redis base configuration file
-  template:
-    src=redis.conf.j2
-    dest=/etc/redis/redis.conf
-    owner=root
-    group=root
+#- name: Copy the redis base configuration file
+#  template:
+#    src=redis.conf.j2
+#    dest=/etc/redis/redis.conf
+#    owner=root
+#    group=root
 
 - name: ensure redis is running
   service:

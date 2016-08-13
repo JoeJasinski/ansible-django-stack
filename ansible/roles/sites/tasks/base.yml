@@ -7,32 +7,32 @@
   file:
     path={{ sites__site_dir }}
     state=directory
-    owner={{ site_user }}
-    group={{ shared_group }}
+    owner={{ sites__site_user }}
+    group={{ sites__shared_group }}
     mode=2775
 
 - name: Creates sites bin directory
   file:
     path={{ sites__bin_dir }}
     state=directory
-    owner={{ site_user }}
-    group={{ shared_group }}
+    owner={{ sites__site_user }}
+    group={{ sites__shared_group }}
     mode=2775
 
 - name: Creates log directory
   file:
     path={{ sites__site_log_dir }}
     state=directory
-    owner={{ site_user }}
-    group={{ shared_group }}
+    owner={{ sites__site_user }}
+    group={{ sites__shared_group }}
     mode=2775
 
 - name: Creates run directory
   file:
     path={{ sites__site_run_dir }}
     state=directory
-    owner={{ site_user }}
-    group={{ shared_group }}
+    owner={{ sites__site_user }}
+    group={{ sites__shared_group }}
     mode=2775
 
 - include: setup_virtualenv.yml
@@ -54,8 +54,8 @@
 - name: Fix ownership
   file:
     path={{ sites__site_dir }}
-    owner={{ site_user }}
-    group={{ shared_group }}
+    owner={{ sites__site_user }}
+    group={{ sites__shared_group }}
     recurse="yes"
 
 - name: add venv to default bashrc

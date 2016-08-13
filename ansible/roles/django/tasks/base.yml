@@ -8,8 +8,8 @@
   file:
     path={{ django__site_etc_dir }}
     state=directory
-    owner={{ site_user }}
-    group={{ shared_group }}
+    owner={{ django__site_user }}
+    group={{ django__shared_group }}
     mode=2775
 
 - name: Install uwsgi into virtualenv
@@ -27,8 +27,8 @@
   template:
     src=uwsgi.ini.j2
     dest={{ django__uwsgi_filename }}
-    owner={{ site_user }}
-    group={{ shared_group }}
+    owner={{ django__site_user }}
+    group={{ django__shared_group }}
     mode=0664
 
 - name: Copy the supervisor config file for Django
