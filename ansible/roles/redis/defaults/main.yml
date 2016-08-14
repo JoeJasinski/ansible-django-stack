@@ -1,3 +1,4 @@
+redis__config_file: /etc/redis/redis.conf
 redis__port: 6379
 redis__bind: "127.0.0.1"
 redis__loglevel: "notice"

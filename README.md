@@ -40,7 +40,7 @@ Run the playbook in this directory
 
 ## Run Customization
 
-This project defines many of the configurable variables inside of the ansible/group_vars/all.yml file. You can override those variables when provisioning by passing in a new value via the --extra-vars (-e) option as exemplified below.
+This project defines many of the configurable variables inside of the ansible/env_vars/base.yml file. You can override those variables when provisioning by passing in a new value via the --extra-vars (-e) option as exemplified below.
 
 IMPORTANT - you will want to customize the following at minimum:
   - site_name
