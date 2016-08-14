@@ -1,9 +1,0 @@
----
-
-- name: Install Postgresql
-  apt: name={{ item }} update_cache={{ update_apt_cache }} state=latest
-  with_items:
-    - redis-server
-  tags:
-    - packages
-    - debian-base

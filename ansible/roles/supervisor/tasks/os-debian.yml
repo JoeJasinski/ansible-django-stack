@@ -1,0 +1,8 @@
+---
+
+- name: Install supervisor
+  apt: name={{ package_to_install }} update_cache={{ update_apt_cache }} state=latest
+  with_items:
+    - supervisor
+  loop_control:
+    loop_var: package_to_install

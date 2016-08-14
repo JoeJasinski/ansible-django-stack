@@ -1,4 +1,6 @@
 ---
+- debug: msg="Enabled {{ install_ntp }}"
+
 - name: enable/disable ntp
   include: base.yml
   when: install_ntp|default(True)

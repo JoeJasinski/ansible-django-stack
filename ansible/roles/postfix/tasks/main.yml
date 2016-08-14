@@ -1,4 +1,6 @@
 ---
+- debug: msg="Enabled {{ install_postfix }}"
+
 - name: enable/disable postfix
   include: base.yml
   when: install_postfix|default(True)
