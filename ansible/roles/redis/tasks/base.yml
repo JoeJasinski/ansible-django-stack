@@ -10,6 +10,48 @@
 #    owner=root
 #    group=root
 
+- name: Setup alternate redis interface
+  lineinfile:
+    dest: "{{redis__config_file}}"
+    regexp: "^bind"
+    line: "bind {{redis__bind}}"
+  notify: "restart redis"
+
+- name: Setup alternate redis port
+  lineinfile:
+    dest: "{{redis__config_file}}"
+    regexp: "^port"
+    line: "port {{redis__port}}"
+  notify: "restart redis"
+
+- name: Setup alternate redis pidfile
+  lineinfile:
+    dest: "{{redis__config_file}}"
+    regexp: "^pidfile"
+    line: "pidfile {{redis__pidfile}}"
+  notify: "restart redis"
+
+- name: Setup alternate redis logfile
+  lineinfile:
+    dest: "{{redis__config_file}}"
+    regexp: "^logfile"
+    line: "logfile {{redis__logfile}}"
+  notify: "restart redis"
+
+- name: Setup alternate redis loglevel
+  lineinfile:
+    dest: "{{redis__config_file}}"
+    regexp: "^loglevel"
+    line: "loglevel {{redis__loglevel}}"
+  notify: "restart redis"
+
+- name: Setup alternate redis number of databases
+  lineinfile:
+    dest: "{{redis__config_file}}"
+    regexp: "^databases"
+    line: "databases {{redis__databases}}"
+  notify: "restart redis"
+
 - name: ensure redis is running
   service:
     name: redis-server
