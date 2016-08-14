@@ -82,7 +82,7 @@ directory structure.
 
 - /srv/ = (top_dir)
     - sites/ = (sites_dir)
-        - bin/ = shared scripts and binary files common to all
+        - bin/ = (sites_bin_dir) shared scripts and binary files common to all
         - *sitename*/ = (site_dir) all related website material
             - envs/ = (virtualenvs_dir) one or more virtualenvs
                 - *sitename* = (virtualenv_dir_link) symlink to recent virtualenv dir
@@ -105,6 +105,6 @@ directory structure.
 
 ## Misc
 
-ansible-playbook ansible/playbook-all.yml --list-tasks
+    ansible-playbook ansible/playbook-all.yml --list-tasks
 
-ansible-playbook --check ansible/playbook-all.yml
+    ansible-playbook --check ansible/playbook-all.yml
