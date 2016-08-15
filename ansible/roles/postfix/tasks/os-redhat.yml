@@ -1,0 +1,7 @@
+---
+- name: Install base packages
+  yum: name={{ package_to_install }} state=latest
+  with_items:
+    - postfix
+  loop_control:
+    loop_var: package_to_install
