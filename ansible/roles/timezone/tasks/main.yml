@@ -1,4 +1,5 @@
 ---
+- debug: msg="Enabled {{ install_timezone }}"
 
 - name: enable/disable timezone
   include: base.yml

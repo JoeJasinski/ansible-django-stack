@@ -1,7 +1,7 @@
 ---
 
 # The name of the app. Should be a slug.
-site_name: "joe"
+site_name: "myapp"
 
 # The user that will own all of the project files.
 site_user: "{{site_name}}"
@@ -18,11 +18,11 @@ db_password: "change_me"
 # The database name that the app will use.
 db_name: "{{site_name}}"
 
-# The python binary to use.
-python_version: "python2.7" # "python2.7" or "python3.4" or "python3.5"
+# The python binary to use in the virtualenv.
+python_version: "python3.5" # "python2.7" or "python3.4" or "python3.5"
 
 # The git repo to checkout.
-git_repo: "https://github.com/chicagopython/chipy.org.git"
+git_repo: "git@git.jazstudios.com:jazstudios/joejasinski.git"
 
 # The branch to checkout
 git_branch: "master"
@@ -30,6 +30,7 @@ git_branch: "master"
 # The top directory under which all project files should reside
 top_dir: "/srv/"
 
+## PROJECT DIRECTORY LAYOUT ##
 sites_dir: "{{top_dir}}sites/"
 sites_bin_dir: "{{top_dir}}bin/"
 site_dir: "{{sites_dir}}{{site_name}}/"
@@ -44,23 +45,30 @@ project_dir: "{{site_dir}}proj/"
 virtualenvs_dir: "{{site_dir}}envs/"
 virtualenv_dir_link: "{{virtualenvs_dir}}{{site_name}}"
 virtualenv_dir: "{{virtualenv_dir_link}}/"
+## END PROJECT DIRECTORY LAYOUT ##
 
+## SYSTEM SETTINGS ##
 timezone: "America/Chicago"
 application_runner: "uwsgi" # "uwsgi" or "gunicorn"
+base__create_swap_file: True
+## END SYSTEM SETTINGS ##
 
-install_nginx: True
+## ROLE FLAGS TO ENABLE/DISABLE ##
 install_ntp: True
 install_unattended_updates: True
+install_timezone: True
+
+install_django: True
+install_nginx: True
 install_postgis: True
 install_postgres: True
 install_postfix: True
 install_mysql: True
 install_redis: True
 install_nrpe: True
-install_timezone: True
+## END ROLL FLAGS ##
 
-base__create_swap_file: True
-
+## UNIX USERS ##
 # define list of users here
 users:
   - username: jjasinski
@@ -72,3 +80,4 @@ users:
     ssh_key:
       - "ssh-rsa AAAAA.... foo@machine"
     shell: /bin/bash
+## END UNIX USERS ##

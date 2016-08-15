@@ -17,15 +17,16 @@
         recurse=yes
         mode=g+w
 
-    - pip:
+    - name: Install requirements.txt with pip
+      pip:
         requirements={{ django__requirements }}
         virtualenv={{ django__virtualenv_dir }}
-        umask=0002
       become: yes
       become_user: "{{ site_user }}"
       ignore_errors: yes
 
-    - django_manage: >
+    - name: Run Django ./manage.py collectstatic
+      django_manage: >
         command=collectstatic
         app_path={{ django__app_dir }}
         settings={{ django__settings }}

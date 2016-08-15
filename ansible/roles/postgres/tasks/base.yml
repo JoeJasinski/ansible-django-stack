@@ -3,20 +3,20 @@
 - include: install_facts.yml
   when: postgres__install_facts
 
-- include: base-debian.yml
-  when: ansible_os_family == 'Debian'
-  tags:
-    - packages
-    - debian-base
-
-- debug: msg="Vars path os-{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml"
-
-- include_vars: "{{ item }}"
+- name: Load OS-Specific Tasks
+  include: "{{ item }}"
   with_first_found:
    - "os-{{ ansible_distribution|lower }}-{{ ansible_distribution_release }}.yml"
    - "os-{{ ansible_distribution|lower }}.yml"
-   - "os-{{ ansible_os_family }}.yml"
+   - "os-{{ ansible_os_family|lower }}.yml"
    - "os-default.yml"
+
+- include_vars: "{{ item }}"
+  with_first_found:
+   - "os-vars-{{ ansible_distribution|lower }}-{{ ansible_distribution_release }}.yml"
+   - "os-vars-{{ ansible_distribution|lower }}.yml"
+   - "os-vars-{{ ansible_os_family }}.yml"
+   - "os-vars-default.yml"
 
 # Create our config
 - name: Create postgresql.conf from template

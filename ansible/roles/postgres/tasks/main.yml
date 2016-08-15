@@ -1,4 +1,6 @@
 ---
+- debug: msg="Enabled {{ install_postgres }}"
+
 - name: enable/disable postgres
   include: base.yml
   when: install_postgres|default(True)

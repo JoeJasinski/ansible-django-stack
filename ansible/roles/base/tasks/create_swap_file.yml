@@ -1,11 +1,11 @@
 ---
 
+- debug: msg="Ensure Swap File Exists {{ swap__file_path }}"
+
 - name: Create swap file
   command: dd if=/dev/zero of={{ swap__file_path }} bs=1024 count={{ swap__file_size_kb }}k
            creates="{{ swap__file_path }}"
   tags: swap.file.create
-
-- debug: msg="Creating Swap File {{ swap__file_path }}"
 
 - name: Change swap file permissions
   file: path="{{ swap__file_path }}"

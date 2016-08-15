@@ -4,7 +4,7 @@ The goal of this project is to  create a configurable Ansible project
 that allows provisioning a Django web stack with many of the common services
 and features associated with such a stack.
 
-Requires Ansible 2.0+
+Requires Ansible 2.1+
 
 ## Playbooks available
 
@@ -51,8 +51,26 @@ IMPORTANT - you will want to customize the following at minimum:
     ansible-playbook -vvvv -i ansible/inventory.ini --extra-vars "site_name=mysite python_version=python3.5" \
         ansible/playbooks/playbook-all.yml
 
+IMPORTANT: Roles can be enabled/disabled using the "ROLL FLAGS" variables.  To
+change them, pass the "ROLE FLAGS" flags to the --extra-vars parameter
+or set them in the vars section of your playbook.
+
+See the section of the env_vars/base.yml titled "ROLE FLAGS TO ENABLE/DISABLE"
+to see what "ROLE FLAGS" are available and their defaults.
+
+Example: Command line
+
+    ansible-playbook .... --extra-vars "install_django=True install_nginx=True"
+
+Example: Custom Playbook
+
+       vars:
+        - install_django: True
+        - install_nginx: True
 
 ### Run in Vagrant
+
+Execute the following from within the directory containing the Vagrant file.
 
     vagrant up trusty
     vagrant provision trusty
@@ -107,4 +125,17 @@ directory structure.
 
     ansible-playbook ansible/playbook-all.yml --list-tasks
 
+    # Dry Run of tasks (not all tasks supported)
     ansible-playbook --check ansible/playbook-all.yml
+
+    # Check Syntax
+    ansible-playbook --syntax-check -vvvv  -i ansible/inventory.ini ansible/playbooks/playbook-all.yml
+
+    # List hosts selected
+    ansible-playbook --list-hosts -vvvv  -i ansible/inventory.ini ansible/playbooks/playbook-all.yml
+
+    # Step through each task one by one
+    ansible-playbook --step -vvvv  -i ansible/inventory.ini ansible/playbooks/playbook-all.yml
+
+    # Show diff of what changed on changed tasks during execution
+    ansible-playbook --diff -vvvv  -i ansible/inventory.ini ansible/playbooks/playbook-all.yml

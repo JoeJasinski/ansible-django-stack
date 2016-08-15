@@ -1,4 +1,6 @@
 ---
+- debug: msg="Enabled {{ install_unattended_updates }}"
+
 - name: enable/disable unattended updates
   include: base.yml
   when: install_unattended_updates|default(True)

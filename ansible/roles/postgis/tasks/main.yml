@@ -1,4 +1,6 @@
 ---
+- debug: msg="Enabled {{ install_postgis }}"
+
 - name: enable/disable postgis
   include: base.yml
   when: install_postgis|default(True)

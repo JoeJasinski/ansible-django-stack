@@ -3,6 +3,7 @@
   hosts: all
   vars:
     - update_apt_cache: yes
+    - install_mysql: True
   vars_files:
     - ../env_vars/base.yml
   roles:

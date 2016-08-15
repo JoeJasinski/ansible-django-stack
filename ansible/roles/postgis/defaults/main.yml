@@ -1,3 +1,4 @@
 ---
 
+install_postgres: True
 postgis__version: "2.1"

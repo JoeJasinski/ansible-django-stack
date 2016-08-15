@@ -4,9 +4,11 @@
   apt: name=postfix state=installed
 
 - name: Install Postfix Deamon
-  apt: name={{ item }} update_cache={{ update_apt_cache }} state=latest
+  apt: name={{ package_to_install }} update_cache={{ update_apt_cache }} state=latest
   with_items:
     - postfix
+  loop_control:
+    loop_var: package_to_install
 
 - name: Start Postfix
   service:

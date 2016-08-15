@@ -1,8 +1,0 @@
----
-
-- name: Ensure MySQL packages are installed.
-  apt: name={{ item }} update_cache={{ update_apt_cache }} state=latest
-  with_items:
-    - mysql-common
-    - mysql-server
-    - libmysqlclient-dev

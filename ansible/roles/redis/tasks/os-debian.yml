@@ -1,0 +1,11 @@
+---
+
+- name: Install Redis
+  apt: name={{ package_to_install }} update_cache={{ update_apt_cache }} state=latest
+  with_items:
+    - redis-server
+  loop_control:
+    loop_var: package_to_install
+  tags:
+    - packages
+    - debian-base

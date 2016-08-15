@@ -1,0 +1,8 @@
+---
+
+- name: Install supervisor
+  yum: name={{ package_to_install }} state=latest
+  with_items:
+    - supervisor
+  loop_control:
+    loop_var: package_to_install
