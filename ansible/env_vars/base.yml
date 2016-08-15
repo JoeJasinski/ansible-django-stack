@@ -1,7 +1,7 @@
 ---
 
 # The name of the app. Should be a slug.
-site_name: "joe"
+site_name: "myapp"
 
 # The user that will own all of the project files.
 site_user: "{{site_name}}"
@@ -18,11 +18,11 @@ db_password: "change_me"
 # The database name that the app will use.
 db_name: "{{site_name}}"
 
-# The python binary to use.
-python_version: "python2.7" # "python2.7" or "python3.4" or "python3.5"
+# The python binary to use in the virtualenv.
+python_version: "python3.5" # "python2.7" or "python3.4" or "python3.5"
 
 # The git repo to checkout.
-git_repo: "https://github.com/chicagopython/chipy.org.git"
+git_repo: "git@git.jazstudios.com:jazstudios/joejasinski.git"
 
 # The branch to checkout
 git_branch: "master"
