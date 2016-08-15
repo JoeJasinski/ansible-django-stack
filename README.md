@@ -125,4 +125,17 @@ directory structure.
 
     ansible-playbook ansible/playbook-all.yml --list-tasks
 
+    # Dry Run of tasks (not all tasks supported)
     ansible-playbook --check ansible/playbook-all.yml
+
+    # Check Syntax
+    ansible-playbook --syntax-check -vvvv  -i ansible/inventory.ini ansible/playbooks/playbook-all.yml
+
+    # List hosts selected
+    ansible-playbook --list-hosts -vvvv  -i ansible/inventory.ini ansible/playbooks/playbook-all.yml
+
+    # Step through each task one by one
+    ansible-playbook --step -vvvv  -i ansible/inventory.ini ansible/playbooks/playbook-all.yml
+
+    # Show diff of what changed on changed tasks during execution
+    ansible-playbook --diff -vvvv  -i ansible/inventory.ini ansible/playbooks/playbook-all.yml
