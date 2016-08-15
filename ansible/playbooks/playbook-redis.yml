@@ -4,7 +4,5 @@
   vars:
     - update_apt_cache: yes
     - install_redis: True
-  vars_files:
-    - ../env_vars/base.yml
   roles:
     - role: redis

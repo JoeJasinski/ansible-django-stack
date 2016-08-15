@@ -40,7 +40,10 @@ Run the playbook in this directory
 
 ## Run Customization
 
-This project defines many of the configurable variables inside of the ansible/env_vars/base.yml file. You can override those variables when provisioning by passing in a new value via the --extra-vars (-e) option as exemplified below.
+This project defines many of the configurable variables inside of the
+ansible/playbooks/group_vars.yml file. You can override those variables when
+provisioning by passing in a new value via the --extra-vars (-e) option as
+exemplified below.
 
 IMPORTANT - you will want to customize the following at minimum:
   - site_name
@@ -55,7 +58,7 @@ IMPORTANT: Roles can be enabled/disabled using the "ROLL FLAGS" variables.  To
 change them, pass the "ROLE FLAGS" flags to the --extra-vars parameter
 or set them in the vars section of your playbook.
 
-See the section of the env_vars/base.yml titled "ROLE FLAGS TO ENABLE/DISABLE"
+See the section of the ansible/playbooks/group_vars titled "ROLE FLAGS TO ENABLE/DISABLE"
 to see what "ROLE FLAGS" are available and their defaults.
 
 Example: Command line
@@ -79,6 +82,11 @@ Execute the following from within the directory containing the Vagrant file.
 
     vagrant up xenial
     vagrant provision xenial
+
+Note: when using vagrant to test, you can optionally use the vagrant-cachier
+plugin to cache the apt packages downloaded.
+
+    vagrant plugin install vagrant-cachier
 
 ### Run in Docker
 

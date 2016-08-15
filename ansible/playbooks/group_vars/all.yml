@@ -1,7 +1,8 @@
 ---
 
+## APP CONFIGURATION ##
 # The name of the app. Should be a slug.
-site_name: "myapp"
+site_name: "jjj"
 
 # The user that will own all of the project files.
 site_user: "{{site_name}}"
@@ -29,6 +30,7 @@ git_branch: "master"
 
 # The top directory under which all project files should reside
 top_dir: "/srv/"
+## END APP CONFIGURATION ##
 
 ## PROJECT DIRECTORY LAYOUT ##
 sites_dir: "{{top_dir}}sites/"
