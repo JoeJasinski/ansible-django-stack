@@ -1,7 +1,5 @@
 ---
 
 dependencies:
- - role: ntp
- - role: timezone
  - role: unattended
  - role: users
