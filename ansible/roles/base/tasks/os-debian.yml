@@ -5,6 +5,7 @@
   with_items:
     - bash
     - build-essential
+    - aptitude
     - openssl
     - rng-tools
     - libssl-dev
