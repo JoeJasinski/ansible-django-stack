@@ -18,35 +18,35 @@
 - name: Setup alternate redis port
   lineinfile:
     dest: "{{redis__config_file}}"
-    regexp: "^port"
+    regexp: "^port "
     line: "port {{redis__port}}"
   notify: "restart redis"
 
 - name: Setup alternate redis pidfile
   lineinfile:
     dest: "{{redis__config_file}}"
-    regexp: "^pidfile"
+    regexp: "^pidfile "
     line: "pidfile {{redis__pidfile}}"
   notify: "restart redis"
 
 - name: Setup alternate redis logfile
   lineinfile:
     dest: "{{redis__config_file}}"
-    regexp: "^logfile"
+    regexp: "^logfile "
     line: "logfile {{redis__logfile}}"
   notify: "restart redis"
 
 - name: Setup alternate redis loglevel
   lineinfile:
     dest: "{{redis__config_file}}"
-    regexp: "^loglevel"
+    regexp: "^loglevel "
     line: "loglevel {{redis__loglevel}}"
   notify: "restart redis"
 
 - name: Setup alternate redis number of databases
   lineinfile:
     dest: "{{redis__config_file}}"
-    regexp: "^databases"
+    regexp: "^databases "
     line: "databases {{redis__databases}}"
   notify: "restart redis"
 
