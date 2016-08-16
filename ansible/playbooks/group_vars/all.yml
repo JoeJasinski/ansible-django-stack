@@ -3,7 +3,7 @@
 
 ## APP CONFIGURATION ##
 # The name of the app. Should be a slug.
-site_name: "jjj"
+site_name: "mysite"
 
 # The user that will own all of the project files.
 site_user: "{{site_name}}"
