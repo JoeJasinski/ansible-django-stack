@@ -50,8 +50,12 @@ IMPORTANT - you will want to customize the following at minimum:
   - db_password (if running a database role)
   - git_rep (if installing a django codebase)
 
+    ansible-playbook -vvvv -i ansible/inventory.ini \
+        --extra-vars "@extra-vars.yml" \
+        ansible/playbooks/playbook-all.yml
 
-    ansible-playbook -vvvv -i ansible/inventory.ini --extra-vars "site_name=mysite python_version=python3.5" \
+    ansible-playbook -vvvv -i ansible/inventory.ini \
+        --extra-vars "site_name=mysite python_version=python3.5" \
         ansible/playbooks/playbook-all.yml
 
 IMPORTANT: Roles can be enabled/disabled using the "ROLL FLAGS" variables.  To
