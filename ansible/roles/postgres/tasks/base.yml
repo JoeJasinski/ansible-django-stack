@@ -19,12 +19,92 @@
    - "os-vars-default.yml"
 
 # Create our config
-- name: Create postgresql.conf from template
-  template: >
-    src="postgresql.conf.j2"
-    dest="/etc/postgresql/{{postgres__version}}/main/postgresql.conf"
-    owner=postgres group=postgres mode=0644
-  notify: restart postgresql
+#- name: Create postgresql.conf from template
+#  template: >
+#    src="postgresql.conf.j2"
+#    dest="/etc/postgresql/{{postgres__version}}/main/postgresql.conf"
+#    owner=postgres group=postgres mode=0644
+#  notify: restart postgresql
+
+
+- name: Setup data directory
+  lineinfile:
+    dest: "{{postgres__postgresql_conf}}"
+    regexp: "^#?\\s*data_directory "
+    line: "data_directory = '{{postgres__data_directory}}'"
+  notify: "restart postgresql"
+
+- name: Setup location of hba_file
+  lineinfile:
+    dest: "{{postgres__postgresql_conf}}"
+    regexp: "^#?\\s*hba_file "
+    line: "hba_file = '{{postgres__hba_file}}'"
+  notify: "restart postgresql"
+
+- name: Setup location of ident_file
+  lineinfile:
+    dest: "{{postgres__postgresql_conf}}"
+    regexp: "^#?\\s*ident_file "
+    line: "ident_file = '{{postgres__ident_file}}'"
+  notify: "restart postgresql"
+
+- name: Setup location of external_pid_file
+  lineinfile:
+    dest: "{{postgres__postgresql_conf}}"
+    regexp: "^#?\\s*external_pid_file "
+    line: "external_pid_file = '{{postgres__external_pid_file}}'"
+  notify: "restart postgresql"
+
+- name: Setup listen_addresses
+  lineinfile:
+    dest: "{{postgres__postgresql_conf}}"
+    regexp: "^listen_addresses "
+    line: "listen_addresses = '{{postgres__listen_addresses}}'"
+  notify: "restart postgresql"
+
+- name: Setup postgres port
+  lineinfile:
+    dest: "{{postgres__postgresql_conf}}"
+    regexp: "^port "
+    line: "port = {{postgres__port}}"
+  notify: "restart postgresql"
+
+- name: Setup shared_buffers
+  lineinfile:
+    dest: "{{postgres__postgresql_conf}}"
+    regexp: "^#?\\s*shared_buffers "
+    line: "shared_buffers = {{postgres__shared_buffers}}"
+  notify: "restart postgresql"
+
+- name: Setup work_mem
+  lineinfile:
+    dest: "{{postgres__postgresql_conf}}"
+    regexp: "^#?\\s*work_mem "
+    line: "work_mem = {{postgres__work_mem}}"
+  notify: "restart postgresql"
+
+- name: Setup maintenance_work_mem
+  lineinfile:
+    dest: "{{postgres__postgresql_conf}}"
+    regexp: "^#?\\s*maintenance_work_mem "
+    line: "maintenance_work_mem = {{postgres__maintenance_work_mem}}"
+  notify: "restart postgresql"
+
+- name: Setup wal_buffers
+  lineinfile:
+    dest: "{{postgres__postgresql_conf}}"
+    regexp: "^#?\\s*wal_buffers "
+    line: "wal_buffers = {{postgres__wal_buffers}}"
+  notify: "restart postgresql"
+
+- name: Setup log_statement
+  lineinfile:
+    dest: "{{postgres__postgresql_conf}}"
+    regexp: "^#?\\s*log_statement "
+    line: "log_statement = '{{postgres__log_statement}}'"
+  notify: "restart postgresql"
+
+
 
 - name: ensure postgres is enabled at boot
   service: name=postgresql enabled={{postgres__enabled_on_startup}}

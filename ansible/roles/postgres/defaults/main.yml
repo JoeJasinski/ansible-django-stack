@@ -7,6 +7,7 @@ postgres__db_password: "{{ db_password }}"
 postgres__db_name: "{{ db_name }}"
 postgres__service: "postgresql"
 postgres__version: "9.3"
+postgres__postgresql_conf: '/etc/postgresql/{{postgres__version}}/main/postgresql.conf'
 postgres__data_directory: '/var/lib/postgresql/{{postgres__version}}/main'
 postgres__hba_file: '/etc/postgresql/{{postgres__version}}/main/pg_hba.conf'
 postgres__ident_file: '/etc/postgresql/{{postgres__version}}/main/pg_ident.conf'
@@ -19,3 +20,4 @@ postgres__work_mem: 1MB
 postgres__maintenance_work_mem: 16MB
 postgres__wal_buffers: -1
 postgres__effective_cache_size: 128MB
+postgres__log_statement: 'none'
