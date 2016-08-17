@@ -50,6 +50,8 @@ IMPORTANT - you will want to customize the following at minimum:
   - db_password (if running a database role)
   - git_rep (if installing a django codebase)
 
+Execute the following to run:
+
     ansible-playbook -vvvv -i ansible/inventory.ini \
         --extra-vars "@extra-vars.yml" \
         ansible/playbooks/playbook-all.yml
