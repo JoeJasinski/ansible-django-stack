@@ -71,11 +71,12 @@ Example: Command line
 
     ansible-playbook .... --extra-vars "install_django=True install_nginx=True"
 
-Example: Custom Playbook
+Example: Custom YML file
 
-       vars:
-        - install_django: True
-        - install_nginx: True
+    # extra-vars.yml
+    vars:
+      - install_django: True
+      - install_nginx: True
 
 ### Run in Vagrant
 
