@@ -8,8 +8,8 @@
     - role: unattended
     - role: timezone
     - role: ntp
-    - role: nginx
     - role: supervisor
+    - role: nginx
     - role: postfix
     - role: postgres
     - role: postgis
