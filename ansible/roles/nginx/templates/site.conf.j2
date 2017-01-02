@@ -18,6 +18,14 @@ server {
     # Turn on directory listing for static files
     #autoindex on;
 
+    client_body_in_file_only clean;
+    client_body_buffer_size {{ nginx__client_body_buffer_size }};
+
+    client_max_body_size {{ nginx__client_max_body_size }};
+
+    sendfile on;
+    send_timeout {{ nginx__send_timeout }};
+
     include {{ site_nginx_dir }}ssl.conf;
     include {{ site_nginx_dir }}locations.conf;
     include {{ site_nginx_dir }}django.conf;

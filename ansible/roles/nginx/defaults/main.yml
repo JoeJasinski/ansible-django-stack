@@ -6,6 +6,10 @@ nginx__install_facts: True
 nginx__http_port: 80
 nginx__https_port: 443
 
+nginx__client_max_body_size: 30M
+nginx__send_timeout: 300s
+nginx__client_body_buffer_size: 32K
+
 nginx__site_nginx_dir: "{{ site_nginx_dir }}"
 nginx__site_htdocs_dir: "{{ htdocs_dir }}"
 nginx__site_htdocs_media_dir: "{{ htdocs_media_dir }}"
