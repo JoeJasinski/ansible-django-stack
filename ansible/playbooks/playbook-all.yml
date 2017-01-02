@@ -4,10 +4,12 @@
   vars:
     - update_apt_cache: yes
   roles:
+    - role: base
     - role: unattended
     - role: timezone
     - role: ntp
     - role: nginx
+    - role: supervisor
     - role: postfix
     - role: postgres
     - role: postgis
