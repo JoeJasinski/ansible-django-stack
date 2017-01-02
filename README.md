@@ -74,9 +74,15 @@ Example: Command line
 Example: Custom YML file
 
     # extra-vars.yml
-    vars:
-      - install_django: True
-      - install_nginx: True
+    ---
+    site_name: "example"
+    db_password: change_me
+    git_repo: https://git.example.com/example/example.git
+    install_mysql: False
+    install_redis: False
+    python_version: python2.7
+
+
 
 ### Run in Vagrant
 
