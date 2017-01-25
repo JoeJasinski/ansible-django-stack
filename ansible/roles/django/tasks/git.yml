@@ -8,6 +8,7 @@
          accept_hostkey=yes
          force=yes
          recursive=no
+         key_file={{ git_ssh_private_key|default(omit) }}
       become: yes
       become_user: "{{ site_user }}"
 

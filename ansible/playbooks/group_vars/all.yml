@@ -24,10 +24,14 @@ db_name: "{{site_name}}"
 python_version: "python3.5" # "python2.7" or "python3.4" or "python3.5"
 
 # The git repo to checkout.
-git_repo: "git@git.jazstudios.com:jazstudios/joejasinski.git"
+git_repo: "https://github.com/chicagopython/chipy.org.git"
 
 # The branch to checkout
 git_branch: "master"
+
+# The (optional) ssh private key path needed for git checkout, located on host.
+# i.e. /home/myuser/.ssh/id_rsa
+git_ssh_private_key: null
 
 # The top directory under which all project files should reside
 top_dir: "/srv/"

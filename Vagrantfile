@@ -40,7 +40,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
              "install_postgis" => true,
              "install_postgres" => true,
              "install_mysql" => true,
-             "site_name" => "jazstudios",
+             "site_name" => "chipy",
+             "git_repo" => "https://github.com/chicagopython/chipy.org.git",
 
              # Ubuntu 16.04 settings
              "ansible_python_interpreter" => "/usr/bin/python2.7",
@@ -65,7 +66,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
              "install_postgis" => true,
              "install_postgres" => true,
              "install_mysql" => true,
-             "site_name" => "jazstudios",
+             "site_name" => "chipy",
+             "git_repo" => "https://github.com/chicagopython/chipy.org.git",
              "python_version" => "python2.7",
         }
         ansible.sudo = true
