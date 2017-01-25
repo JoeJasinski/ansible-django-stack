@@ -1,8 +1,9 @@
 ---
 
+# See playbooks/group_vars/all.yml for a list of common overridable variables.
 site_name: "example"
 db_password: 1234
 git_repo: https://git.example.com/example/example.git
 install_mysql: False
 install_redis: False
-python_version: python2.7
+python_version: python3.5

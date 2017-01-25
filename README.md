@@ -6,6 +6,29 @@ and features associated with such a stack.
 
 Requires Ansible 2.1+
 
+## Quickstart
+
+  1. Copy extra-vars.example.yml to extra-vars.yml
+  2. Customize extra-vars.yml with the variables needed for build.
+    - See playbooks/group_vars/all.yml for common variables to set.
+  3. Create or customize an inventory file such as inventory.ini.
+    - Set ssh connection parameters here.
+    - See the example inventory.ini
+  4. Choose a playbook to run. Options:
+    - To run everything, choose playbook-all.yml.
+       - Selectively disable roles, use the "ROLE FLAGS TO ENABLE/DISABLE"
+         variable flags from playbooks/group_vars/all.yml
+    - To run specific playbooks, one of the others (see
+      Playbooks available below).
+    - Create a custom playbook by modifying an existing one.
+  5. Run the playbook. Example:
+
+    ansible-playbook -vvvv -i ansible/inventory.ini \
+      --extra-vars "@extra-vars.yml" \
+      ansible/playbooks/playbook-all.yml
+
+
+
 ## Playbooks available
 
  - add-user.yml = playbook for adding a UNIX user
