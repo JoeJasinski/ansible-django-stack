@@ -11,3 +11,6 @@ users_deleted: []
 
 users__site_user: "{{ site_user }}"
 users__shared_group: "{{ shared_group }}"
+users__site_user_home: "{{ site_user_home }}"
+users__site_user_ssh_private_key: "{{ site_user_ssh_private_key }}"
+users__site_user_ssh_private_key_src: "{{ site_user_ssh_private_key_src }}"

@@ -42,6 +42,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
              "install_mysql" => true,
              "site_name" => "chipy",
              "git_repo" => "https://github.com/chicagopython/chipy.org.git",
+             #"site_user_ssh_private_key_src" => "/Users/jjasinski/.ssh/id_rsa",
 
              # Ubuntu 16.04 settings
              "ansible_python_interpreter" => "/usr/bin/python2.7",

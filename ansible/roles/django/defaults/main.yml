@@ -19,3 +19,5 @@ django__uwsgi_site_name: "{{site_name}}"
 django__uwsgi_processes: 3
 django__uwsgi_max_requests: 5000
 django__uwsgi_harakiri: 30
+django__site_user_ssh_private_key: "{{ site_user_home }}/.ssh/id_rsa"
+django__site_user_ssh_private_key_src: "{{ site_user_ssh_private_key_src }}"

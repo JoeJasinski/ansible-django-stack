@@ -1,6 +1,6 @@
 ---
 - block:
-    - name: Checkout git repo
+    - name: Checkout git repo (with ssh key)
       git: repo={{ django__git_repo }}
          version={{ django__git_branch }}
          dest={{ django__app_dir }}
@@ -8,9 +8,22 @@
          accept_hostkey=yes
          force=yes
          recursive=no
-         key_file={{ git_ssh_private_key|default(omit) }}
+         key_file={{ django__site_user_ssh_private_key }}
       become: yes
       become_user: "{{ site_user }}"
+      when: not(users__site_user_ssh_private_key_src | trim == '')
+
+    - name: Checkout git repo (without ssh key)
+      git: repo={{ django__git_repo }}
+         version={{ django__git_branch }}
+         dest={{ django__app_dir }}
+         remote={{ django__remote_name }}
+         accept_hostkey=yes
+         force=yes
+         recursive=no
+      become: yes
+      become_user: "{{ site_user }}"
+      when: users__site_user_ssh_private_key_src | trim == ''
 
     - file:
         path={{ django__app_dir }}
