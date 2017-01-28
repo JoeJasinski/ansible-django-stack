@@ -1,0 +1,18 @@
+---
+
+elasticsearch__major_version: "5.x"
+elasticsearch__version: "5.1.2"
+
+elasticsearch__apt_key: "https://artifacts.elastic.co/GPG-KEY-elasticsearch"
+elasticsearch__apt_url: "deb https://artifacts.elastic.co/packages/{{ elasticsearch__major_version }}/apt stable main"
+
+elasticsearch__jvm_options_file: "/etc/elasticsearch/jvm.options"
+elasticsearch__total_heap_size: "512m"  # install default is 2g
+elasticsearch__initial_heap_size: "512m"  # install default is 2g
+
+elasticsearch__elasticsearch_config: "/etc/elasticsearch/elasticsearch.yml"
+elasticsearch__elasticsearch_cluster_name: "{{ site_name }}"
+elasticsearch__elasticsearch_http_port: "{{ elasticsearch_http_port|default('9200') }}"
+elasticsearch__elasticsearch_network_host: "{{ elasticsearch_network_host|default('127.0.0.1') }}"
+elasticsearch__elasticsearch_log_dir: "{{ elasticsearch_log_dir|default('/var/log/elasticsearch') }}"
+elasticsearch__elasticsearch_data_dir: "{{ elasticsearch_data_dir|default('/var/lib/elasticsearch') }}"

@@ -1,0 +1,63 @@
+---
+
+- name: Load OS-Specific Tasks
+  include: "{{ item }}"
+  with_first_found:
+   - "os-{{ ansible_distribution|lower }}-{{ ansible_distribution_release }}.yml"
+   - "os-{{ ansible_distribution|lower }}.yml"
+   - "os-{{ ansible_os_family|lower }}.yml"
+   - "os-default.yml"
+
+
+- name: Configure Java Initial Heap Size
+  lineinfile:
+    dest: "{{elasticsearch__jvm_options_file}}"
+    regexp: "^-Xms"
+    line: "-Xms{{elasticsearch__initial_heap_size}}"
+  notify: "restart elasticsearch"
+
+- name: Configure Java Total Heap Size
+  lineinfile:
+    dest: "{{elasticsearch__jvm_options_file}}"
+    regexp: "^-Xmx"
+    line: "-Xmx{{elasticsearch__total_heap_size}}"
+  notify: "restart elasticsearch"
+
+
+- name: Configure Elasticsearch Cluster Name
+  lineinfile:
+    dest: "{{elasticsearch__elasticsearch_config}}"
+    regexp: "^[# ]*cluster.name:"
+    line: "cluster.name: {{ elasticsearch__elasticsearch_cluster_name }}"
+  notify: "restart elasticsearch"
+
+- name: Configure Elasticsearch Http Port (Default 9200)
+  lineinfile:
+    dest: "{{elasticsearch__elasticsearch_config}}"
+    regexp: "^[# ]*http.port:"
+    line: "http.port: {{ elasticsearch__elasticsearch_http_port }}"
+  notify: "restart elasticsearch"
+
+
+- name: Configure Elasticsearch Http network host (Default 192.168.0.1)
+  lineinfile:
+    dest: "{{elasticsearch__elasticsearch_config}}"
+    regexp: "^[# ]*network.host:"
+    line: "network.host: {{ elasticsearch__elasticsearch_network_host }}"
+  notify: "restart elasticsearch"
+
+
+- name: Configure Elasticsearch Log Dir (Default /var/log/elasticsearch)
+  lineinfile:
+    dest: "{{elasticsearch__elasticsearch_config}}"
+    regexp: "^[# ]*path.logs:"
+    line: "path.logs: {{ elasticsearch__elasticsearch_log_dir }}"
+  notify: "restart elasticsearch"
+
+
+- name: Configure Elasticsearch Data Dir (Default /var/lib/elasticsearch)
+  lineinfile:
+    dest: "{{elasticsearch__elasticsearch_config}}"
+    regexp: "^[# ]*path.data:"
+    line: "path.data: {{ elasticsearch__elasticsearch_data_dir }}"
+  notify: "restart elasticsearch"

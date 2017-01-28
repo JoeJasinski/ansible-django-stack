@@ -1,0 +1,8 @@
+---
+- debug: msg="Enabled {{ install_elasticsearch }}"
+
+- name: enable/disable elasticsearch
+  include: base.yml
+  when: install_elasticsearch|default(True)
+  tags:
+    - elasticsearch
