@@ -1,0 +1,3 @@
+---
+
+elasticsearch__use_oracle_jdk: "{{ use_oracle_jdk|default(False) }}"

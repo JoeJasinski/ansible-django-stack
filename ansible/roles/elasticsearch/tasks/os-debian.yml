@@ -1,0 +1,49 @@
+---
+
+- block:
+    - name: Adding Oracle Java repository
+      become: yes
+      apt_repository: repo="ppa:webupd8team/java" state=present update_cache={{ update_apt_cache }}
+
+    - name: Accept Java 8 License
+      become: yes
+      debconf: name='oracle-java8-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
+
+    - name: Install Java
+      apt: name={{ package_to_install }} update_cache={{ update_apt_cache }}
+      with_items:
+        - oracle-java8-installer
+        - ca-certificates
+        - oracle-java8-set-default
+      loop_control:
+        loop_var: package_to_install
+      tags:
+        - packages
+        - debian-base
+  when: elasticsearch__use_oracle_jdk
+
+
+- name: Install Java (openjdk JRE)
+  apt: name={{ package_to_install }} update_cache={{ update_apt_cache }}
+  with_items:
+    - openjdk-8-jre
+  loop_control:
+    loop_var: package_to_install
+  tags:
+    - packages
+    - debian-base
+  when: not elasticsearch__use_oracle_jdk
+
+
+
+# - name: elastic-install | Check if we have elastic with same version installed
+#   stat:
+#     path="/usr/share/elasticsearch/lib/elasticsearch-{{ elasticsearch_version }}.jar"
+#   register: installed_version
+#
+# - name: elastic-install | Download Elasticsearch deb
+#   get_url:
+#     url={{ elasticsearch_download_url }}/elasticsearch-{{ elasticsearch_version }}.deb
+#     dest=/tmp/elasticsearch-{{ elasticsearch_version }}.deb
+#     mode=0440
+#   when: not installed_version.stat.exists
