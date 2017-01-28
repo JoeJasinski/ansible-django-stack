@@ -7,6 +7,19 @@ git_repo: https://git.example.com/example/example.git
 # If the git_repo is private, specify the path to the ssh private key needed
 # to download that repo. This would be the path to the key on your local machine.
 #site_user_ssh_private_key_src: /Users/jjasinski/.ssh/id_rsa
+
+python_version: python3.5
+
+# Customize what services to install
+install_ntp: True
+install_unattended_updates: True
+install_timezone: True
+install_django: True
+install_nginx: True
+install_elasticsearch: False
+install_postgis: False
+install_postgres: True
+install_postfix: True
 install_mysql: False
 install_redis: False
-python_version: python3.5
+install_nrpe: True

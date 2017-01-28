@@ -29,7 +29,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       box.vm.network "forwarded_port", guest: 80, host: 8080
       box.vm.network "forwarded_port", guest: 443, host: 4443
       box.vm.provision :ansible do |ansible|
-        ansible.playbook = "ansible/playbooks/playbook-all.yml"
+        ansible.playbook = "ansible/playbooks/playbook-elasticsearch.yml"
+        #ansible.playbook = "ansible/playbooks/playbook-install-python2.yml"
         #ansible.playbook = "ansible/playbooks/add-user.yml"
         ansible.verbose = "vvvv"
         ansible.extra_vars = {
@@ -42,11 +43,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
              "install_mysql" => true,
              "site_name" => "chipy",
              "git_repo" => "https://github.com/chicagopython/chipy.org.git",
+             "python_version" => "python3.5",
              #"site_user_ssh_private_key_src" => "/Users/jjasinski/.ssh/id_rsa",
 
-             # Ubuntu 16.04 settings
+             # Ubuntu 16.04 settings (DONT CHANGE - Needed for Ansible)
              "ansible_python_interpreter" => "/usr/bin/python2.7",
-             "python_version" => "python3.5",
         }
         ansible.sudo = true
         ansible.limit = "all"
