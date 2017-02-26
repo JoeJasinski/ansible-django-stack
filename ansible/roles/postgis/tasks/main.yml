@@ -1,7 +1,7 @@
 ---
 - debug: msg="Enabled {{ install_postgis }}"
 
-- name: enable/disable postgis
+- name: enable/disable postgis Ansible install
   include: base.yml
   when: install_postgis|default(True)
   tags:

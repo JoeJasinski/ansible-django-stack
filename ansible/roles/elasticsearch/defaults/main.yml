@@ -1,7 +1,7 @@
 ---
 
 elasticsearch__major_version: "5.x"
-elasticsearch__version: "5.1.2"
+elasticsearch__version: "5.2.1"
 
 elasticsearch__apt_key: "https://artifacts.elastic.co/GPG-KEY-elasticsearch"
 elasticsearch__apt_url: "deb https://artifacts.elastic.co/packages/{{ elasticsearch__major_version }}/apt stable main"
