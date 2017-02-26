@@ -35,6 +35,7 @@ Requires Ansible 2.1+
  - playbook-all.yml = Run all roles to build a single server with everything
  - playbook-django.yml = Run only a django project install roles
  - playbook-elasticsearch.yml - Run only an elasticsearch install.
+ - playbook-kibana.yml - Run only an kibana install.
  - playbook-install-python2.yml = Run to install Python2 on systems that do not
      have it preinstalled (i.e. Ubuntu 16.04)
  - playbook-mysql.yml = Run only the mysql install roles

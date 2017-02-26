@@ -1,0 +1,13 @@
+---
+
+kibana__major_version: "5.x"
+
+kibana__apt_key: "https://artifacts.elastic.co/GPG-KEY-elasticsearch"
+kibana__apt_url: "deb https://artifacts.elastic.co/packages/{{ kibana__major_version }}/apt stable main"
+
+kibana__kibana_config: "/etc/kibana/kibana.yml"
+kibana__kibana_server_name: "{{ kibana_server_name|default('site_name') }}"
+kibana__kibana_http_port: "{{ kibana_http_port|default('5601') }}"
+kibana__kibana_host: "{{ kibana_host|default('localhost') }}"
+kibana__kibana_elasticsearch_url: "{{ kibana_elasticsearch_url|default('http://localhost:9200') }}"
+kibana__kibana_data_dir: "{{ kibana_data_dir|default('/var/lib/kibana') }}"

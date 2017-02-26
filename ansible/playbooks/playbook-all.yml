@@ -16,5 +16,6 @@
     - role: mysql
     - role: redis
     - role: elasticsearch
+    - role: kibana
     - role: django
     - role: nrpe

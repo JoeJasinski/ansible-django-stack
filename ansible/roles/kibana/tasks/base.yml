@@ -1,0 +1,49 @@
+---
+
+- name: Load OS-Specific Tasks
+  include: "{{ item }}"
+  with_first_found:
+   - "os-{{ ansible_distribution|lower }}-{{ ansible_distribution_release }}.yml"
+   - "os-{{ ansible_distribution|lower }}.yml"
+   - "os-{{ ansible_os_family|lower }}.yml"
+   - "os-default.yml"
+
+
+- name: Configure Kibana Server Name (Default Kibana)
+  lineinfile:
+    dest: "{{kibana__kibana_config}}"
+    regexp: "^[# ]*server.name: "
+    line: 'server.name: "{{ kibana__kibana_server_name }}"'
+  notify: "restart kibana"
+
+
+- name: Configure Kibana Http Port (Default 5601)
+  lineinfile:
+    dest: "{{kibana__kibana_config}}"
+    regexp: "^[# ]*server.port: "
+    line: "server.port: {{ kibana__kibana_http_port }}"
+  notify: "restart kibana"
+
+
+- name: Configure Kibana Http Host (Default localhost)
+  lineinfile:
+    dest: "{{kibana__kibana_config}}"
+    regexp: "^[# ]*server.host: "
+    line: 'server.host: "{{ kibana__kibana_host }}"'
+  notify: "restart kibana"
+
+
+- name: Configure Kibana Elasticsearch url to connect to (Default http://localhost:9200)
+  lineinfile:
+    dest: "{{kibana__kibana_config}}"
+    regexp: "^[# ]*elasticsearch.url: "
+    line: 'elasticsearch.url: "{{ kibana__kibana_elasticsearch_url }}"'
+  notify: "restart kibana"
+
+
+- name: Configure Kibana Data Dir (Default /var/lib/kibana)
+  lineinfile:
+    dest: "{{kibana__kibana_config}}"
+    regexp: "^[# ]*path.data:"
+    line: 'path.data: "{{ kibana__kibana_data_dir }}"'
+  notify: "restart kibana"

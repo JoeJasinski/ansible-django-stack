@@ -1,0 +1,12 @@
+---
+- debug: msg="Enabled {{ install_kibana }}"
+
+- name: enable/disable kibana Ansible install
+  include: base.yml
+  when: install_kibana|default(True)
+  tags:
+    - kibana
+
+- service:
+    name: kibana
+    enabled: yes
