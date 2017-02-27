@@ -28,8 +28,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       box.vm.box = "ubuntu/xenial64"
       box.vm.network "forwarded_port", guest: 80, host: 8080
       box.vm.network "forwarded_port", guest: 443, host: 4443
+      box.vm.network "forwarded_port", guest: 5601, host: 55601
       box.vm.provision :ansible do |ansible|
-        ansible.playbook = "ansible/playbooks/playbook-kibana.yml"
+        ansible.playbook = "ansible/playbooks/playbook-elasticstack.yml"
         #ansible.playbook = "ansible/playbooks/playbook-install-python2.yml"
         #ansible.playbook = "ansible/playbooks/add-user.yml"
         ansible.verbose = "vvvv"
@@ -44,6 +45,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
              "site_name" => "chipy",
              "git_repo" => "https://github.com/chicagopython/chipy.org.git",
              "python_version" => "python3.5",
+             "kibana_host" => "0.0.0.0",
              #"site_user_ssh_private_key_src" => "/Users/jjasinski/.ssh/id_rsa",
 
              # Ubuntu 16.04 settings (DONT CHANGE - Needed for Ansible)

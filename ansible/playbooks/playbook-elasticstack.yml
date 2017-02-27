@@ -1,0 +1,11 @@
+---
+- name: Base states
+  hosts: all
+  vars:
+    - update_apt_cache: yes
+    - install_elasticsearch: True
+    - install_kibana: True
+  roles:
+    - role: elasticsearch
+    - role: kibana
+    - role: logstash

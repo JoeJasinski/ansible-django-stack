@@ -1,0 +1,14 @@
+---
+
+logstash__major_version: "5.x"
+
+logstash__apt_key: "https://artifacts.elastic.co/GPG-KEY-elasticsearch"
+logstash__apt_url: "deb https://artifacts.elastic.co/packages/{{ kibana__major_version }}/apt stable main"
+
+logstash__logstash_config: "/etc/logstash/logstash.yml"
+logstash__logstash_config_dir: "{{ logstash_config_dir|default('/etc/logstash/conf.d') }}"
+# kibana__kibana_server_name: "{{ kibana_server_name|default('site_name') }}"
+# logstash__http_port: "{{ kibana_http_port|default('5601') }}"
+# kibana__kibana_host: "{{ kibana_host|default('localhost') }}"
+logstash__logstash_elasticsearch_url: "{{ logstash_elasticsearch_url|default('http://localhost:9200') }}"
+logstash__logstash_data_dir: "{{ logstash_data_dir|default('/var/lib/logstash') }}"

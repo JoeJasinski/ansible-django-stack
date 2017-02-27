@@ -72,6 +72,7 @@ install_django: True
 install_nginx: True
 install_elasticsearch: True
 install_kibana: True
+install_logstash: True
 install_postgis: True
 install_postgres: True
 install_postfix: True

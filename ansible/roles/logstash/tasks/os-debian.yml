@@ -1,0 +1,25 @@
+---
+
+- name: Install Java (openjdk JRE)
+  apt: name={{ package_to_install }} update_cache={{ update_apt_cache }}
+  with_items:
+    - default-jre
+  loop_control:
+    loop_var: package_to_install
+  tags:
+    - packages
+    - debian-base
+
+- name: Add logstash repository key
+  apt_key: url="{{ logstash__apt_key }}" state=present
+  when: logstash__apt_key
+
+- name: Add logstash repository
+  apt_repository: repo={{ repo_to_install.repo }} state={{ repo_to_install.state}}
+  with_items:
+    - { repo: "{{ logstash__apt_url }}", state: "present" }
+  loop_control:
+    loop_var: repo_to_install
+
+- name: Install logstash
+  apt: name=logstash state=present

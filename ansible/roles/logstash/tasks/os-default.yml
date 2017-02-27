@@ -1,0 +1,2 @@
+---
+- debug: msg="This role does not have OS-specific tasks for this OS - {{ ansible_distribution }} {{ ansible_distribution_release }}"

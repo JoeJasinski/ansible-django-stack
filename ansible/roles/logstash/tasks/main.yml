@@ -1,0 +1,12 @@
+---
+- debug: msg="Enabled {{ install_logstash }}"
+
+- name: enable/disable logstash Ansible install
+  include: base.yml
+  when: install_logstash|default(True)
+  tags:
+    - logstash
+
+- service:
+    name: logstash
+    enabled: yes

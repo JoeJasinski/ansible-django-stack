@@ -3,4 +3,5 @@ log/
 *.retry
 *.swp
 *.log
+extra-vars.yml
 ansible/inventory*.ini
