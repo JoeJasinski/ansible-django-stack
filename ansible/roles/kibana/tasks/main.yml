@@ -7,6 +7,3 @@
   tags:
     - kibana
 
-- service:
-    name: kibana
-    enabled: yes

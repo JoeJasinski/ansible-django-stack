@@ -22,3 +22,7 @@
     regexp: "^[# ]*path.config:"
     line: 'path.config: "{{ logstash__logstash_config_dir }}"'
   notify: "restart logstash"
+
+- service:
+    name: logstash
+    enabled: yes

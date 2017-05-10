@@ -47,3 +47,7 @@
     regexp: "^[# ]*path.data:"
     line: 'path.data: "{{ kibana__kibana_data_dir }}"'
   notify: "restart kibana"
+
+- service:
+    name: kibana
+    enabled: yes

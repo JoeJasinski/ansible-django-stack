@@ -7,6 +7,3 @@
   tags:
     - elasticsearch
 
-- service:
-    name: elasticsearch
-    enabled: yes
