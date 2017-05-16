@@ -3,7 +3,7 @@ project = {{django__uwsgi_site_name}}
 base_dir = {{ django__site_dir }}
 
 socket = %(base_dir)/run/django.socket
-chdir = {{django__proj_dir}}
+chdir = {{django__proj_dir}}/{{django__site_name}}
 ;http-socket = localhost:9000
 processes = {{django__uwsgi_processes}}
 pidfile = %(base_dir)/run/django.pid
