@@ -37,9 +37,11 @@
     - htop
     - git
     - git-core
+    - tig
     - mercurial
     - psmisc # pstree
     - lsof
+    - iptables-persistent
   loop_control:
     loop_var: package_to_install
 
