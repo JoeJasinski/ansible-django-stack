@@ -37,7 +37,6 @@ server {
     sendfile on;
     send_timeout {{ nginx__send_timeout }};
 
-    include {{ site_nginx_dir }}ssl.conf;
     include {{ site_nginx_dir }}locations.conf;
     include {{ site_nginx_dir }}django.conf;
 }

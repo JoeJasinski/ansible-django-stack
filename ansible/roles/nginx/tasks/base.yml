@@ -96,12 +96,6 @@
     dest={{ nginx__site_nginx_dir }}django.conf
     mode=0664
 
-- name: Copy the SSL config file
-  template:
-    src=ssl.conf.j2
-    dest={{ nginx__site_nginx_dir }}ssl.conf
-    mode=0664
-
 - name: Remove old default configuration
   file:
     path={{ nginx__conf_dir }}sites-available/default
