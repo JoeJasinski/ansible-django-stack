@@ -58,14 +58,14 @@
 - name: Setup listen_addresses
   lineinfile:
     dest: "{{postgres__postgresql_conf}}"
-    regexp: "^#?\\slisten_addresses "
+    regexp: "^#?\\s*listen_addresses "
     line: "listen_addresses = '{{postgres__listen_addresses}}'"
   notify: "restart postgresql"
 
 - name: Setup postgres port
   lineinfile:
     dest: "{{postgres__postgresql_conf}}"
-    regexp: "^#?\\sport "
+    regexp: "^#?\\s*port "
     line: "port = {{postgres__port}}"
   notify: "restart postgresql"
 
