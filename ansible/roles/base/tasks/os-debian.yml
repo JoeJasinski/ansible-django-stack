@@ -1,7 +1,7 @@
 ---
 
 - name: Install need system libraries and tools
-  apt: name={{ package_to_install }} update_cache={{ update_apt_cache }} state=latest
+  apt: name={{ item }} update_cache={{ update_apt_cache }} state=latest
   with_items:
     - bash
     - build-essential
@@ -18,19 +18,15 @@
     - zlib1g-dev
     - libpq-dev
     - libsqlite3-dev
-  loop_control:
-      loop_var: package_to_install
 
 - name: Install jpeg8
-  apt: name={{ package_to_install }} update_cache={{ update_apt_cache }} force=yes state=installed
+  apt: name={{ item }} update_cache={{ update_apt_cache }} force=yes state=installed
   with_items:
     - libjpeg-turbo8-dev
-  loop_control:
-    loop_var: package_to_install
   ignore_errors: yes
 
 - name: Install base packages
-  apt: name={{ package_to_install }} update_cache={{ update_apt_cache }} force=yes state=installed
+  apt: name={{ item }} update_cache={{ update_apt_cache }} force=yes state=installed
   with_items:
     - curl
     - psmisc
@@ -42,11 +38,9 @@
     - psmisc # pstree
     - lsof
     - iptables-persistent
-  loop_control:
-    loop_var: package_to_install
 
 - name: Install Python System-level packages
-  apt: name={{ package_to_install }} update_cache={{ update_apt_cache }} force=yes state=installed
+  apt: name={{ item }} update_cache={{ update_apt_cache }} force=yes state=installed
   with_items:
     - python-dev
     - python3-dev
@@ -54,5 +48,3 @@
     - python-pycurl
     - python-virtualenv
     - python-setuptools
-  loop_control:
-    loop_var: package_to_install
