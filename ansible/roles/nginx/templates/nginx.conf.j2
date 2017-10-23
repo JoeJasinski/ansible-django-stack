@@ -6,6 +6,8 @@ pid /run/nginx.pid;
 events {
 	worker_connections {{nginx__worker_connections}};
 	# multi_accept on;
+        use epoll;
+        multi_accept on;
 }
 
 http {
