@@ -5,4 +5,5 @@
     - update_apt_cache: yes
     - install_redis: True
   roles:
+    - role: base
     - role: redis
