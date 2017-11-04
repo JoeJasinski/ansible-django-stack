@@ -32,12 +32,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         ansible.playbook = "ansible/playbooks/playbook-all.yml"
         #ansible.playbook = "ansible/playbooks/playbook-install-python2.yml"
         #ansible.playbook = "ansible/playbooks/add-user.yml"
+        #ansible.playbook = 'ansible/playbooks/playbook-docker.yml'
         ansible.verbose = "vvvv"
         ansible.extra_vars = {
         #    "user_to_add" => "testb"
              "install_nginx" => true,
              "install_ntp" => true,
              "install_unattended_updates" => true,
+             "install_docker" => true,
              "install_postgis" => true,
              "install_postgres" => true,
              "install_mysql" => true,
@@ -65,6 +67,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
              "install_nginx" => true,
              "install_ntp" => true,
              "install_unattended_updates" => true,
+             "install_docker" => true,
              "install_postgis" => true,
              "install_postgres" => true,
              "install_mysql" => true,

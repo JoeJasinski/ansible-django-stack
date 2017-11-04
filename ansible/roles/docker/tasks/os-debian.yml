@@ -1,0 +1,38 @@
+---
+
+- name: Add deps
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+
+# Support for Python >2.7.9
+# - name: Adding Docker repository key
+#   apt_key: url="https://download.docker.com/linux/ubuntu/gpg" state=present
+
+# Support for Python <2.7.9
+- name: Adding Docker repository key
+  become: yes
+  shell: curl -s https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+
+- name: Adding Docker repository
+  apt_repository:
+      repo: "{{ docker__apt_repository}}"
+      state: present
+      update_cache: yes
+
+- name: Needed for docker compose.
+  apt: name={{ package_to_install }} update_cache={{ update_apt_cache }} state=latest
+  with_items:
+    - python-pip
+  loop_control:
+    loop_var: package_to_install
+
+- name: Ensure Docker packages are installed.
+  apt: name={{ package_to_install }} update_cache={{ update_apt_cache }} state=latest
+  with_items:
+    - docker-ce
+  loop_control:
+    loop_var: package_to_install

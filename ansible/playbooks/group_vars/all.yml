@@ -69,6 +69,7 @@ install_unattended_updates: True
 install_timezone: True
 
 install_django: True
+install_docker: True
 install_nginx: True
 install_elasticsearch: True
 install_postgis: True

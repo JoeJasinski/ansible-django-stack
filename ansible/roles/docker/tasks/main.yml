@@ -1,0 +1,8 @@
+---
+- debug: msg="Enabled {{ install_docker }}"
+
+- name: enable/disable docker install
+  include: base.yml
+  when: install_docker|default(True)
+  tags:
+    - docker

@@ -15,6 +15,7 @@
     - role: postgis
     - role: mysql
     - role: redis
-    - role: elasticsearch
+    #- role: elasticsearch
     - role: django
+    - role: docker
     - role: nrpe
