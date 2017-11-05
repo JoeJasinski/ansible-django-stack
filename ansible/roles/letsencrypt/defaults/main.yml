@@ -1,0 +1,10 @@
+---
+
+letsencrypt__apt_repository: "ppa:certbot/certbot"
+letsencrypt__site_nginx_dir: "{{ site_nginx_dir }}"
+letsencrypt__htdocs_dir: "{{ htdocs_dir }}"
+letsencrypt__site_user: "{{ site_user }}"
+letsencrypt__shared_group: "{{ shared_group }}"
+letsencrypt__site_htdocs_letsencrypt_dir: "{{ letsencrypt__htdocs_dir }}letsencrypt/"
+letsencrypt__letsencrypt_nginx_config: "{{ letsencrypt__site_nginx_dir }}letsencrypt.conf"
+letsencrypt__locations_nginx_config: "{{ letsencrypt__site_nginx_dir }}locations.conf"

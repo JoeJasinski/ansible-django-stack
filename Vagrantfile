@@ -37,6 +37,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         ansible.extra_vars = {
         #    "user_to_add" => "testb"
              "install_nginx" => true,
+             "install_letsencrypt" => true,
              "install_ntp" => true,
              "install_unattended_updates" => true,
              "install_docker" => true,
@@ -50,6 +51,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
              # Ubuntu 16.04 settings (DONT CHANGE - Needed for Ansible)
              "ansible_python_interpreter" => "/usr/bin/python2.7",
+             #"ansible_python_interpreter" => "/usr/bin/python3",
         }
         ansible.sudo = true
         ansible.limit = "all"
@@ -65,6 +67,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         ansible.verbose = "vvvv"
         ansible.extra_vars = {
              "install_nginx" => true,
+             "install_letsencrypt" => true,
              "install_ntp" => true,
              "install_unattended_updates" => true,
              "install_docker" => true,

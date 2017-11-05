@@ -10,6 +10,7 @@
     - role: ntp
     - role: supervisor
     - role: nginx
+    - role: letsencrypt
     - role: postfix
     - role: postgres
     - role: postgis

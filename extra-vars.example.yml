@@ -17,6 +17,7 @@ install_timezone: True
 install_django: True
 install_docker: False
 install_nginx: True
+install_letsencrypt: False
 install_elasticsearch: False
 install_postgis: False
 install_postgres: True
