@@ -39,6 +39,7 @@ Requires Ansible 2.1+
  - playbook-install-python2.yml = Run to install Python2 on systems that do not
      have it preinstalled (i.e. Ubuntu 16.04)
  - playbook-mysql.yml = Run only the mysql install roles
+ - playbook-letsencrypt.yml = Install letsencrypt; depends on Nginx role. Manual execution of certbot is still needed.
  - playbook-nginx.yml = Run only the nginx install roles
  - playbook-nrpe.yml = Run only the nrpe install roles
  - playbook-postgis.yml = Run the postgres and postgis install roles
