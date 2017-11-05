@@ -1,5 +1,11 @@
 ---
 
+# This will toggel between using supervisord to manage
+# the Nginx process, vs using the OS default for doing so
+# (i.e. the "service" command)
+nginx__manage_with_supervisord: False
+nginx__daemon_mode: "{{ 'off' if nginx__manage_with_supervisord else 'on' }}"
+
 nginx__ubuntu_nginx_apt_ppa: "nginx/development"
 
 nginx__install_facts: True

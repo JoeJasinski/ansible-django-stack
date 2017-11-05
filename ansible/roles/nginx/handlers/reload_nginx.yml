@@ -1,0 +1,10 @@
+---
+
+- name: Use Supervisor to reload nginx
+  service: name=supervisor state=reloaded
+  when: nginx__manage_with_supervisord
+
+
+- name: Use System service to reload nginx
+  service: name=nginx state=reloaded
+  when: not nginx__manage_with_supervisord

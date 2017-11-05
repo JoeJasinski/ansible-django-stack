@@ -11,9 +11,6 @@
    - "os-{{ ansible_os_family|lower }}.yml"
    - "os-default.yml"
 
-- name: "disable Start Nginx on boot"
-  service: name=nginx enabled=false
-
 - name: Create SSL directory
   file:
     path={{ nginx__ssl_dir }}
@@ -90,12 +87,6 @@
     dest={{ nginx__site_nginx_dir }}locations.conf
     mode=0664
 
-- name: Copy the nginx reverse proxy to django file
-  template:
-    src=django.conf.j2
-    dest={{ nginx__site_nginx_dir }}django.conf
-    mode=0664
-
 - name: Remove old default configuration
   file:
     path={{ nginx__conf_dir }}sites-available/default
@@ -112,6 +103,12 @@
     src={{ nginx__conf_dir }}sites-available/default
     dest={{ nginx__conf_dir }}sites-enabled/default
     state=link
+  notify: restart nginx
+
+
+- name: "disable Start Nginx on boot"
+  service: name=nginx enabled=false
+  when: nginx__manage_with_supervisord
 
 - name: Copy the supervisor config file for nginx
   template:
@@ -120,3 +117,4 @@
     owner=root
     group=root
   notify: restart nginx
+  when: nginx__manage_with_supervisord

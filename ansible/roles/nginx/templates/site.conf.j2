@@ -38,5 +38,41 @@ server {
     send_timeout {{ nginx__send_timeout }};
 
     include {{ site_nginx_dir }}locations.conf;
-    include {{ site_nginx_dir }}django.conf;
+
+    error_page 502 @502;
+    location @502 {
+      root   {{ htdocs_dir }};
+      try_files /50x.html =502;
+    }
+
+    location / {
+        try_files $uri @proxy_to_app;
+    }
+
+    location @proxy_to_app {
+
+      {% if nginx__application_runner == "uwsgi" %}
+        uwsgi_param Host $http_host;
+        uwsgi_param X-Forwarded-For $proxy_add_x_forwarded_for;
+        uwsgi_param X-Real-IP $remote_addr;
+        uwsgi_param X-Scheme $scheme;
+
+        include uwsgi_params;
+        uwsgi_pass app_server;
+      {% else %}
+        proxy_redirect off;
+        proxy_pass_header Server;
+
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Scheme $scheme;
+
+        proxy_connect_timeout 10;
+        proxy_read_timeout 10;
+        proxy_pass http://app_server;
+      {% endif %}
+
+    }
+
 }

@@ -1,6 +1,6 @@
 ---
 - name: restart nginx
-  service: name=supervisor state=restarted 
+  include: restart_nginx.yml
 
 - name: reload nginx
-  service: name=supervisor state=reloaded
+  include: reload_nginx.yml
