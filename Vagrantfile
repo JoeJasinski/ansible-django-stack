@@ -50,8 +50,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
              #"site_user_ssh_private_key_src" => "/Users/jjasinski/.ssh/id_rsa",
 
              # Ubuntu 16.04 settings (DONT CHANGE - Needed for Ansible)
-             "ansible_python_interpreter" => "/usr/bin/python2.7",
-             #"ansible_python_interpreter" => "/usr/bin/python3",
+             #"ansible_python_interpreter" => "/usr/bin/python2.7",
+             "ansible_python_interpreter" => "/usr/bin/python3",  # ansible 2.4+ with python3 support
         }
         ansible.sudo = true
         ansible.limit = "all"

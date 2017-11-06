@@ -8,7 +8,9 @@ git_repo: https://git.example.com/example/example.git
 # to download that repo. This would be the path to the key on your local machine.
 #site_user_ssh_private_key_src: /Users/jjasinski/.ssh/id_rsa
 
-python_version: python3.5
+# Indicates what version of python to setup the app with. This must be a
+# version that's available on the system.
+python_version: python3.5   # or python2.7
 
 # Customize what services to install
 install_ntp: True
@@ -25,3 +27,8 @@ install_postfix: True
 install_mysql: False
 install_redis: False
 install_nrpe: True
+
+
+# Ansible 2.4 now has good Python 3 support. Uncomment this to provision
+# using the Python 3 interprator.  Note, this is different than the "python_version"
+#ansible_python_interpreter: /usr/bin/python3

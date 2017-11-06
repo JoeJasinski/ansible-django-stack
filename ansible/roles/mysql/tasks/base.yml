@@ -18,7 +18,7 @@
   register: mysql_service_configuration
 
 - name: Install the Python MySQLB module
-  pip: name=MySQL-python
+  pip: name=mysqlclient
 
 - name: Create MySQL App database
   mysql_db: name={{mysql__db_name}} state=present

@@ -6,6 +6,7 @@
     - postgresql
     - postgresql-contrib
     - python-psycopg2
+    - python3-psycopg2
   loop_control:
     loop_var: package_to_install
   tags:

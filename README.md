@@ -4,7 +4,7 @@ The goal of this project is to  create a configurable Ansible project
 that allows provisioning a Django web stack with many of the common services
 and features associated with such a stack.
 
-Requires Ansible 2.1+
+Requires Ansible 2.4+
 
 ## Quickstart
 
