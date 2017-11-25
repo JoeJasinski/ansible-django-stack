@@ -45,13 +45,16 @@
   loop_control:
     loop_var: package_to_install
 
-- name: IInstall Python System-level packages
+- name: Install Python System-level packages
   yum: name={{ package_to_install }} state=latest
   with_items:
     - python27
     - python27-python-devel
+    - python27-python-virtualenv
     - python-pip
-    - python33
-    - python-virtualenv
+    - python34
+    - python34-devel
+    - python34-virtualenv
+    - python34-pip
   loop_control:
     loop_var: package_to_install
