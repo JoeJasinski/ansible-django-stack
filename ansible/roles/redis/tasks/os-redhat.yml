@@ -1,0 +1,12 @@
+---
+
+- name: Install Redis
+  yum: name={{ package_to_install }} state=latest
+  with_items:
+    - redis
+    - hiredis
+    - hiredis-devel
+  loop_control:
+    loop_var: package_to_install
+  tags:
+    - packages
