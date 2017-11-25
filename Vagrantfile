@@ -44,6 +44,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
              "install_postgis" => true,
              "install_postgres" => true,
              "install_mysql" => true,
+             "install_redis" => true,
              "site_name" => "chipy",
              "git_repo" => "https://github.com/chicagopython/chipy.org.git",
              "python_version" => "python3.5",
@@ -74,6 +75,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
              "install_postgis" => true,
              "install_postgres" => true,
              "install_mysql" => true,
+             "install_redis" => true,
              "site_name" => "chipy",
              "git_repo" => "https://github.com/chicagopython/chipy.org.git",
              "python_version" => "python2.7",
@@ -97,6 +99,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
              "install_postgis" => true,
              "install_postgres" => true,
              "install_mysql" => true,
+             "install_redis" => true,
              "site_name" => "jazstudios",
              "python_version" => "python2.7",
         }
