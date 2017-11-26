@@ -6,3 +6,6 @@
     - supervisor
   loop_control:
     loop_var: package_to_install
+
+- name: install supervisor systemd unit file
+  template: src=systemd-supervisor.service.j2 dest=/etc/systemd/system/supervisor.service
