@@ -45,6 +45,8 @@ Requires Ansible 2.4+
  - playbook-postgis.yml = Run the postgres and postgis install roles
  - playbook-postgres.yml = Run only the postgres install roles
  - playbook-redis.yml = Run only the Redis server install roles
+ - playbook-timezone.yml = Run the timezone role
+ - playbook-unattended.yml = Run only the unattended update role
 
 ## Running
 
