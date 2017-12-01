@@ -4,3 +4,4 @@ log/
 *.swp
 *.log
 ansible/inventory*.ini
+extra-vars.yml
