@@ -2,7 +2,7 @@
 
 # See playbooks/group_vars/all.yml for a list of common overridable variables.
 site_name: "example"
-db_password: 1234
+db_password: change_me
 git_repo: https://git.example.com/example/example.git
 # If the git_repo is private, specify the path to the ssh private key needed
 # to download that repo. This would be the path to the key on your local machine.
