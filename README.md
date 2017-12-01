@@ -13,7 +13,7 @@ Requires Ansible 2.4+
     - See playbooks/group_vars/all.yml for common variables to set.
   3. Create or customize an inventory file such as inventory.ini.
     - Set ssh connection parameters here.
-    - See the example inventory.ini
+    - See the example ansible/inventory.ini
   4. Choose a playbook to run. Options:
     - To run everything, choose playbook-all.yml.
        - Selectively disable roles, use the "ROLE FLAGS TO ENABLE/DISABLE"
@@ -26,7 +26,6 @@ Requires Ansible 2.4+
     ansible-playbook -vvvv -i ansible/inventory.ini \
       --extra-vars "@extra-vars.yml" \
       ansible/playbooks/playbook-all.yml
-
 
 
 ## Playbooks available
