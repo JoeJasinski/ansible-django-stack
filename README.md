@@ -30,22 +30,72 @@ Requires Ansible 2.4+
 
 ## Playbooks available
 
+For a full provision, mostly use the playbook-all.yml (and customize the
+ROLL FLAGS - see below).
+
  - add-user.yml = playbook for adding a UNIX user
  - playbook-all.yml = Run all roles to build a single server with everything
- - playbook-django.yml = Run only a django project install roles
+ - playbook-django.yml = Run only a Django project install roles
  - playbook-docker.yml = Run only the role to install Docker and Docker Compose
- - playbook-elasticsearch.yml - Run only an elasticsearch install.
+ - playbook-elasticsearch.yml - Run only an Elasticsearch install.
  - playbook-install-python2.yml = Run to install Python2 on systems that do not
      have it preinstalled (i.e. Ubuntu 16.04)
  - playbook-mysql.yml = Run only the mysql install roles
- - playbook-letsencrypt.yml = Install letsencrypt; depends on Nginx role. Manual execution of certbot is still needed.
- - playbook-nginx.yml = Run only the nginx install roles
- - playbook-nrpe.yml = Run only the nrpe install roles
- - playbook-postgis.yml = Run the postgres and postgis install roles
- - playbook-postgres.yml = Run only the postgres install roles
+ - playbook-letsencrypt.yml = Install Letsencrypt; depends on Nginx role.
+     Manual execution of Certbot is still needed.
+ - playbook-nginx.yml = Run only the Nginx install roles
+ - playbook-nrpe.yml = Run only the NRPE install roles
+ - playbook-postgis.yml = Run the Postgres and PostGIS install roles
+ - playbook-postgres.yml = Run only the Postgres install roles
  - playbook-redis.yml = Run only the Redis server install roles
  - playbook-timezone.yml = Run the timezone role
  - playbook-unattended.yml = Run only the unattended update role
+
+
+## Run Configuration
+
+This project defines many of the configurable variables inside of the
+ansible/playbooks/group_vars.yml file. You need to override some of those
+variables when provisioning by setting them in an extra-vars.yml. Copy the
+extra-vars.example.yml to use as a starting point for customization.
+
+    cp extra-vars.example.yml extra-vars.yml
+
+IMPORTANT: Customize the following at minimum, but likely more is needed:
+  - site_name
+  - db_password (if running a database role)
+  - git_rep (if installing a Django codebase)
+
+IMPORTANT: If you want to run a specific roll, in ADDITION to being included
+in the roles section of a playbook, the roll must ALSO be enabled via setting
+a "ROLE FLAG" variable `install_foo: True` in extra-vars.yml, where foo is the
+name of the roll.  For example, `install_mysql: True`. For the full list of of
+"ROLE FLAG" variables, see the section of the ansible/playbooks/group_vars
+titled "ROLE FLAGS TO ENABLE/DISABLE" to see them and their defaults.
+
+Example: extra-vars.yml file
+
+    ---
+    site_name: "example"
+    db_password: change_me
+    git_repo: https://git.example.com/example/example.git
+    install_mysql: False
+    install_redis: False
+    python_version: python2.7
+
+Execute the following to run using the customized extra-vars.yml file:
+
+    ansible-playbook -vvvv -i ansible/inventory.ini \
+        --extra-vars "@extra-vars.yml" \
+        ansible/playbooks/playbook-all.yml
+
+Alternatively, but less preferred, you can pass extra vars directly on the
+command line:
+
+    ansible-playbook -vvvv -i ansible/inventory.ini \
+        --extra-vars "site_name=mysite python_version=python3.5" \
+        ansible/playbooks/playbook-all.yml
+
 
 ## Running
 
@@ -64,53 +114,6 @@ Run the playbook in this directory
 
     ansible-playbook -vvvv -i ansible/inventory.ini ansible/playbooks/playbook-all.yml
 
-
-## Run Customization
-
-This project defines many of the configurable variables inside of the
-ansible/playbooks/group_vars.yml file. You can override those variables when
-provisioning by passing in a new value via the --extra-vars (-e) option as
-exemplified below.
-
-IMPORTANT - you will want to customize the following at minimum:
-  - site_name
-  - db_password (if running a database role)
-  - git_rep (if installing a django codebase)
-
-Execute the following to run:
-
-    ansible-playbook -vvvv -i ansible/inventory.ini \
-        --extra-vars "@extra-vars.yml" \
-        ansible/playbooks/playbook-all.yml
-
-    ansible-playbook -vvvv -i ansible/inventory.ini \
-        --extra-vars "site_name=mysite python_version=python3.5" \
-        ansible/playbooks/playbook-all.yml
-
-IMPORTANT: Roles can be enabled/disabled using the "ROLL FLAGS" variables.  To
-change them, pass the "ROLE FLAGS" flags to the --extra-vars parameter
-or set them in the vars section of your playbook.
-
-See the section of the ansible/playbooks/group_vars titled "ROLE FLAGS TO ENABLE/DISABLE"
-to see what "ROLE FLAGS" are available and their defaults.
-
-Example: Command line
-
-    ansible-playbook .... --extra-vars "install_django=True install_nginx=True"
-
-Example: Custom YML file
-
-    # extra-vars.yml
-    ---
-    site_name: "example"
-    db_password: change_me
-    git_repo: https://git.example.com/example/example.git
-    install_mysql: False
-    install_redis: False
-    python_version: python2.7
-
-
-
 ### Run in Vagrant
 
 Execute the following from within the directory containing the Vagrant file.
@@ -122,6 +125,11 @@ Execute the following from within the directory containing the Vagrant file.
 
     vagrant up xenial
     vagrant provision xenial
+
+    # or
+
+    vagrant up centos7
+    vagrant provision centos7
 
 Note: when using vagrant to test, you can optionally use the vagrant-cachier
 plugin to cache the apt packages downloaded.
@@ -165,6 +173,8 @@ directory structure.
                 - media/ = (htdocs_media_dir) location of uploaded media files
                 - static/ = (htdocs_static_dir) root of collectstatic
                 - maintenance.html
+
+            - log/ = Project-specific logs
 
             - proj/ = (project_dir)
                 - *projname*
