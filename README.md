@@ -8,20 +8,21 @@ Requires Ansible 2.4+
 
 ## Quickstart
 
-  1. Copy extra-vars.example.yml to extra-vars.yml
-  2. Customize extra-vars.yml with the variables needed for build.
-    - See playbooks/group_vars/all.yml for common variables to set.
-  3. Create or customize an inventory file such as inventory.ini.
+  1. Copy `extra-vars.example.yml` to `extra-vars.yml`
+  2. Customize `extra-vars.yml` with the variables needed for build.
+    - See `playbooks/group_vars/all.yml` for common variables to set.
+  3. Create or customize an inventory file such as `inventory.ini`.
     - Set ssh connection parameters here.
-    - See the example ansible/inventory.ini
+    - See the example `ansible/inventory.ini`
   4. Choose a playbook to run. Options:
-    - To run everything, choose playbook-all.yml.
+    - To run everything, choose `playbook-all.yml`.
        - Selectively disable roles, use the "ROLE FLAGS TO ENABLE/DISABLE"
-         variable flags from playbooks/group_vars/all.yml
+         variable flags from `playbooks/group_vars/all.yml`
     - To run specific playbooks, one of the others (see
       Playbooks available below).
     - Create a custom playbook by modifying an existing one.
   5. Run the playbook. Example:
+
 
     ansible-playbook -vvvv -i ansible/inventory.ini \
       --extra-vars "@extra-vars.yml" \
@@ -30,7 +31,7 @@ Requires Ansible 2.4+
 
 ## Playbooks available
 
-For a full provision, mostly use the playbook-all.yml (and customize the
+For a full provision, mostly use the `playbook-all.yml` (and customize the
 ROLL FLAGS - see below).
 
  - add-user.yml = playbook for adding a UNIX user
@@ -55,9 +56,9 @@ ROLL FLAGS - see below).
 ## Run Configuration
 
 This project defines many of the configurable variables inside of the
-ansible/playbooks/group_vars.yml file. You need to override some of those
-variables when provisioning by setting them in an extra-vars.yml. Copy the
-extra-vars.example.yml to use as a starting point for customization.
+`ansible/playbooks/group_vars.yml` file. You need to override some of those
+variables when provisioning by setting them in an `extra-vars.yml`. Copy the
+`extra-vars.example.yml` to use as a starting point for customization.
 
     cp extra-vars.example.yml extra-vars.yml
 
@@ -68,12 +69,12 @@ IMPORTANT: Customize the following at minimum, but likely more is needed:
 
 IMPORTANT: If you want to run a specific roll, in ADDITION to being included
 in the roles section of a playbook, the roll must ALSO be enabled via setting
-a "ROLE FLAG" variable `install_foo: True` in extra-vars.yml, where foo is the
+a "ROLE FLAG" variable `install_foo: True` in `extra-vars.yml`, where foo is the
 name of the roll.  For example, `install_mysql: True`. For the full list of of
-"ROLE FLAG" variables, see the section of the ansible/playbooks/group_vars
+"ROLE FLAG" variables, see the section of the `ansible/playbooks/group_vars`
 titled "ROLE FLAGS TO ENABLE/DISABLE" to see them and their defaults.
 
-Example: extra-vars.yml file
+Example: `extra-vars.yml` file
 
     ---
     site_name: "example"
@@ -83,7 +84,7 @@ Example: extra-vars.yml file
     install_redis: False
     python_version: python2.7
 
-Execute the following to run using the customized extra-vars.yml file:
+Execute the following to run using the customized `extra-vars.yml` file:
 
     ansible-playbook -vvvv -i ansible/inventory.ini \
         --extra-vars "@extra-vars.yml" \
@@ -116,7 +117,7 @@ Run the playbook in this directory
 
 ### Run in Vagrant
 
-Execute the following from within the directory containing the Vagrant file.
+Execute the following from within the directory containing the `Vagrant` file.
 
     vagrant up trusty
     vagrant provision trusty
