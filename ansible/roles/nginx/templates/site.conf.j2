@@ -4,6 +4,7 @@ ssl_protocols {{ nginx__ssl_protocols }};
 ssl_ciphers '{{ nginx__ssl_ciphers }}';
 ssl_prefer_server_ciphers on;
 ssl_session_cache shared:SSL:50m;
+ssl_session_tickets off;
 
 
 upstream app_server {
