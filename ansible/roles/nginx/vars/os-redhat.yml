@@ -1,0 +1,5 @@
+---
+
+nginx__vhost_path: "{{ nginx__conf_dir }}conf.d/"
+nginx__default_vhost_path: "{{ nginx__conf_dir }}conf.d/default"
+nginx__nginx_user: "nginx"

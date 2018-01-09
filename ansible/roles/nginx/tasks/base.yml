@@ -1,5 +1,15 @@
 ---
 
+- name: Load a variable file based on the OS type, or a default if not found. Using free-form to specify the file.
+  include_vars: "{{ item }}"
+  with_first_found:
+   - "vars/os-{{ ansible_distribution|lower }}-{{ ansible_distribution_release }}.yml"
+   - "vars/os-{{ ansible_distribution|lower }}.yml"
+   - "vars/os-{{ ansible_os_family|lower }}.yml"
+   - "vars/os-default.yml"
+  loop_control:
+    loop_var: item
+
 - include: install_facts.yml
   when: nginx__install_facts
 
@@ -15,7 +25,7 @@
   file:
     path={{ nginx__ssl_dir }}
     state=directory
-    owner=www-data
+    owner={{ nginx__nginx_user }}
     group={{ nginx__shared_group }}
     mode=2775
 
@@ -101,7 +111,7 @@
 - name: Create symlink to enable the site configuration
   file:
     src={{ nginx__conf_dir }}sites-available/default
-    dest={{ nginx__conf_dir }}sites-enabled/default
+    dest={{ nginx__default_vhost_path }}
     state=link
   notify: restart nginx
 

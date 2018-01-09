@@ -1,0 +1,5 @@
+---
+
+nginx__vhost_path: "{{ nginx__conf_dir }}sites-enabled/"
+nginx__default_vhost_path: "{{ nginx__conf_dir }}sites-enabled/default"
+nginx__nginx_user: "www-data"
