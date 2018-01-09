@@ -29,6 +29,9 @@ server {
     # Turn on directory listing for static files
     #autoindex on;
 
+    # Turn on Strcit Transport Security 
+    #add_header Strict-Transport-Security max-age=604800;
+
     client_body_in_file_only clean;
     client_body_buffer_size {{ nginx__client_body_buffer_size }};
 
