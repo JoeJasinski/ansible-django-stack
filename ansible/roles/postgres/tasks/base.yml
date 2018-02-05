@@ -110,12 +110,14 @@
   service: name=postgresql enabled={{postgres__enabled_on_startup}}
 
 - name: Create database User
+  become: true
   become_user: postgres
   postgresql_user:
     name={{ postgres__db_user }}
     password={{ postgres__db_password }}
 
 - name: Create database
+  become: true
   become_user: postgres
   postgresql_db:
     name={{ postgres__db_name }}
@@ -126,6 +128,7 @@
     state=present
 
 - name: ensure user does not have unnecessary privilege
+  become: true
   become_user: postgres
   postgresql_user:
     name={{postgres__db_user}}
