@@ -13,5 +13,5 @@
 - name: Start Postfix
   service:
     name={{postfix__server_service}}
-    state=running
+    state=started
     enabled={{postfix__enabled_on_startup}}

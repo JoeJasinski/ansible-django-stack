@@ -8,4 +8,4 @@
     loop_var: package_to_install
 
 - name: Start NTPD
-  service: name=ntpd state=running enabled={{ntp__enabled_on_startup}}
+  service: name=ntpd state=started enabled={{ntp__enabled_on_startup}}
