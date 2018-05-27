@@ -1,0 +1,12 @@
+---
+
+- name: install nrpe
+  apt: state=latest pkg={{package_to_install}} update_cache=yes
+  with_items:
+    - nagios-plugins-standard
+    - nagios-plugins-contrib
+    - nagios-nrpe-server
+  loop_control:
+    loop_var: package_to_install
+  tags:
+    - packages
