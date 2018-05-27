@@ -115,6 +115,7 @@
   postgresql_user:
     name={{ postgres__db_user }}
     password={{ postgres__db_password }}
+    encrypted=yes
 
 - name: Create database
   become: true
