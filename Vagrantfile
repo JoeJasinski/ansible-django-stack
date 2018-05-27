@@ -47,7 +47,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
              "install_redis" => true,
              "site_name" => "chipy",
              "git_repo" => "https://github.com/chicagopython/chipy.org.git",
-             "python_version" => "python3.5",
+             "python_version" => "python3.6",
              #"site_user_ssh_private_key_src" => "/Users/jjasinski/.ssh/id_rsa",
 
              # Ubuntu 16.04 settings (DONT CHANGE - Needed for Ansible)

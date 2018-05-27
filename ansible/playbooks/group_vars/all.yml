@@ -28,6 +28,8 @@ db_password: "change_me"
 db_name: "{{site_name}}"
 
 # The python binary to use in the virtualenv.
+# If using Xenial, use python2.7 or 3.5
+# If using Bionic, use python2.7 or 3.6
 python_version: "python3.5" # "python2.7" or "python3.4" or "python3.5"
 
 # The git repo to checkout.
