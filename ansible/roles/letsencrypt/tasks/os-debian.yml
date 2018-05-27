@@ -2,11 +2,13 @@
 
 - name: Add deps
   apt:
-    name: "{{ item }}"
+    name: "{{ package_to_install }}"
     state: present
   with_items:
     - apt-transport-https
     - ca-certificates
+  loop_control:
+    loop_var: package_to_install
 
 - name: Adding Certbot repository
   apt_repository:
