@@ -24,6 +24,42 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # For more information please check http://docs.vagrantup.com/v2/synced-folders/basic_usage.html
   end
 
+  config.vm.define 'bionic', autostart: false do |box|
+      box.vm.box = "ubuntu/bionic64"
+      box.vm.network "forwarded_port", guest: 80, host: 8081
+      box.vm.network "forwarded_port", guest: 443, host: 4444
+      box.vm.provision :ansible do |ansible|
+        ansible.playbook = "ansible/playbooks/playbook-all.yml"
+        #ansible.playbook = "ansible/playbooks/playbook-install-python2.yml"
+        #ansible.playbook = "ansible/playbooks/add-user.yml"
+        #ansible.playbook = 'ansible/playbooks/playbook-docker.yml'
+        ansible.verbose = "vvvv"
+        ansible.extra_vars = {
+        #    "user_to_add" => "testb"
+             "install_nginx" => true,
+             "install_letsencrypt" => true,
+             "install_ntp" => true,
+             "install_unattended_updates" => true,
+             "install_docker" => true,
+             "install_postgis" => true,
+             "install_postgres" => true,
+             "install_mysql" => true,
+             "install_redis" => true,
+             "site_name" => "chipy",
+             "git_repo" => "https://github.com/chicagopython/chipy.org.git",
+             "python_version" => "python3.5",
+             #"site_user_ssh_private_key_src" => "/Users/jjasinski/.ssh/id_rsa",
+
+             # Ubuntu 16.04 settings (DONT CHANGE - Needed for Ansible)
+             #"ansible_python_interpreter" => "/usr/bin/python2.7",
+             "ansible_python_interpreter" => "/usr/bin/python3",  # ansible 2.4+ with python3 support
+        }
+        ansible.become = true
+        ansible.limit = "all"
+      end
+  end
+
+
   config.vm.define 'xenial', autostart: false do |box|
       box.vm.box = "ubuntu/xenial64"
       box.vm.network "forwarded_port", guest: 80, host: 8080
@@ -54,7 +90,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
              #"ansible_python_interpreter" => "/usr/bin/python2.7",
              "ansible_python_interpreter" => "/usr/bin/python3",  # ansible 2.4+ with python3 support
         }
-        ansible.sudo = true
+        ansible.become = true
         ansible.limit = "all"
       end
   end
@@ -80,7 +116,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
              "git_repo" => "https://github.com/chicagopython/chipy.org.git",
              "python_version" => "python2.7",
         }
-        ansible.sudo = true
+        ansible.become = true
         ansible.limit = "all"
       end
   end
@@ -103,7 +139,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
              "site_name" => "jazstudios",
              "python_version" => "python2.7",
         }
-        ansible.sudo = true
+        ansible.become = true
         ansible.limit = "all"
       end
   end
