@@ -1,5 +1,11 @@
 WORK IN PROGRESS
 
+Support Status
+ ubuntu 14.04 trusty = worked well in the past - have not used in awhile
+ ubuntu 16.04 xenial = pretty good - tested a bunch of times
+ ubuntu 18.04 bionic = experimental
+ centos 7 = incomplete ; in progress
+
 The goal of this project is to  create a configurable Ansible project
 that allows provisioning a Django web stack with many of the common services
 and features associated with such a stack.
