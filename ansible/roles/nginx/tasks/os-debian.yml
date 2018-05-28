@@ -8,9 +8,9 @@
 
 - name: Install Latest Nginx
   apt:
-    pkg=nginx
-    state=latest
-    update_cache={{ update_apt_cache }}
+    pkg: nginx
+    state: latest
+    update_cache: "{{ update_apt_cache }}"
   tags:
     - packages
     - debian-base

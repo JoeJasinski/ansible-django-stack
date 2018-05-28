@@ -1,16 +1,18 @@
 ---
 
-- group: name="{{ users__shared_group }}" state=present
+- group:
+    name: "{{ users__shared_group }}"
+    state: present
   tags:
     - packages
 
 - name: Create new site user
   user:
-    name={{ users__site_user }}
-    groups={{ users__shared_group }}
-    shell=/bin/bash
-    home={{ users__site_user_home }}
-    append=yes
+    name: "{{ users__site_user }}"
+    groups: "{{ users__shared_group }}"
+    shell: /bin/bash
+    home: "{{ users__site_user_home }}"
+    append: yes
 
 - name: Creates .ssh directory for site_user
   file:
@@ -30,17 +32,20 @@
 
 
 - name: Per-user group creation
-  group: name="{{ item.username }}" state="present"
+  group:
+    name: "{{ item.username }}"
+    state: "present"
   with_items: "{{ users }}"
 
 - name: User creation
-  user: name="{{ item.username }}"
-        group="{{ item.username }}"
-        groups="{{ item.groups | join(',') }}"
-        append=yes
-        shell={{item.shell if item.shell is defined else users__default_shell}}
-        password="{{ item.password if item.password is defined else '!' }}"
-        comment="{{ item.name }}"
-        uid="{{ item.uid|default(omit) }}"
-        createhome="{{'yes' if users__create_homedirs else 'no' }}"
+  user:
+    name: "{{ item.username }}"
+    group: "{{ item.username }}"
+    groups: "{{ item.groups | join(',') }}"
+    append: yes
+    shell: "{{item.shell if item.shell is defined else users__default_shell}}"
+    password: "{{ item.password if item.password is defined else '!' }}"
+    comment: "{{ item.name }}"
+    uid: "{{ item.uid|default(omit) }}"
+    createhome: "{{'yes' if users__create_homedirs else 'no' }}"
   with_items: "{{ users }}"

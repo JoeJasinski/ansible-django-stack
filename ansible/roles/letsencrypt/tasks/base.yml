@@ -10,17 +10,17 @@
 
 - name: Creates htdocs letsencrypt directory
   file:
-    path={{ letsencrypt__site_htdocs_letsencrypt_dir }}
-    state=directory
-    owner={{ letsencrypt__site_user }}
-    group={{ letsencrypt__shared_group }}
-    mode=2775
+    path: "{{ letsencrypt__site_htdocs_letsencrypt_dir }}"
+    state: directory
+    owner: "{{ letsencrypt__site_user }}"
+    group: "{{ letsencrypt__shared_group }}"
+    mode: 2775
 
 - name: Copy the letsencrypt nginx location file
   template:
-    src=nginx-letsencrypt.conf.j2
-    dest={{ letsencrypt__letsencrypt_nginx_config }}
-    mode=0664
+    src: nginx-letsencrypt.conf.j2
+    dest: "{{ letsencrypt__letsencrypt_nginx_config }}"
+    mode: 0664
 
 - name: Setup location of external_pid_file
   lineinfile:

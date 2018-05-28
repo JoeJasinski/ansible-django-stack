@@ -9,8 +9,12 @@
    - "os-default.yml"
 
 - name: Ensure Docker is started and enabled on boot.
-  service: name=docker state=started enabled={{ docker__enabled_on_startup }}
+  service:
+    name: docker
+    state: started
+    enabled: "{{ docker__enabled_on_startup }}"
   register: docker_service_configuration
 
 - name: Install the Docker Compose module
-  pip: name=docker-compose
+  pip:
+    name: docker-compose

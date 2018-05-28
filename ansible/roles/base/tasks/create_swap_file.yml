@@ -25,13 +25,14 @@
   tags: swap.file.mkswap
 
 - name: Write swap entry in fstab
-  mount: name=none
-         src={{ swap__file_path }}
-         fstype=swap
-         opts=sw
-         passno=0
-         dump=0
-         state=present
+  mount:
+    name: none
+    src: "{{ swap__file_path }}"
+    fstype: swap
+    opts: sw
+    passno: no
+    dump: no
+    state: present
   tags: swap.fstab
 
 - name: Mount swap

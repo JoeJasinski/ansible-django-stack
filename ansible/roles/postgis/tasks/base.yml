@@ -20,5 +20,5 @@
 - name: Create postgis extension
   become_user: postgres
   postgresql_ext:
-    name=postgis
-    db={{ postgres__db_name }}
+    name: postgis
+    db: "{{ postgres__db_name }}"

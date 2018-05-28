@@ -6,37 +6,37 @@
 
 - name: Creates sites etc directory
   file:
-    path={{ django__site_etc_dir }}
-    state=directory
-    owner={{ django__site_user }}
-    group={{ django__shared_group }}
-    mode=2775
+    path: "{{ django__site_etc_dir }}"
+    state: directory
+    owner: "{{ django__site_user }}"
+    group: "{{ django__shared_group }}"
+    mode: 2775
 
 - name: Install uwsgi into virtualenv
   pip:
-    name=uwsgi
-    virtualenv={{ django__virtualenv_dir }}
+    name: uwsgi
+    virtualenv: "{{ django__virtualenv_dir }}"
 
 - file:
-    path={{ virtualenvs_dir }}
-    state=directory
-    recurse=yes
-    mode=g+w
+    path: "{{ virtualenvs_dir }}"
+    state: directory
+    recurse: yes
+    mode: g+w
 
 - name: Copy the uwsig config file
   template:
-    src=uwsgi.ini.j2
-    dest={{ django__uwsgi_filename }}
-    owner={{ django__site_user }}
-    group={{ django__shared_group }}
-    mode=0664
+    src: uwsgi.ini.j2
+    dest: "{{ django__uwsgi_filename }}"
+    owner: "{{ django__site_user }}"
+    group: "{{ django__shared_group }}"
+    mode: 0664
 
 - name: Copy the supervisor config file for Django
   template:
-    src=supervisor-django.j2
-    dest=/etc/supervisor/conf.d/django.conf
-    owner=root
-    group=root
+    src: supervisor-django.j2
+    dest: /etc/supervisor/conf.d/django.conf
+    owner: root
+    group: root
   notify: reread supervisord
   tags:
     - supervisor

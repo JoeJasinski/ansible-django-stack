@@ -10,12 +10,17 @@
 
 # Create our config
 - name: Create nrpe.cfg from template
-  template: >
-    src="nrpe.cfg.j2"
-    dest="{{ nagios_nrpe__server_dir }}/nrpe.cfg"
-    owner=root group=root mode=0644
+  template:
+    src: "nrpe.cfg.j2"
+    dest: "{{ nagios_nrpe__server_dir }}/nrpe.cfg"
+    owner: root
+    group: root
+    mode: 0644
   notify: restart nagios-nrpe-server
 
 # Ensure NRPE server is running and will start at boot
 - name: Ensure NRPE server is running
-  service: name="{{ nagios_nrpe__server_service }}" state=started enabled=yes
+  service:
+    name: "{{ nagios_nrpe__server_service }}"
+    state: started
+    enabled: yes

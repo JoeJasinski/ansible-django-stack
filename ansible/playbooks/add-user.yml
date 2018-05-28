@@ -11,11 +11,12 @@
     shared_group: "worker"
   tasks:
     - name: Add user
-      user: name="{{user_to_add}}"
-            state=present
-            password="{{password}}"
-            shell=/bin/bash
-            comment="Test User"
+      user:
+        name: "{{user_to_add}}"
+        state: present
+        password: "{{password}}"
+        shell: /bin/bash
+        comment: "Test User"
 
     - name: Find existing UNIX groups
       shell: /usr/bin/getent group | awk -F":" '{print $1}'
