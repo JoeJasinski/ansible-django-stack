@@ -1,10 +1,15 @@
 ---
 
 - name: Install Postfix Deamon
-  apt: name=postfix state=installed
+  apt:
+    name: postfix
+    state: installed
 
 - name: Install Postfix Deamon
-  apt: name={{ package_to_install }} update_cache={{ update_apt_cache }} state=latest
+  apt:
+    name: "{{ package_to_install }}"
+    update_cache: "{{ update_apt_cache }}"
+    state: latest
   with_items:
     - postfix
   loop_control:
@@ -12,6 +17,6 @@
 
 - name: Start Postfix
   service:
-    name={{postfix__server_service}}
-    state=started
-    enabled={{postfix__enabled_on_startup}}
+    name: "{{ postfix__server_service }}"
+    state: started
+    enabled: "{{ postfix__enabled_on_startup }}"

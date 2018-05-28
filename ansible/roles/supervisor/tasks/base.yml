@@ -9,4 +9,7 @@
    - "os-default.yml"
 
 - name: reload supervisor
-  service: name=supervisor state=started enabled=yes
+  service:
+    name: supervisor
+    state: started
+    enabled: yes

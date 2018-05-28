@@ -12,19 +12,19 @@
 
 - name: Change ownership
   file:
-    path={{ sites__virtualenv_dir_version }}
-    owner={{ sites__site_user }}
-    group={{ sites__shared_group }}
-    state=directory
-    recurse="yes"
+    path: "{{ sites__virtualenv_dir_version }}"
+    owner: "{{ sites__site_user }}"
+    group: "{{ sites__shared_group }}"
+    state: directory
+    recurse: "yes"
   when: virtualenv_dir_exists.stat.islnk is not defined
 
 - name: Create symlink to virtualenv version
   file:
-    src={{ sites__virtualenv_dir_version }}
-    dest={{ virtualenv_dir_link }}
-    owner={{ sites__site_user }}
-    group={{ sites__shared_group }}
-    state=link
-    force=yes
+    src: "{{ sites__virtualenv_dir_version }}"
+    dest: "{{ virtualenv_dir_link }}"
+    owner: "{{ sites__site_user }}"
+    group: "{{ sites__shared_group }}"
+    state: link
+    force: yes
   when: virtualenv_dir_exists.stat.islnk is not defined

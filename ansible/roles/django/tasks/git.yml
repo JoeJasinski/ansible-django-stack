@@ -1,50 +1,52 @@
 ---
 - block:
     - name: Checkout git repo (with ssh key)
-      git: repo={{ django__git_repo }}
-         version={{ django__git_branch }}
-         dest={{ django__app_dir }}
-         remote={{ django__remote_name }}
-         accept_hostkey=yes
-         force=yes
-         recursive=no
-         key_file={{ django__site_user_ssh_private_key }}
+      git:
+        repo: "{{ django__git_repo }}"
+        version: "{{ django__git_branch }}"
+        dest: "{{ django__app_dir }}"
+        remote: "{{ django__remote_name }}"
+        accept_hostkey: yes
+        force: yes
+        recursive: no
+        key_file: "{{ django__site_user_ssh_private_key }}"
       become: yes
       become_user: "{{ site_user }}"
       when: not(users__site_user_ssh_private_key_src | trim == '')
 
     - name: Checkout git repo (without ssh key)
-      git: repo={{ django__git_repo }}
-         version={{ django__git_branch }}
-         dest={{ django__app_dir }}
-         remote={{ django__remote_name }}
-         accept_hostkey=yes
-         force=yes
-         recursive=no
+      git:
+        repo: "{{ django__git_repo }}"
+        version: "{{ django__git_branch }}"
+        dest: "{{ django__app_dir }}"
+        remote: "{{ django__remote_name }}"
+        accept_hostkey: yes
+        force: yes
+        recursive: no
       become: yes
       become_user: "{{ site_user }}"
       when: users__site_user_ssh_private_key_src | trim == ''
 
     - file:
-        path={{ django__app_dir }}
-        state=directory
-        recurse=yes
-        mode=g+w
+        path: "{{ django__app_dir }}"
+        state: directory
+        recurse: yes
+        mode: g+w
 
     - name: Install requirements.txt with pip
       pip:
-        requirements={{ django__requirements }}
-        virtualenv={{ django__virtualenv_dir }}
+        requirements: "{{ django__requirements }}"
+        virtualenv: "{{ django__virtualenv_dir }}"
       become: yes
       become_user: "{{ site_user }}"
       ignore_errors: yes
 
     - name: Run Django ./manage.py collectstatic
-      django_manage: >
-        command=collectstatic
-        app_path={{ django__app_dir }}
-        settings={{ django__settings }}
-        virtualenv={{ django__virtualenv_dir }}
+      django_manage:
+        command: collectstatic
+        app_path: "{{ django__app_dir }}"
+        settings: "{{ django__settings }}"
+        virtualenv: "{{ django__virtualenv_dir }}"
       become: yes
       become_user: "{{ site_user }}"
       ignore_errors: yes

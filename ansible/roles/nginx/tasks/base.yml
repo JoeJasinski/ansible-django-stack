@@ -23,19 +23,19 @@
 
 - name: Create SSL directory
   file:
-    path={{ nginx__ssl_dir }}
-    state=directory
-    owner={{ nginx__nginx_user }}
-    group={{ nginx__shared_group }}
-    mode=2775
+    path: "{{ nginx__ssl_dir }}"
+    state: directory
+    owner: "{{ nginx__nginx_user }}"
+    group: "{{ nginx__shared_group }}"
+    mode: 2775
 
 - name: Create Log directory
   file:
-    path={{ nginx__site_log_dir }}
-    state=directory
-    owner={{ nginx__site_user }}
-    group={{ nginx__shared_group }}
-    mode=2775
+    path: "{{ nginx__site_log_dir }}"
+    state: directory
+    owner: "{{ nginx__site_user }}"
+    group: "{{ nginx__shared_group }}"
+    mode: 2775
 
 - name: Make some random entropy
   command: rngd -r /dev/urandom
@@ -48,83 +48,85 @@
 
 - name: Create htdocs directory
   file:
-    path={{ nginx__site_htdocs_dir }}
-    state=directory
-    owner={{ nginx__site_user }}
-    group={{ nginx__shared_group }}
-    mode=2775
+    path: "{{ nginx__site_htdocs_dir }}"
+    state: directory
+    owner: "{{ nginx__site_user }}"
+    group: "{{ nginx__shared_group }}"
+    mode: 2775
 
 - name: Creates htdocs media directory
   file:
-    path={{ nginx__site_htdocs_media_dir }}
-    state=directory
-    owner={{ nginx__site_user }}
-    group={{ nginx__shared_group }}
-    mode=2775
+    path: "{{ nginx__site_htdocs_media_dir }}"
+    state: directory
+    owner: "{{ nginx__site_user }}"
+    group: "{{ nginx__shared_group }}"
+    mode: 2775
 
 - name: Creates htdocs static directory
   file:
-    path={{ nginx__site_htdocs_static_dir }}
-    state=directory
-    owner={{ nginx__site_user }}
-    group={{ nginx__shared_group }}
-    mode=2775
+    path: "{{ nginx__site_htdocs_static_dir }}"
+    state: directory
+    owner: "{{ nginx__site_user }}"
+    group: "{{ nginx__shared_group }}"
+    mode: 2775
 
 - name: Create directory
   file:
-    path={{ nginx__site_nginx_dir }}
-    state=directory
-    owner={{ nginx__site_user }}
-    group={{ nginx__shared_group }}
-    mode=2775
+    path: "{{ nginx__site_nginx_dir }}"
+    state: directory
+    owner: "{{ nginx__site_user }}"
+    group: "{{ nginx__shared_group }}"
+    mode: 2775
 
 - name: Copy the nginx base configuration file
   template:
-    src=nginx.conf.j2
-    dest=/etc/nginx/nginx.conf
-    owner=root
-    group=root
+    src: nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+    owner: root
+    group: root
 
 - name: Copy the nginx site configuration file
   template:
-    src=site.conf.j2
-    dest={{ nginx__site_nginx_dir }}site.conf
-    mode=0664
+    src: site.conf.j2
+    dest: "{{ nginx__site_nginx_dir }}site.conf"
+    mode: 0664
 
 - name: Copy the nginx location file
   template:
-    src=locations.conf.j2
-    dest={{ nginx__site_nginx_dir }}locations.conf
-    mode=0664
+    src: locations.conf.j2
+    dest: "{{ nginx__site_nginx_dir }}locations.conf"
+    mode: 0664
 
 - name: Remove old default configuration
   file:
-    path={{ nginx__conf_dir }}sites-available/default
-    state=absent
+    path: "{{ nginx__conf_dir }}sites-available/default"
+    state: absent
 
 - name: Symlink in the new site configuration to sites-available
   file:
-    src={{ nginx__site_nginx_dir }}site.conf
-    dest={{ nginx__conf_dir }}sites-available/default
-    state=link
+    src: "{{ nginx__site_nginx_dir }}site.conf"
+    dest: "{{ nginx__conf_dir }}sites-available/default"
+    state: link
 
 - name: Create symlink to enable the site configuration
   file:
-    src={{ nginx__conf_dir }}sites-available/default
-    dest={{ nginx__default_vhost_path }}
-    state=link
+    src: "{{ nginx__conf_dir }}sites-available/default"
+    dest: "{{ nginx__default_vhost_path }}"
+    state: link
   notify: restart nginx
 
 
 - name: "disable Start Nginx on boot"
-  service: name=nginx enabled=false
+  service:
+    name: nginx
+    enabled: false
   when: nginx__manage_with_supervisord
 
 - name: Copy the supervisor config file for nginx
   template:
-    src=supervisor-nginx.conf.j2
-    dest=/etc/supervisor/conf.d/nginx.conf
-    owner=root
-    group=root
+    src: supervisor-nginx.conf.j2
+    dest: /etc/supervisor/conf.d/nginx.conf
+    owner: root
+    group: root
   notify: restart nginx
   when: nginx__manage_with_supervisord
