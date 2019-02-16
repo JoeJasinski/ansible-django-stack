@@ -2,14 +2,10 @@
 
 - name: Add deps
   apt:
-    name: "{{ package_to_install }}"
     state: present
-  with_items:
-    - apt-transport-https
-    - ca-certificates
-  loop_control:
-      loop_var: package_to_install
-
+    pkg:
+      - apt-transport-https
+      - ca-certificates
 
 # Support for Python >2.7.9
 # - name: Adding Docker repository key
@@ -27,15 +23,15 @@
       update_cache: yes
 
 - name: Needed for docker compose.
-  apt: name={{ package_to_install }} update_cache={{ update_apt_cache }} state=latest
-  with_items:
-    - python-pip
-  loop_control:
-    loop_var: package_to_install
+  apt:
+    update_cache: "{{ update_apt_cache }}"
+    state: latest
+    pkg:
+      - python-pip
 
 - name: Ensure Docker packages are installed.
-  apt: name={{ package_to_install }} update_cache={{ update_apt_cache }} state=latest
-  with_items:
-    - docker-ce
-  loop_control:
-    loop_var: package_to_install
+  apt:
+    update_cache: "{{ update_apt_cache }}"
+    state: latest
+    pkg:
+      - docker-ce

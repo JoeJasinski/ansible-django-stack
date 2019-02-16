@@ -2,7 +2,7 @@
 - debug: msg="Enabled {{ install_nginx }}"
 
 - name: enable/disable nginx Ansible install
-  include: base.yml
+  import_tasks: base.yml
   when: install_nginx|default(True)
   tags:
     - nginx

@@ -2,7 +2,7 @@
 - debug: msg="Enabled {{ install_django }}"
 
 - name: enable/disable django install
-  include: base.yml
+  import_tasks: base.yml
   when: install_django|default(True)
   tags:
     - django

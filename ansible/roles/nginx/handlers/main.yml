@@ -1,6 +1,6 @@
 ---
 - name: restart nginx
-  include: restart_nginx.yml
+  import_tasks: restart_nginx.yml
 
 - name: reload nginx
-  include: reload_nginx.yml
+  import_tasks: reload_nginx.yml

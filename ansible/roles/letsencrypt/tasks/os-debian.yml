@@ -2,13 +2,11 @@
 
 - name: Add deps
   apt:
-    name: "{{ package_to_install }}"
+    name:
     state: present
-  with_items:
-    - apt-transport-https
-    - ca-certificates
-  loop_control:
-    loop_var: package_to_install
+    pkg:
+      - apt-transport-https
+      - ca-certificates
 
 - name: Adding Certbot repository
   apt_repository:
@@ -17,8 +15,8 @@
       update_cache: yes
 
 - name: Ensure Cretbot packages are installed.
-  apt: name={{ package_to_install }} update_cache={{ update_apt_cache }} state=latest
-  with_items:
-    - certbot
-  loop_control:
-    loop_var: package_to_install
+  apt:
+    update_cache: "{{ update_apt_cache }}"
+    state: latest
+    pkg:
+      - certbot
