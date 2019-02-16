@@ -35,3 +35,9 @@
     state: latest
     pkg:
       - docker-ce
+
+- name: Ansible docker on boot
+  service:
+    name: docker
+    state: started
+    enabled: yes
