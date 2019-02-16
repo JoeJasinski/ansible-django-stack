@@ -1,6 +1,7 @@
 ---
 
-- group:
+- name: Add Shared Group
+  group:
     name: "{{ users__shared_group }}"
     state: present
   tags:

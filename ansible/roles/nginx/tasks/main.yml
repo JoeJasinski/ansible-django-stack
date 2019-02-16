@@ -1,5 +1,7 @@
 ---
-- debug: msg="Enabled {{ install_nginx }}"
+- name: Enabled Role
+  debug:
+    msg: "Enabled {{ install_nginx }}"
 
 - name: enable/disable nginx Ansible install
   import_tasks: base.yml

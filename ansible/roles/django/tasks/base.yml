@@ -17,7 +17,8 @@
     name: uwsgi
     virtualenv: "{{ django__virtualenv_dir }}"
 
-- file:
+- name: Create virtualenv dir
+  file:
     path: "{{ virtualenvs_dir }}"
     state: directory
     recurse: yes

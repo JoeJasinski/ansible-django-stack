@@ -1,5 +1,7 @@
 ---
-- debug: msg="Enabled {{ install_mysql }}"
+- name: Enabled Role
+  debug:
+    msg: "Enabled {{ install_mysql }}"
 
 - name: enable/disable mysql Ansible install
   import_tasks: base.yml

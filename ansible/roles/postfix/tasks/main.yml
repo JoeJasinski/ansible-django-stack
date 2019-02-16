@@ -1,5 +1,7 @@
 ---
-- debug: msg="Enabled {{ install_postfix }}"
+- name: Enabled Role
+  debug:
+    msg: "Enabled {{ install_postfix }}"
 
 - name: enable/disable postfix Ansible install
   import_tasks: base.yml
