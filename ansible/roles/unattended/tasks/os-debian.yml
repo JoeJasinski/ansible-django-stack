@@ -12,7 +12,7 @@
     dest: /etc/apt/apt.conf.d/20auto-upgrades
     owner: root
     group: root
-    mode: 0644
+    mode: "0644"
 
 - name: create unattended-upgrades configuration
   template:
@@ -20,4 +20,4 @@
     dest: /etc/apt/apt.conf.d/50unattended-upgrades
     owner: root
     group: root
-    mode: 0644
+    mode: "0644"

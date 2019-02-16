@@ -10,7 +10,7 @@
     state: directory
     owner: "{{ django__site_user }}"
     group: "{{ django__shared_group }}"
-    mode: 2775
+    mode: "2775"
 
 - name: Install uwsgi into virtualenv
   pip:
@@ -30,7 +30,7 @@
     dest: "{{ django__uwsgi_filename }}"
     owner: "{{ django__site_user }}"
     group: "{{ django__shared_group }}"
-    mode: 0664
+    mode: "0664"
 
 - name: Copy the supervisor config file for Django
   template:

@@ -15,7 +15,7 @@
     dest: "{{ nagios_nrpe__server_dir }}/nrpe.cfg"
     owner: root
     group: root
-    mode: 0644
+    mode: "0644"
   notify: restart nagios-nrpe-server
 
 # Ensure NRPE server is running and will start at boot

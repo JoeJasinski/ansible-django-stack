@@ -8,7 +8,7 @@
   template:
     src: postgres_version.sh.j2
     dest: /etc/ansible/facts.d/postgres_version.fact
-    mode: 0755
+    mode: "0755"
 
 - name: reload ansible_local
   setup:

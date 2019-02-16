@@ -9,7 +9,7 @@
     state: directory
     owner: "{{ sites__site_user }}"
     group: "{{ sites__shared_group }}"
-    mode: 2775
+    mode: "2775"
 
 - name: Creates sites bin directory
   file:
@@ -17,7 +17,7 @@
     state: directory
     owner: "{{ sites__site_user }}"
     group: "{{ sites__shared_group }}"
-    mode: 2775
+    mode: "2775"
 
 - name: Creates log directory
   file:
@@ -25,7 +25,7 @@
     state: directory
     owner: "{{ sites__site_user }}"
     group: "{{ sites__shared_group }}"
-    mode: 2775
+    mode: "2775"
 
 - name: Creates run directory
   file:
@@ -33,7 +33,7 @@
     state: directory
     owner: "{{ sites__site_user }}"
     group: "{{ sites__shared_group }}"
-    mode: 2775
+    mode: "2775"
 
 - import_tasks: setup_virtualenv.yml
   tags:

@@ -27,7 +27,7 @@
     state: directory
     owner: "{{ nginx__nginx_user }}"
     group: "{{ nginx__shared_group }}"
-    mode: 2775
+    mode: "2775"
 
 - name: Create Log directory
   file:
@@ -35,7 +35,7 @@
     state: directory
     owner: "{{ nginx__site_user }}"
     group: "{{ nginx__shared_group }}"
-    mode: 2775
+    mode: "2775"
 
 - name: Make some random entropy
   command: rngd -r /dev/urandom
@@ -52,7 +52,7 @@
     state: directory
     owner: "{{ nginx__site_user }}"
     group: "{{ nginx__shared_group }}"
-    mode: 2775
+    mode: "2775"
 
 - name: Creates htdocs media directory
   file:
@@ -60,7 +60,7 @@
     state: directory
     owner: "{{ nginx__site_user }}"
     group: "{{ nginx__shared_group }}"
-    mode: 2775
+    mode: "2775"
 
 - name: Creates htdocs static directory
   file:
@@ -68,7 +68,7 @@
     state: directory
     owner: "{{ nginx__site_user }}"
     group: "{{ nginx__shared_group }}"
-    mode: 2775
+    mode: "2775"
 
 - name: Create directory
   file:
@@ -76,7 +76,7 @@
     state: directory
     owner: "{{ nginx__site_user }}"
     group: "{{ nginx__shared_group }}"
-    mode: 2775
+    mode: "2775"
 
 - name: Copy the nginx base configuration file
   template:
@@ -89,13 +89,13 @@
   template:
     src: site.conf.j2
     dest: "{{ nginx__site_nginx_dir }}site.conf"
-    mode: 0664
+    mode: "0664"
 
 - name: Copy the nginx location file
   template:
     src: locations.conf.j2
     dest: "{{ nginx__site_nginx_dir }}locations.conf"
-    mode: 0664
+    mode: "0664"
 
 - name: Remove old default configuration
   file:
