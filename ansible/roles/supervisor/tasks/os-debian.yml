@@ -6,3 +6,5 @@
     state: latest
     pkg:
       - supervisor
+  tags:
+    - packages

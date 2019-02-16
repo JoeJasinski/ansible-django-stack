@@ -61,3 +61,7 @@
     regexp: "^[# ]*path.data:"
     line: "path.data: {{ elasticsearch__elasticsearch_data_dir }}"
   notify: "restart elasticsearch"
+
+- service:
+    name: elasticsearch
+    enabled: yes

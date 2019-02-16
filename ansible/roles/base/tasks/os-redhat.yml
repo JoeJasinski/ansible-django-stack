@@ -5,56 +5,60 @@
 
 
 - name: Install the RHEL EPEL repos for extra packages
-  yum: name={{ package_to_install }} state=latest
-  with_items:
-    - scl-utils
-    - centos-release-scl-rh
-    - epel-release
-  loop_control:
-    loop_var: package_to_install
+  yum:
+    state: latest
+    name:
+      - scl-utils
+      - centos-release-scl-rh
+      - epel-release
+  tags:
+    - packages
 
 - name: Install need system libraries and tools
-  yum: name={{ package_to_install }} state=latest
-  with_items:
-    - bash
-    - bash-completion
-    - openssl
-    - openssl-devel
-    - rng-tools
-    - libxml2-devel
-    - libjpeg
-    - libjpeg-devel
-    - bzip2-devel
-    - freetype
-    - freetype-devel
-    - zlib-devel
-    - postgresql-libs
-    - sqlite-devel
-  loop_control:
-    loop_var: package_to_install
+  yum:
+    state: latest
+    name:
+      - bash
+      - bash-completion
+      - openssl
+      - openssl-devel
+      - rng-tools
+      - libxml2-devel
+      - libjpeg
+      - libjpeg-devel
+      - bzip2-devel
+      - freetype
+      - freetype-devel
+      - zlib-devel
+      - postgresql-libs
+      - sqlite-devel
+  tags:
+    - packages
 
 - name: Install base packages
-  yum: name={{ package_to_install }} state=latest
-  with_items:
-    - curl
-    - htop
-    - git
-    - mercurial
-    - psmisc #pstree
-    - lsof
-  loop_control:
-    loop_var: package_to_install
+  yum:
+    state: latest
+    name:
+      - curl
+      - htop
+      - git
+      - mercurial
+      - psmisc #pstree
+      - lsof
+  tags:
+    - packages
 
 - name: Install Python System-level packages
-  yum: name={{ package_to_install }} state=latest
-  with_items:
-    - python27
-    - python27-python-devel
-    - python27-python-virtualenv
-    - python-pip
-    - python34
-    - python34-devel
-    - python34-virtualenv
-    - python34-pip
-  loop_control:
-    loop_var: package_to_install
+  yum:
+    state: latest
+    name:
+      - python27
+      - python27-python-devel
+      - python27-python-virtualenv
+      - python-pip
+      - python34
+      - python34-devel
+      - python34-virtualenv
+      - python34-pip
+  tags:
+    - packages

@@ -20,6 +20,8 @@
       - zlib1g-dev
       - libpq-dev
       - libsqlite3-dev
+  tags:
+    - packages
 
 - name: Install jpeg8
   apt:
@@ -29,6 +31,8 @@
     pkg:
       - libjpeg-turbo8-dev
   ignore_errors: yes
+  tags:
+    - packages
 
 - name: Install base packages
   apt:
@@ -46,6 +50,8 @@
       - psmisc # pstree
       - lsof
       - iptables-persistent
+  tags:
+    - packages
 
 - name: Install Python System-level packages
   apt:
@@ -60,3 +66,5 @@
       - python-pycurl
       - python-virtualenv
       - python-setuptools
+  tags:
+    - packages

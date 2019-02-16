@@ -1,11 +1,12 @@
 ---
 - name: Install base packages
-  yum: name={{ package_to_install }} state=latest
-  with_items:
-    - ntp
-    - ntpdate
-  loop_control:
-    loop_var: package_to_install
+  yum:
+    state: latest
+    name:
+      - ntp
+      - ntpdate
+  tags:
+    - packages
 
 - name: Start NTPD
   service:

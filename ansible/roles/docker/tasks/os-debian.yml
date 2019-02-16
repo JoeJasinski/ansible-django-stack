@@ -6,6 +6,8 @@
     pkg:
       - apt-transport-https
       - ca-certificates
+  tags:
+    - packages
 
 # Support for Python >2.7.9
 # - name: Adding Docker repository key
@@ -28,6 +30,8 @@
     state: latest
     pkg:
       - python-pip
+  tags:
+    - packages
 
 - name: Ensure Docker packages are installed.
   apt:
@@ -35,6 +39,8 @@
     state: latest
     pkg:
       - docker-ce
+  tags:
+    - packages
 
 - name: Ansible docker on boot
   service:

@@ -7,6 +7,8 @@
     pkg:
       - apt-transport-https
       - ca-certificates
+  tags:
+    - packages
 
 - name: Adding Certbot repository
   apt_repository:
@@ -20,3 +22,5 @@
     state: latest
     pkg:
       - certbot
+  tags:
+    - packages

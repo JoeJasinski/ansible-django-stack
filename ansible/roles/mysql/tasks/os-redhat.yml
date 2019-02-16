@@ -1,10 +1,11 @@
 ---
 
 - name: Ensure MySQL packages are installed.
-  yum: name={{ package_to_install }} state=latest
-  with_items:
-    - mysql
-    - mysql-server
-    - MySQL-python
-  loop_control:
-    loop_var: package_to_install
+  yum:
+    state: latest
+    name:
+      - mysql
+      - mysql-server
+      - MySQL-python
+  tags:
+    - packages

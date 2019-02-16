@@ -4,6 +4,8 @@
   apt:
     name: postfix
     state: installed
+  tags:
+    - packages
 
 - name: Install Postfix Deamon
   apt:
@@ -11,6 +13,8 @@
     state: latest
     pkg:
       - postfix
+  tags:
+    - packages
 
 - name: Start Postfix
   service:

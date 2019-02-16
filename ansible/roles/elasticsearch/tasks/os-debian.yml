@@ -28,3 +28,5 @@
   apt:
     name: elasticsearch={{ elasticsearch__version }}
     state: present
+  tags:
+    - packages

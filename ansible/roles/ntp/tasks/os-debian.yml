@@ -4,6 +4,8 @@
   apt:
     name: ntp
     state: installed
+  tags:
+    - packages
 
 - name: Start NTPD
   service:
