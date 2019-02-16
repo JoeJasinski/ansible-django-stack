@@ -1,10 +1,15 @@
 ---
 
 - name: Adding Nginx repository
-  apt_repository: repo="deb http://nginx.org/packages/debian/ {{ansible_distribution_release}} nginx" state=present update_cache={{ update_apt_cache }}
+  apt_repository:
+    repo: "deb http://nginx.org/packages/debian/ {{ansible_distribution_release}} nginx"
+    state: present
+    update_cache: "{{ update_apt_cache }}"
 
 - name: Adding Nginx repository key
-  apt_key: url="http://nginx.org/keys/nginx_signing.key" state=present
+  apt_key:
+    url: "http://nginx.org/keys/nginx_signing.key"
+    state: present
 
 - name: Install Latest Nginx
   apt:

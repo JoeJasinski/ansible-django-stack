@@ -1,7 +1,7 @@
 ---
 
 - name: Load OS-Specific Tasks
-  include: "{{ item }}"
+  include_tasks: "{{ item }}"
   with_first_found:
    - "os-{{ ansible_distribution|lower }}-{{ ansible_distribution_release }}.yml"
    - "os-{{ ansible_distribution|lower }}.yml"

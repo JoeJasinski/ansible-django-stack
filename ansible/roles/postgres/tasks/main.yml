@@ -2,7 +2,7 @@
 - debug: msg="Enabled {{ install_postgres }}"
 
 - name: enable/disable postgres Ansible install
-  include: base.yml
+  import_tasks: base.yml
   when: install_postgres|default(True)
   tags:
     - postgres

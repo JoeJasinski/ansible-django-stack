@@ -2,7 +2,7 @@
 - debug: msg="Enabled {{ install_redis }}"
 
 - name: enable/disable redis Ansible install
-  include: base.yml
+  import_tasks: base.yml
   when: install_redis|default(True)
   tags:
     - redis

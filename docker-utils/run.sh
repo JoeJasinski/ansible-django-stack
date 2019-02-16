@@ -1,5 +1,9 @@
 #!/bin/bash
-# This script is used by docker to run the application inside a container.
+HOSTNAME=$1
+PLAYBOOK=$2
+EXTRA_VARS_FILE="/extra-vars.yml"  # mount exta vars file here
 
-/etc/init.d/ntp start
-/etc/init.d/supervisor restart
+
+ansible-playbook -i '${HOSTNAME},' \
+    --extra-vars "@/extra-vars.yml" \
+    $PLAYBOOK

@@ -1,18 +1,18 @@
 ---
 
 - name: Ensure MySQL packages are installed.
-  apt: name={{ package_to_install }} update_cache={{ update_apt_cache }} state=latest
-  with_items:
-    - mysql-common
-    - mysql-server
-    - libmysqlclient-dev
-  loop_control:
-    loop_var: package_to_install
+  apt:
+    update_cache: "{{ update_apt_cache }}"
+    state: latest
+    pkg:
+      - mysql-common
+      - mysql-server
+      - libmysqlclient-dev
 
 - name: Python3 mysql dependency
-  apt: name={{ package_to_install }} update_cache={{ update_apt_cache }} state=latest
-  with_items:
-    - python3-dev
-    - python3-pip
-  loop_control:
-    loop_var: package_to_install
+  apt:
+    update_cache: "{{ update_apt_cache }}"
+    state: latest
+    pkg:
+      - python3-dev
+      - python3-pip

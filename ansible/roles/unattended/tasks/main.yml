@@ -2,7 +2,7 @@
 - debug: msg="Enabled {{ install_unattended_updates }}"
 
 - name: enable/disable unattended updates Ansible install
-  include: base.yml
+  import_tasks: base.yml
   when: install_unattended_updates|default(True)
   tags:
     - unattended

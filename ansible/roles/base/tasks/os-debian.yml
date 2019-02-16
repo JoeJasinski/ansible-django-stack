@@ -1,59 +1,62 @@
 ---
 
 - name: Install need system libraries and tools
-  apt: name={{ package_to_install }} update_cache={{ update_apt_cache }} state=latest
-  with_items:
-    - bash
-    - build-essential
-    - aptitude
-    - openssl
-    - rng-tools
-    - libssl-dev
-    - libssl-doc
-    - libxml2-dev
-    - libjpeg8
-    - libjpeg8-dev
-    - libfreetype6
-    - libfreetype6-dev
-    - zlib1g-dev
-    - libpq-dev
-    - libsqlite3-dev
-  loop_control:
-      loop_var: package_to_install
+  apt:
+    update_cache: "{{ update_apt_cache }}"
+    state: latest
+    pkg:
+      - bash
+      - build-essential
+      - aptitude
+      - openssl
+      - rng-tools
+      - libssl-dev
+      - libssl-doc
+      - libxml2-dev
+      - libjpeg8
+      - libjpeg8-dev
+      - libfreetype6
+      - libfreetype6-dev
+      - zlib1g-dev
+      - libpq-dev
+      - libsqlite3-dev
 
 - name: Install jpeg8
-  apt: name={{ package_to_install }} update_cache={{ update_apt_cache }} force=yes state=installed
-  with_items:
-    - libjpeg-turbo8-dev
-  loop_control:
-    loop_var: package_to_install
+  apt:
+    update_cache: "{{ update_apt_cache }}"
+    force: yes
+    state: installed
+    pkg:
+      - libjpeg-turbo8-dev
   ignore_errors: yes
 
 - name: Install base packages
-  apt: name={{ package_to_install }} update_cache={{ update_apt_cache }} force=yes state=installed
-  with_items:
-    - curl
-    - psmisc
-    - htop
-    - git
-    - git-core
-    - tig
-    - mercurial
-    - psmisc # pstree
-    - lsof
-    - iptables-persistent
-  loop_control:
-    loop_var: package_to_install
+  apt:
+    update_cache: "{{ update_apt_cache }}"
+    state: installed
+    force: yes
+    pkg:
+      - curl
+      - psmisc
+      - htop
+      - git
+      - git-core
+      - tig
+      - mercurial
+      - psmisc # pstree
+      - lsof
+      - iptables-persistent
 
 - name: Install Python System-level packages
-  apt: name={{ package_to_install }} update_cache={{ update_apt_cache }} force=yes state=installed
-  with_items:
-    - python-dev
-    - python3-dev
-    - python-pip
-    - python3-pip
-    - python-pycurl
-    - python-virtualenv
-    - python-setuptools
-  loop_control:
-    loop_var: package_to_install
+  apt:
+    update_cache: "{{ update_apt_cache }}"
+    force: yes
+    state: installed
+    pkg:
+      - python-dev
+      - python3-dev
+      - python-pip
+      - python3-pip
+      - python-pycurl
+      - python-virtualenv
+      - python-setuptools

@@ -1,7 +1,7 @@
 ---
 
 - name: Include git checkout
-  include: git.yml
+  import_tasks: git.yml
 
 
 - name: Creates sites etc directory

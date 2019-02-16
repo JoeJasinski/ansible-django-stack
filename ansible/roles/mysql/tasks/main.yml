@@ -2,7 +2,7 @@
 - debug: msg="Enabled {{ install_mysql }}"
 
 - name: enable/disable mysql Ansible install
-  include: base.yml
+  import_tasks: base.yml
   when: install_mysql|default(True)
   tags:
     - mysql
